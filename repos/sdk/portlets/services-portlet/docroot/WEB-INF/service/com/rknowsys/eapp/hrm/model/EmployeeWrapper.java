@@ -17,8 +17,6 @@ package com.rknowsys.eapp.hrm.model;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
-import java.sql.Blob;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,10 +62,9 @@ public class EmployeeWrapper implements Employee, ModelWrapper<Employee> {
 		attributes.put("firstName", getFirstName());
 		attributes.put("lastName", getLastName());
 		attributes.put("middleName", getMiddleName());
-		attributes.put("photograph", getPhotograph());
 		attributes.put("gender", getGender());
 		attributes.put("maritalStatus", getMaritalStatus());
-		attributes.put("nationality", getNationality());
+		attributes.put("nationalityId", getNationalityId());
 		attributes.put("dateOfBirth", getDateOfBirth());
 		attributes.put("otherId", getOtherId());
 
@@ -154,12 +151,6 @@ public class EmployeeWrapper implements Employee, ModelWrapper<Employee> {
 			setMiddleName(middleName);
 		}
 
-		Blob photograph = (Blob)attributes.get("photograph");
-
-		if (photograph != null) {
-			setPhotograph(photograph);
-		}
-
 		Integer gender = (Integer)attributes.get("gender");
 
 		if (gender != null) {
@@ -172,10 +163,10 @@ public class EmployeeWrapper implements Employee, ModelWrapper<Employee> {
 			setMaritalStatus(maritalStatus);
 		}
 
-		String nationality = (String)attributes.get("nationality");
+		Long nationalityId = (Long)attributes.get("nationalityId");
 
-		if (nationality != null) {
-			setNationality(nationality);
+		if (nationalityId != null) {
+			setNationalityId(nationalityId);
 		}
 
 		Date dateOfBirth = (Date)attributes.get("dateOfBirth");
@@ -494,26 +485,6 @@ public class EmployeeWrapper implements Employee, ModelWrapper<Employee> {
 	}
 
 	/**
-	* Returns the photograph of this Employee.
-	*
-	* @return the photograph of this Employee
-	*/
-	@Override
-	public java.sql.Blob getPhotograph() {
-		return _employee.getPhotograph();
-	}
-
-	/**
-	* Sets the photograph of this Employee.
-	*
-	* @param photograph the photograph of this Employee
-	*/
-	@Override
-	public void setPhotograph(java.sql.Blob photograph) {
-		_employee.setPhotograph(photograph);
-	}
-
-	/**
 	* Returns the gender of this Employee.
 	*
 	* @return the gender of this Employee
@@ -554,23 +525,23 @@ public class EmployeeWrapper implements Employee, ModelWrapper<Employee> {
 	}
 
 	/**
-	* Returns the nationality of this Employee.
+	* Returns the nationality ID of this Employee.
 	*
-	* @return the nationality of this Employee
+	* @return the nationality ID of this Employee
 	*/
 	@Override
-	public java.lang.String getNationality() {
-		return _employee.getNationality();
+	public long getNationalityId() {
+		return _employee.getNationalityId();
 	}
 
 	/**
-	* Sets the nationality of this Employee.
+	* Sets the nationality ID of this Employee.
 	*
-	* @param nationality the nationality of this Employee
+	* @param nationalityId the nationality ID of this Employee
 	*/
 	@Override
-	public void setNationality(java.lang.String nationality) {
-		_employee.setNationality(nationality);
+	public void setNationalityId(long nationalityId) {
+		_employee.setNationalityId(nationalityId);
 	}
 
 	/**

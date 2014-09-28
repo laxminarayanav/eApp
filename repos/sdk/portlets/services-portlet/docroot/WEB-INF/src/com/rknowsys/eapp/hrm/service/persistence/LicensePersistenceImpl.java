@@ -1705,6 +1705,7 @@ public class LicensePersistenceImpl extends BasePersistenceImpl<License>
 		licenseImpl.setUserId(license.getUserId());
 		licenseImpl.setLicenseName(license.getLicenseName());
 		licenseImpl.setExpiryDate(license.getExpiryDate());
+		licenseImpl.setLicenseNumber(license.getLicenseNumber());
 
 		return licenseImpl;
 	}

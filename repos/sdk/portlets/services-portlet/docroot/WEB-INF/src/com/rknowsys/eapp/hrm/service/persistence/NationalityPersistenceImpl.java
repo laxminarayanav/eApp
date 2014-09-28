@@ -48,7 +48,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The persistence implementation for the nationality service.
+ * The persistence implementation for the Nationality service.
  *
  * <p>
  * Caching information and settings can be found in <code>portal.properties</code>
@@ -64,7 +64,7 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. Always use {@link NationalityUtil} to access the nationality persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this class.
+	 * Never modify or reference this class directly. Always use {@link NationalityUtil} to access the Nationality persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this class.
 	 */
 	public static final String FINDER_CLASS_NAME_ENTITY = NationalityImpl.class.getName();
 	public static final String FINDER_CLASS_NAME_LIST_WITH_PAGINATION = FINDER_CLASS_NAME_ENTITY +
@@ -86,9 +86,9 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Caches the nationality in the entity cache if it is enabled.
+	 * Caches the Nationality in the entity cache if it is enabled.
 	 *
-	 * @param nationality the nationality
+	 * @param nationality the Nationality
 	 */
 	@Override
 	public void cacheResult(Nationality nationality) {
@@ -99,9 +99,9 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Caches the nationalities in the entity cache if it is enabled.
+	 * Caches the Nationalities in the entity cache if it is enabled.
 	 *
-	 * @param nationalities the nationalities
+	 * @param nationalities the Nationalities
 	 */
 	@Override
 	public void cacheResult(List<Nationality> nationalities) {
@@ -118,7 +118,7 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Clears the cache for all nationalities.
+	 * Clears the cache for all Nationalities.
 	 *
 	 * <p>
 	 * The {@link com.liferay.portal.kernel.dao.orm.EntityCache} and {@link com.liferay.portal.kernel.dao.orm.FinderCache} are both cleared by this method.
@@ -138,7 +138,7 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Clears the cache for the nationality.
+	 * Clears the cache for the Nationality.
 	 *
 	 * <p>
 	 * The {@link com.liferay.portal.kernel.dao.orm.EntityCache} and {@link com.liferay.portal.kernel.dao.orm.FinderCache} are both cleared by this method.
@@ -165,10 +165,10 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Creates a new nationality with the primary key. Does not add the nationality to the database.
+	 * Creates a new Nationality with the primary key. Does not add the Nationality to the database.
 	 *
-	 * @param nationalityId the primary key for the new nationality
-	 * @return the new nationality
+	 * @param nationalityId the primary key for the new Nationality
+	 * @return the new Nationality
 	 */
 	@Override
 	public Nationality create(long nationalityId) {
@@ -181,11 +181,11 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Removes the nationality with the primary key from the database. Also notifies the appropriate model listeners.
+	 * Removes the Nationality with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param nationalityId the primary key of the nationality
-	 * @return the nationality that was removed
-	 * @throws com.rknowsys.eapp.hrm.NoSuchNationalityException if a nationality with the primary key could not be found
+	 * @param nationalityId the primary key of the Nationality
+	 * @return the Nationality that was removed
+	 * @throws com.rknowsys.eapp.hrm.NoSuchNationalityException if a Nationality with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -195,11 +195,11 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Removes the nationality with the primary key from the database. Also notifies the appropriate model listeners.
+	 * Removes the Nationality with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param primaryKey the primary key of the nationality
-	 * @return the nationality that was removed
-	 * @throws com.rknowsys.eapp.hrm.NoSuchNationalityException if a nationality with the primary key could not be found
+	 * @param primaryKey the primary key of the Nationality
+	 * @return the Nationality that was removed
+	 * @throws com.rknowsys.eapp.hrm.NoSuchNationalityException if a Nationality with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -320,6 +320,7 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 		nationalityImpl.setPrimaryKey(nationality.getPrimaryKey());
 
 		nationalityImpl.setNationalityId(nationality.getNationalityId());
+		nationalityImpl.setEmployeeId(nationality.getEmployeeId());
 		nationalityImpl.setGroupId(nationality.getGroupId());
 		nationalityImpl.setCompanyId(nationality.getCompanyId());
 		nationalityImpl.setUserId(nationality.getUserId());
@@ -331,11 +332,11 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Returns the nationality with the primary key or throws a {@link com.liferay.portal.NoSuchModelException} if it could not be found.
+	 * Returns the Nationality with the primary key or throws a {@link com.liferay.portal.NoSuchModelException} if it could not be found.
 	 *
-	 * @param primaryKey the primary key of the nationality
-	 * @return the nationality
-	 * @throws com.rknowsys.eapp.hrm.NoSuchNationalityException if a nationality with the primary key could not be found
+	 * @param primaryKey the primary key of the Nationality
+	 * @return the Nationality
+	 * @throws com.rknowsys.eapp.hrm.NoSuchNationalityException if a Nationality with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -356,11 +357,11 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Returns the nationality with the primary key or throws a {@link com.rknowsys.eapp.hrm.NoSuchNationalityException} if it could not be found.
+	 * Returns the Nationality with the primary key or throws a {@link com.rknowsys.eapp.hrm.NoSuchNationalityException} if it could not be found.
 	 *
-	 * @param nationalityId the primary key of the nationality
-	 * @return the nationality
-	 * @throws com.rknowsys.eapp.hrm.NoSuchNationalityException if a nationality with the primary key could not be found
+	 * @param nationalityId the primary key of the Nationality
+	 * @return the Nationality
+	 * @throws com.rknowsys.eapp.hrm.NoSuchNationalityException if a Nationality with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -370,10 +371,10 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Returns the nationality with the primary key or returns <code>null</code> if it could not be found.
+	 * Returns the Nationality with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param primaryKey the primary key of the nationality
-	 * @return the nationality, or <code>null</code> if a nationality with the primary key could not be found
+	 * @param primaryKey the primary key of the Nationality
+	 * @return the Nationality, or <code>null</code> if a Nationality with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -418,10 +419,10 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Returns the nationality with the primary key or returns <code>null</code> if it could not be found.
+	 * Returns the Nationality with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param nationalityId the primary key of the nationality
-	 * @return the nationality, or <code>null</code> if a nationality with the primary key could not be found
+	 * @param nationalityId the primary key of the Nationality
+	 * @return the Nationality, or <code>null</code> if a Nationality with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -431,9 +432,9 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Returns all the nationalities.
+	 * Returns all the Nationalities.
 	 *
-	 * @return the nationalities
+	 * @return the Nationalities
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -442,15 +443,15 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Returns a range of all the nationalities.
+	 * Returns a range of all the Nationalities.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.rknowsys.eapp.hrm.model.impl.NationalityModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
-	 * @param start the lower bound of the range of nationalities
-	 * @param end the upper bound of the range of nationalities (not inclusive)
-	 * @return the range of nationalities
+	 * @param start the lower bound of the range of Nationalities
+	 * @param end the upper bound of the range of Nationalities (not inclusive)
+	 * @return the range of Nationalities
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -460,16 +461,16 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Returns an ordered range of all the nationalities.
+	 * Returns an ordered range of all the Nationalities.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.rknowsys.eapp.hrm.model.impl.NationalityModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
-	 * @param start the lower bound of the range of nationalities
-	 * @param end the upper bound of the range of nationalities (not inclusive)
+	 * @param start the lower bound of the range of Nationalities
+	 * @param end the upper bound of the range of Nationalities (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of nationalities
+	 * @return the ordered range of Nationalities
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -554,7 +555,7 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Removes all the nationalities from the database.
+	 * Removes all the Nationalities from the database.
 	 *
 	 * @throws SystemException if a system exception occurred
 	 */
@@ -566,9 +567,9 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Returns the number of nationalities.
+	 * Returns the number of Nationalities.
 	 *
-	 * @return the number of nationalities
+	 * @return the number of Nationalities
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -604,7 +605,7 @@ public class NationalityPersistenceImpl extends BasePersistenceImpl<Nationality>
 	}
 
 	/**
-	 * Initializes the nationality persistence.
+	 * Initializes the Nationality persistence.
 	 */
 	public void afterPropertiesSet() {
 		String[] listenerClassNames = StringUtil.split(GetterUtil.getString(

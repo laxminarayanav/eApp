@@ -1120,12 +1120,8 @@ public class EmployeePersistenceImpl extends BasePersistenceImpl<Employee>
 				employee.setNew(false);
 			}
 			else {
-				session.evict(employee);
-				session.saveOrUpdate(employee);
+				session.merge(employee);
 			}
-
-			session.flush();
-			session.clear();
 		}
 		catch (Exception e) {
 			throw processException(e);
@@ -1181,8 +1177,6 @@ public class EmployeePersistenceImpl extends BasePersistenceImpl<Employee>
 		EntityCacheUtil.putResult(EmployeeModelImpl.ENTITY_CACHE_ENABLED,
 			EmployeeImpl.class, employee.getPrimaryKey(), employee);
 
-		employee.resetOriginalValues();
-
 		return employee;
 	}
 
@@ -1209,10 +1203,9 @@ public class EmployeePersistenceImpl extends BasePersistenceImpl<Employee>
 		employeeImpl.setFirstName(employee.getFirstName());
 		employeeImpl.setLastName(employee.getLastName());
 		employeeImpl.setMiddleName(employee.getMiddleName());
-		employeeImpl.setPhotograph(employee.getPhotograph());
 		employeeImpl.setGender(employee.getGender());
 		employeeImpl.setMaritalStatus(employee.getMaritalStatus());
-		employeeImpl.setNationality(employee.getNationality());
+		employeeImpl.setNationalityId(employee.getNationalityId());
 		employeeImpl.setDateOfBirth(employee.getDateOfBirth());
 		employeeImpl.setOtherId(employee.getOtherId());
 

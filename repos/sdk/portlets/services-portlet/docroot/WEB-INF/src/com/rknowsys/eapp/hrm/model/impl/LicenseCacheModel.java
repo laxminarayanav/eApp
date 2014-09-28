@@ -37,7 +37,7 @@ import java.util.Date;
 public class LicenseCacheModel implements CacheModel<License>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{licenseId=");
 		sb.append(licenseId);
@@ -57,6 +57,8 @@ public class LicenseCacheModel implements CacheModel<License>, Externalizable {
 		sb.append(licenseName);
 		sb.append(", expiryDate=");
 		sb.append(expiryDate);
+		sb.append(", licenseNumber=");
+		sb.append(licenseNumber);
 		sb.append("}");
 
 		return sb.toString();
@@ -101,6 +103,13 @@ public class LicenseCacheModel implements CacheModel<License>, Externalizable {
 			licenseImpl.setExpiryDate(new Date(expiryDate));
 		}
 
+		if (licenseNumber == null) {
+			licenseImpl.setLicenseNumber(StringPool.BLANK);
+		}
+		else {
+			licenseImpl.setLicenseNumber(licenseNumber);
+		}
+
 		licenseImpl.resetOriginalValues();
 
 		return licenseImpl;
@@ -117,6 +126,7 @@ public class LicenseCacheModel implements CacheModel<License>, Externalizable {
 		userId = objectInput.readLong();
 		licenseName = objectInput.readUTF();
 		expiryDate = objectInput.readLong();
+		licenseNumber = objectInput.readUTF();
 	}
 
 	@Override
@@ -138,6 +148,13 @@ public class LicenseCacheModel implements CacheModel<License>, Externalizable {
 		}
 
 		objectOutput.writeLong(expiryDate);
+
+		if (licenseNumber == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(licenseNumber);
+		}
 	}
 
 	public long licenseId;
@@ -149,4 +166,5 @@ public class LicenseCacheModel implements CacheModel<License>, Externalizable {
 	public long userId;
 	public String licenseName;
 	public long expiryDate;
+	public String licenseNumber;
 }

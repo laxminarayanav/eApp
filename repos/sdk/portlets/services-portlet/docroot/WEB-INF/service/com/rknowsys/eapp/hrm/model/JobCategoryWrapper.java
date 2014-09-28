@@ -57,7 +57,6 @@ public class JobCategoryWrapper implements JobCategory,
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("userId", getUserId());
 		attributes.put("jobcategory", getJobcategory());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -104,12 +103,6 @@ public class JobCategoryWrapper implements JobCategory,
 
 		if (jobcategory != null) {
 			setJobcategory(jobcategory);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -293,26 +286,6 @@ public class JobCategoryWrapper implements JobCategory,
 	@Override
 	public void setJobcategory(java.lang.String jobcategory) {
 		_jobCategory.setJobcategory(jobcategory);
-	}
-
-	/**
-	* Returns the job ID of this job category.
-	*
-	* @return the job ID of this job category
-	*/
-	@Override
-	public long getJobId() {
-		return _jobCategory.getJobId();
-	}
-
-	/**
-	* Sets the job ID of this job category.
-	*
-	* @param jobId the job ID of this job category
-	*/
-	@Override
-	public void setJobId(long jobId) {
-		_jobCategory.setJobId(jobId);
 	}
 
 	@Override

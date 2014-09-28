@@ -61,7 +61,7 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 	 */
 	public static final String TABLE_NAME = "doc_category";
 	public static final Object[][] TABLE_COLUMNS = {
-			{ "id_", Types.BIGINT },
+			{ "docCategoryId", Types.BIGINT },
 			{ "companyId", Types.BIGINT },
 			{ "groupId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
@@ -69,13 +69,13 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 			{ "userId", Types.BIGINT },
 			{ "docName", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table doc_category (id_ LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,docName VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table doc_category (docCategoryId LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,docName VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table doc_category";
-	public static final String ORDER_BY_JPQL = " ORDER BY docCategory.id ASC";
-	public static final String ORDER_BY_SQL = " ORDER BY doc_category.id_ ASC";
-	public static final String DATA_SOURCE = "anotherDataSource";
-	public static final String SESSION_FACTORY = "anotherSessionFactory";
-	public static final String TX_MANAGER = "anotherTransactionManager";
+	public static final String ORDER_BY_JPQL = " ORDER BY docCategory.docCategoryId ASC";
+	public static final String ORDER_BY_SQL = " ORDER BY doc_category.docCategoryId ASC";
+	public static final String DATA_SOURCE = "hrmDataSource";
+	public static final String SESSION_FACTORY = "hrmSessionFactory";
+	public static final String TX_MANAGER = "hrmTransactionManager";
 	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.entity.cache.enabled.com.rknowsys.eapp.hrm.model.DocCategory"),
 			true);
@@ -86,7 +86,7 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 				"value.object.column.bitmask.enabled.com.rknowsys.eapp.hrm.model.DocCategory"),
 			true);
 	public static long GROUPID_COLUMN_BITMASK = 1L;
-	public static long ID_COLUMN_BITMASK = 2L;
+	public static long DOCCATEGORYID_COLUMN_BITMASK = 2L;
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
 				"lock.expiration.time.com.rknowsys.eapp.hrm.model.DocCategory"));
 
@@ -95,17 +95,17 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 
 	@Override
 	public long getPrimaryKey() {
-		return _id;
+		return _docCategoryId;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setId(primaryKey);
+		setDocCategoryId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _id;
+		return _docCategoryId;
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
+		attributes.put("docCategoryId", getDocCategoryId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
@@ -140,10 +140,10 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
+		Long docCategoryId = (Long)attributes.get("docCategoryId");
 
-		if (id != null) {
-			setId(id);
+		if (docCategoryId != null) {
+			setDocCategoryId(docCategoryId);
 		}
 
 		Long companyId = (Long)attributes.get("companyId");
@@ -184,13 +184,13 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 	}
 
 	@Override
-	public long getId() {
-		return _id;
+	public long getDocCategoryId() {
+		return _docCategoryId;
 	}
 
 	@Override
-	public void setId(long id) {
-		_id = id;
+	public void setDocCategoryId(long docCategoryId) {
+		_docCategoryId = docCategoryId;
 	}
 
 	@Override
@@ -311,7 +311,7 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 	public Object clone() {
 		DocCategoryImpl docCategoryImpl = new DocCategoryImpl();
 
-		docCategoryImpl.setId(getId());
+		docCategoryImpl.setDocCategoryId(getDocCategoryId());
 		docCategoryImpl.setCompanyId(getCompanyId());
 		docCategoryImpl.setGroupId(getGroupId());
 		docCategoryImpl.setCreateDate(getCreateDate());
@@ -381,7 +381,7 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 	public CacheModel<DocCategory> toCacheModel() {
 		DocCategoryCacheModel docCategoryCacheModel = new DocCategoryCacheModel();
 
-		docCategoryCacheModel.id = getId();
+		docCategoryCacheModel.docCategoryId = getDocCategoryId();
 
 		docCategoryCacheModel.companyId = getCompanyId();
 
@@ -422,8 +422,8 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 	public String toString() {
 		StringBundler sb = new StringBundler(15);
 
-		sb.append("{id=");
-		sb.append(getId());
+		sb.append("{docCategoryId=");
+		sb.append(getDocCategoryId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
 		sb.append(", groupId=");
@@ -450,8 +450,8 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 		sb.append("</model-name>");
 
 		sb.append(
-			"<column><column-name>id</column-name><column-value><![CDATA[");
-		sb.append(getId());
+			"<column><column-name>docCategoryId</column-name><column-value><![CDATA[");
+		sb.append(getDocCategoryId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>companyId</column-name><column-value><![CDATA[");
@@ -487,7 +487,7 @@ public class DocCategoryModelImpl extends BaseModelImpl<DocCategory>
 	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			DocCategory.class
 		};
-	private long _id;
+	private long _docCategoryId;
 	private long _companyId;
 	private long _groupId;
 	private long _originalGroupId;

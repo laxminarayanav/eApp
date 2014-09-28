@@ -61,18 +61,18 @@ public interface DocCategoryModel extends BaseModel<DocCategory> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the ID of this doc category.
+	 * Returns the doc category ID of this doc category.
 	 *
-	 * @return the ID of this doc category
+	 * @return the doc category ID of this doc category
 	 */
-	public long getId();
+	public long getDocCategoryId();
 
 	/**
-	 * Sets the ID of this doc category.
+	 * Sets the doc category ID of this doc category.
 	 *
-	 * @param id the ID of this doc category
+	 * @param docCategoryId the doc category ID of this doc category
 	 */
-	public void setId(long id);
+	public void setDocCategoryId(long docCategoryId);
 
 	/**
 	 * Returns the company ID of this doc category.

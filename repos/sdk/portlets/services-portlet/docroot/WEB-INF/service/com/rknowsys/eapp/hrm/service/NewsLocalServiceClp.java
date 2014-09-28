@@ -142,12 +142,12 @@ public class NewsLocalServiceClp implements NewsLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.News createNews(long id) {
+	public com.rknowsys.eapp.hrm.model.News createNews(long newsId) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName1,
-					_methodParameterTypes1, new Object[] { id });
+					_methodParameterTypes1, new Object[] { newsId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -165,14 +165,14 @@ public class NewsLocalServiceClp implements NewsLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.News deleteNews(long id)
+	public com.rknowsys.eapp.hrm.model.News deleteNews(long newsId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName2,
-					_methodParameterTypes2, new Object[] { id });
+					_methodParameterTypes2, new Object[] { newsId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -425,13 +425,13 @@ public class NewsLocalServiceClp implements NewsLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.News fetchNews(long id)
+	public com.rknowsys.eapp.hrm.model.News fetchNews(long newsId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName10,
-					_methodParameterTypes10, new Object[] { id });
+					_methodParameterTypes10, new Object[] { newsId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -453,14 +453,14 @@ public class NewsLocalServiceClp implements NewsLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.News getNews(long id)
+	public com.rknowsys.eapp.hrm.model.News getNews(long newsId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName11,
-					_methodParameterTypes11, new Object[] { id });
+					_methodParameterTypes11, new Object[] { newsId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);

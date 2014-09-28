@@ -294,20 +294,6 @@ public interface LocationModel extends BaseModel<Location> {
 	 */
 	public void setNotes(String notes);
 
-	/**
-	 * Returns the job ID of this location.
-	 *
-	 * @return the job ID of this location
-	 */
-	public long getJobId();
-
-	/**
-	 * Sets the job ID of this location.
-	 *
-	 * @param jobId the job ID of this location
-	 */
-	public void setJobId(long jobId);
-
 	@Override
 	public boolean isNew();
 

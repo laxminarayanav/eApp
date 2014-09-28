@@ -324,7 +324,6 @@ public class SubUnitPersistenceImpl extends BasePersistenceImpl<SubUnit>
 		subUnitImpl.setUserId(subUnit.getUserId());
 		subUnitImpl.setCreateDate(subUnit.getCreateDate());
 		subUnitImpl.setModifiedDate(subUnit.getModifiedDate());
-		subUnitImpl.setJobId(subUnit.getJobId());
 
 		return subUnitImpl;
 	}

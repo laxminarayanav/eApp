@@ -226,11 +226,6 @@ public interface EmployeeLocalService extends BaseLocalService,
 		com.rknowsys.eapp.hrm.model.Employee employee)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public com.rknowsys.eapp.hrm.model.EmployeePhotographBlobModel getPhotographBlobModel(
-		java.io.Serializable primaryKey)
-		throws com.liferay.portal.kernel.exception.SystemException;
-
 	/**
 	* Returns the Spring bean ID for this bean.
 	*

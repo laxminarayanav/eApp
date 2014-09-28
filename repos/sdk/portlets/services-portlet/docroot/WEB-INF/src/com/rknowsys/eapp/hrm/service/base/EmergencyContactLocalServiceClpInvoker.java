@@ -106,17 +106,17 @@ public class EmergencyContactLocalServiceClpInvoker {
 				"com.rknowsys.eapp.hrm.model.EmergencyContact"
 			};
 
-		_methodName136 = "getBeanIdentifier";
+		_methodName140 = "getBeanIdentifier";
 
-		_methodParameterTypes136 = new String[] {  };
+		_methodParameterTypes140 = new String[] {  };
 
-		_methodName137 = "setBeanIdentifier";
+		_methodName141 = "setBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] { "java.lang.String" };
+		_methodParameterTypes141 = new String[] { "java.lang.String" };
 
-		_methodName142 = "getEmployeeEmergencyContacts";
+		_methodName146 = "getEmployeeEmergencyContacts";
 
-		_methodParameterTypes142 = new String[] { "long" };
+		_methodParameterTypes146 = new String[] { "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -208,20 +208,20 @@ public class EmergencyContactLocalServiceClpInvoker {
 			return EmergencyContactLocalServiceUtil.updateEmergencyContact((com.rknowsys.eapp.hrm.model.EmergencyContact)arguments[0]);
 		}
 
-		if (_methodName136.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
+		if (_methodName140.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes140, parameterTypes)) {
 			return EmergencyContactLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName141.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes141, parameterTypes)) {
 			EmergencyContactLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName142.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes142, parameterTypes)) {
+		if (_methodName146.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes146, parameterTypes)) {
 			return EmergencyContactLocalServiceUtil.getEmployeeEmergencyContacts(((Long)arguments[0]).longValue());
 		}
 
@@ -260,10 +260,10 @@ public class EmergencyContactLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName136;
-	private String[] _methodParameterTypes136;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
-	private String _methodName142;
-	private String[] _methodParameterTypes142;
+	private String _methodName140;
+	private String[] _methodParameterTypes140;
+	private String _methodName141;
+	private String[] _methodParameterTypes141;
+	private String _methodName146;
+	private String[] _methodParameterTypes146;
 }

@@ -67,16 +67,15 @@ public class JobCategoryModelImpl extends BaseModelImpl<JobCategory>
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "userId", Types.BIGINT },
-			{ "jobcategory", Types.VARCHAR },
-			{ "jobId", Types.BIGINT }
+			{ "jobcategory", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table job_category (jobCategoryId LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,jobcategory VARCHAR(75) null,jobId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table job_category (jobCategoryId LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,jobcategory VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table job_category";
 	public static final String ORDER_BY_JPQL = " ORDER BY jobCategory.jobCategoryId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY job_category.jobCategoryId ASC";
-	public static final String DATA_SOURCE = "anotherDataSource";
-	public static final String SESSION_FACTORY = "anotherSessionFactory";
-	public static final String TX_MANAGER = "anotherTransactionManager";
+	public static final String DATA_SOURCE = "hrmDataSource";
+	public static final String SESSION_FACTORY = "hrmSessionFactory";
+	public static final String TX_MANAGER = "hrmTransactionManager";
 	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.entity.cache.enabled.com.rknowsys.eapp.hrm.model.JobCategory"),
 			true);
@@ -135,7 +134,6 @@ public class JobCategoryModelImpl extends BaseModelImpl<JobCategory>
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("userId", getUserId());
 		attributes.put("jobcategory", getJobcategory());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -182,12 +180,6 @@ public class JobCategoryModelImpl extends BaseModelImpl<JobCategory>
 
 		if (jobcategory != null) {
 			setJobcategory(jobcategory);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -288,16 +280,6 @@ public class JobCategoryModelImpl extends BaseModelImpl<JobCategory>
 		_jobcategory = jobcategory;
 	}
 
-	@Override
-	public long getJobId() {
-		return _jobId;
-	}
-
-	@Override
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-	}
-
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -336,7 +318,6 @@ public class JobCategoryModelImpl extends BaseModelImpl<JobCategory>
 		jobCategoryImpl.setModifiedDate(getModifiedDate());
 		jobCategoryImpl.setUserId(getUserId());
 		jobCategoryImpl.setJobcategory(getJobcategory());
-		jobCategoryImpl.setJobId(getJobId());
 
 		jobCategoryImpl.resetOriginalValues();
 
@@ -434,14 +415,12 @@ public class JobCategoryModelImpl extends BaseModelImpl<JobCategory>
 			jobCategoryCacheModel.jobcategory = null;
 		}
 
-		jobCategoryCacheModel.jobId = getJobId();
-
 		return jobCategoryCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(17);
+		StringBundler sb = new StringBundler(15);
 
 		sb.append("{jobCategoryId=");
 		sb.append(getJobCategoryId());
@@ -457,8 +436,6 @@ public class JobCategoryModelImpl extends BaseModelImpl<JobCategory>
 		sb.append(getUserId());
 		sb.append(", jobcategory=");
 		sb.append(getJobcategory());
-		sb.append(", jobId=");
-		sb.append(getJobId());
 		sb.append("}");
 
 		return sb.toString();
@@ -466,7 +443,7 @@ public class JobCategoryModelImpl extends BaseModelImpl<JobCategory>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(28);
+		StringBundler sb = new StringBundler(25);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.JobCategory");
@@ -500,10 +477,6 @@ public class JobCategoryModelImpl extends BaseModelImpl<JobCategory>
 			"<column><column-name>jobcategory</column-name><column-value><![CDATA[");
 		sb.append(getJobcategory());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>jobId</column-name><column-value><![CDATA[");
-		sb.append(getJobId());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -524,7 +497,6 @@ public class JobCategoryModelImpl extends BaseModelImpl<JobCategory>
 	private long _userId;
 	private String _userUuid;
 	private String _jobcategory;
-	private long _jobId;
 	private long _columnBitmask;
 	private JobCategory _escapedModel;
 }

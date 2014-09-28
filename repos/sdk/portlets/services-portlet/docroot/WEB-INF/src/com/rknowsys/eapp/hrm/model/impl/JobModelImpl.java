@@ -82,9 +82,9 @@ public class JobModelImpl extends BaseModelImpl<Job> implements JobModel {
 	public static final String TABLE_SQL_DROP = "drop table hrm_Job";
 	public static final String ORDER_BY_JPQL = " ORDER BY job.jobId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY hrm_Job.jobId ASC";
-	public static final String DATA_SOURCE = "anotherDataSource";
-	public static final String SESSION_FACTORY = "anotherSessionFactory";
-	public static final String TX_MANAGER = "anotherTransactionManager";
+	public static final String DATA_SOURCE = "hrmDataSource";
+	public static final String SESSION_FACTORY = "hrmSessionFactory";
+	public static final String TX_MANAGER = "hrmTransactionManager";
 	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.entity.cache.enabled.com.rknowsys.eapp.hrm.model.Job"),
 			true);

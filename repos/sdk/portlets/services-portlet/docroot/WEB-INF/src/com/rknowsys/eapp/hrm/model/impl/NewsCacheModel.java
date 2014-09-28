@@ -39,8 +39,8 @@ public class NewsCacheModel implements CacheModel<News>, Externalizable {
 	public String toString() {
 		StringBundler sb = new StringBundler(21);
 
-		sb.append("{id=");
-		sb.append(id);
+		sb.append("{newsId=");
+		sb.append(newsId);
 		sb.append(", companyId=");
 		sb.append(companyId);
 		sb.append(", groupId=");
@@ -68,7 +68,7 @@ public class NewsCacheModel implements CacheModel<News>, Externalizable {
 	public News toEntityModel() {
 		NewsImpl newsImpl = new NewsImpl();
 
-		newsImpl.setId(id);
+		newsImpl.setNewsId(newsId);
 		newsImpl.setCompanyId(companyId);
 		newsImpl.setGroupId(groupId);
 
@@ -123,7 +123,7 @@ public class NewsCacheModel implements CacheModel<News>, Externalizable {
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readLong();
+		newsId = objectInput.readLong();
 		companyId = objectInput.readLong();
 		groupId = objectInput.readLong();
 		createDate = objectInput.readLong();
@@ -138,7 +138,7 @@ public class NewsCacheModel implements CacheModel<News>, Externalizable {
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(id);
+		objectOutput.writeLong(newsId);
 		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(createDate);
@@ -169,7 +169,7 @@ public class NewsCacheModel implements CacheModel<News>, Externalizable {
 		objectOutput.writeLong(publishDate);
 	}
 
-	public long id;
+	public long newsId;
 	public long companyId;
 	public long groupId;
 	public long createDate;

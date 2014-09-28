@@ -82,7 +82,6 @@ public class JobCategoryClp extends BaseModelImpl<JobCategory>
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("userId", getUserId());
 		attributes.put("jobcategory", getJobcategory());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -129,12 +128,6 @@ public class JobCategoryClp extends BaseModelImpl<JobCategory>
 
 		if (jobcategory != null) {
 			setJobcategory(jobcategory);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -309,29 +302,6 @@ public class JobCategoryClp extends BaseModelImpl<JobCategory>
 		}
 	}
 
-	@Override
-	public long getJobId() {
-		return _jobId;
-	}
-
-	@Override
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-
-		if (_jobCategoryRemoteModel != null) {
-			try {
-				Class<?> clazz = _jobCategoryRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setJobId", long.class);
-
-				method.invoke(_jobCategoryRemoteModel, jobId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
 	public BaseModel<?> getJobCategoryRemoteModel() {
 		return _jobCategoryRemoteModel;
 	}
@@ -408,7 +378,6 @@ public class JobCategoryClp extends BaseModelImpl<JobCategory>
 		clone.setModifiedDate(getModifiedDate());
 		clone.setUserId(getUserId());
 		clone.setJobcategory(getJobcategory());
-		clone.setJobId(getJobId());
 
 		return clone;
 	}
@@ -457,7 +426,7 @@ public class JobCategoryClp extends BaseModelImpl<JobCategory>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(17);
+		StringBundler sb = new StringBundler(15);
 
 		sb.append("{jobCategoryId=");
 		sb.append(getJobCategoryId());
@@ -473,8 +442,6 @@ public class JobCategoryClp extends BaseModelImpl<JobCategory>
 		sb.append(getUserId());
 		sb.append(", jobcategory=");
 		sb.append(getJobcategory());
-		sb.append(", jobId=");
-		sb.append(getJobId());
 		sb.append("}");
 
 		return sb.toString();
@@ -482,7 +449,7 @@ public class JobCategoryClp extends BaseModelImpl<JobCategory>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(28);
+		StringBundler sb = new StringBundler(25);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.JobCategory");
@@ -516,10 +483,6 @@ public class JobCategoryClp extends BaseModelImpl<JobCategory>
 			"<column><column-name>jobcategory</column-name><column-value><![CDATA[");
 		sb.append(getJobcategory());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>jobId</column-name><column-value><![CDATA[");
-		sb.append(getJobId());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -534,6 +497,5 @@ public class JobCategoryClp extends BaseModelImpl<JobCategory>
 	private long _userId;
 	private String _userUuid;
 	private String _jobcategory;
-	private long _jobId;
 	private BaseModel<?> _jobCategoryRemoteModel;
 }

@@ -82,7 +82,6 @@ public class EmploymentStatusClp extends BaseModelImpl<EmploymentStatus>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("employmentstatus", getEmploymentstatus());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -129,12 +128,6 @@ public class EmploymentStatusClp extends BaseModelImpl<EmploymentStatus>
 
 		if (employmentstatus != null) {
 			setEmploymentstatus(employmentstatus);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -311,29 +304,6 @@ public class EmploymentStatusClp extends BaseModelImpl<EmploymentStatus>
 		}
 	}
 
-	@Override
-	public long getJobId() {
-		return _jobId;
-	}
-
-	@Override
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-
-		if (_employmentStatusRemoteModel != null) {
-			try {
-				Class<?> clazz = _employmentStatusRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setJobId", long.class);
-
-				method.invoke(_employmentStatusRemoteModel, jobId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
 	public BaseModel<?> getEmploymentStatusRemoteModel() {
 		return _employmentStatusRemoteModel;
 	}
@@ -412,7 +382,6 @@ public class EmploymentStatusClp extends BaseModelImpl<EmploymentStatus>
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
 		clone.setEmploymentstatus(getEmploymentstatus());
-		clone.setJobId(getJobId());
 
 		return clone;
 	}
@@ -461,7 +430,7 @@ public class EmploymentStatusClp extends BaseModelImpl<EmploymentStatus>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(17);
+		StringBundler sb = new StringBundler(15);
 
 		sb.append("{employmentStatusId=");
 		sb.append(getEmploymentStatusId());
@@ -477,8 +446,6 @@ public class EmploymentStatusClp extends BaseModelImpl<EmploymentStatus>
 		sb.append(getModifiedDate());
 		sb.append(", employmentstatus=");
 		sb.append(getEmploymentstatus());
-		sb.append(", jobId=");
-		sb.append(getJobId());
 		sb.append("}");
 
 		return sb.toString();
@@ -486,7 +453,7 @@ public class EmploymentStatusClp extends BaseModelImpl<EmploymentStatus>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(28);
+		StringBundler sb = new StringBundler(25);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.EmploymentStatus");
@@ -520,10 +487,6 @@ public class EmploymentStatusClp extends BaseModelImpl<EmploymentStatus>
 			"<column><column-name>employmentstatus</column-name><column-value><![CDATA[");
 		sb.append(getEmploymentstatus());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>jobId</column-name><column-value><![CDATA[");
-		sb.append(getJobId());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -538,6 +501,5 @@ public class EmploymentStatusClp extends BaseModelImpl<EmploymentStatus>
 	private Date _createDate;
 	private Date _modifiedDate;
 	private String _employmentstatus;
-	private long _jobId;
 	private BaseModel<?> _employmentStatusRemoteModel;
 }

@@ -47,27 +47,29 @@ public class DocCategoryLocalServiceWrapper implements DocCategoryLocalService,
 	/**
 	* Creates a new doc category with the primary key. Does not add the doc category to the database.
 	*
-	* @param id the primary key for the new doc category
+	* @param docCategoryId the primary key for the new doc category
 	* @return the new doc category
 	*/
 	@Override
-	public com.rknowsys.eapp.hrm.model.DocCategory createDocCategory(long id) {
-		return _docCategoryLocalService.createDocCategory(id);
+	public com.rknowsys.eapp.hrm.model.DocCategory createDocCategory(
+		long docCategoryId) {
+		return _docCategoryLocalService.createDocCategory(docCategoryId);
 	}
 
 	/**
 	* Deletes the doc category with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the doc category
+	* @param docCategoryId the primary key of the doc category
 	* @return the doc category that was removed
 	* @throws PortalException if a doc category with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Override
-	public com.rknowsys.eapp.hrm.model.DocCategory deleteDocCategory(long id)
+	public com.rknowsys.eapp.hrm.model.DocCategory deleteDocCategory(
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _docCategoryLocalService.deleteDocCategory(id);
+		return _docCategoryLocalService.deleteDocCategory(docCategoryId);
 	}
 
 	/**
@@ -182,24 +184,26 @@ public class DocCategoryLocalServiceWrapper implements DocCategoryLocalService,
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.DocCategory fetchDocCategory(long id)
+	public com.rknowsys.eapp.hrm.model.DocCategory fetchDocCategory(
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return _docCategoryLocalService.fetchDocCategory(id);
+		return _docCategoryLocalService.fetchDocCategory(docCategoryId);
 	}
 
 	/**
 	* Returns the doc category with the primary key.
 	*
-	* @param id the primary key of the doc category
+	* @param docCategoryId the primary key of the doc category
 	* @return the doc category
 	* @throws PortalException if a doc category with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Override
-	public com.rknowsys.eapp.hrm.model.DocCategory getDocCategory(long id)
+	public com.rknowsys.eapp.hrm.model.DocCategory getDocCategory(
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _docCategoryLocalService.getDocCategory(id);
+		return _docCategoryLocalService.getDocCategory(docCategoryId);
 	}
 
 	@Override

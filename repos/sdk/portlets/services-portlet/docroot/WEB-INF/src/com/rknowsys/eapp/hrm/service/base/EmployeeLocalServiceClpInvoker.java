@@ -106,17 +106,13 @@ public class EmployeeLocalServiceClpInvoker {
 				"com.rknowsys.eapp.hrm.model.Employee"
 			};
 
-		_methodName16 = "getPhotographBlobModel";
+		_methodName140 = "getBeanIdentifier";
 
-		_methodParameterTypes16 = new String[] { "java.io.Serializable" };
+		_methodParameterTypes140 = new String[] {  };
 
-		_methodName137 = "getBeanIdentifier";
+		_methodName141 = "setBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] {  };
-
-		_methodName138 = "setBeanIdentifier";
-
-		_methodParameterTypes138 = new String[] { "java.lang.String" };
+		_methodParameterTypes141 = new String[] { "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -208,18 +204,13 @@ public class EmployeeLocalServiceClpInvoker {
 			return EmployeeLocalServiceUtil.updateEmployee((com.rknowsys.eapp.hrm.model.Employee)arguments[0]);
 		}
 
-		if (_methodName16.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes16, parameterTypes)) {
-			return EmployeeLocalServiceUtil.getPhotographBlobModel((java.io.Serializable)arguments[0]);
-		}
-
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName140.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes140, parameterTypes)) {
 			return EmployeeLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName138.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes138, parameterTypes)) {
+		if (_methodName141.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes141, parameterTypes)) {
 			EmployeeLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
@@ -260,10 +251,8 @@ public class EmployeeLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName16;
-	private String[] _methodParameterTypes16;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
-	private String _methodName138;
-	private String[] _methodParameterTypes138;
+	private String _methodName140;
+	private String[] _methodParameterTypes140;
+	private String _methodName141;
+	private String[] _methodParameterTypes141;
 }

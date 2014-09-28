@@ -69,8 +69,8 @@ public class EmployeeCacheModel implements CacheModel<Employee>, Externalizable 
 		sb.append(gender);
 		sb.append(", maritalStatus=");
 		sb.append(maritalStatus);
-		sb.append(", nationality=");
-		sb.append(nationality);
+		sb.append(", nationalityId=");
+		sb.append(nationalityId);
 		sb.append(", dateOfBirth=");
 		sb.append(dateOfBirth);
 		sb.append(", otherId=");
@@ -130,13 +130,7 @@ public class EmployeeCacheModel implements CacheModel<Employee>, Externalizable 
 
 		employeeImpl.setGender(gender);
 		employeeImpl.setMaritalStatus(maritalStatus);
-
-		if (nationality == null) {
-			employeeImpl.setNationality(StringPool.BLANK);
-		}
-		else {
-			employeeImpl.setNationality(nationality);
-		}
+		employeeImpl.setNationalityId(nationalityId);
 
 		if (dateOfBirth == Long.MIN_VALUE) {
 			employeeImpl.setDateOfBirth(null);
@@ -174,7 +168,7 @@ public class EmployeeCacheModel implements CacheModel<Employee>, Externalizable 
 		middleName = objectInput.readUTF();
 		gender = objectInput.readInt();
 		maritalStatus = objectInput.readInt();
-		nationality = objectInput.readUTF();
+		nationalityId = objectInput.readLong();
 		dateOfBirth = objectInput.readLong();
 		otherId = objectInput.readUTF();
 	}
@@ -216,14 +210,7 @@ public class EmployeeCacheModel implements CacheModel<Employee>, Externalizable 
 
 		objectOutput.writeInt(gender);
 		objectOutput.writeInt(maritalStatus);
-
-		if (nationality == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(nationality);
-		}
-
+		objectOutput.writeLong(nationalityId);
 		objectOutput.writeLong(dateOfBirth);
 
 		if (otherId == null) {
@@ -249,7 +236,7 @@ public class EmployeeCacheModel implements CacheModel<Employee>, Externalizable 
 	public String middleName;
 	public int gender;
 	public int maritalStatus;
-	public String nationality;
+	public long nationalityId;
 	public long dateOfBirth;
 	public String otherId;
 }

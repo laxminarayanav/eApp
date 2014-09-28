@@ -49,7 +49,7 @@ public class NewsWrapper implements News, ModelWrapper<News> {
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
+		attributes.put("newsId", getNewsId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
@@ -65,10 +65,10 @@ public class NewsWrapper implements News, ModelWrapper<News> {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
+		Long newsId = (Long)attributes.get("newsId");
 
-		if (id != null) {
-			setId(id);
+		if (newsId != null) {
+			setNewsId(newsId);
 		}
 
 		Long companyId = (Long)attributes.get("companyId");
@@ -147,23 +147,23 @@ public class NewsWrapper implements News, ModelWrapper<News> {
 	}
 
 	/**
-	* Returns the ID of this news.
+	* Returns the news ID of this news.
 	*
-	* @return the ID of this news
+	* @return the news ID of this news
 	*/
 	@Override
-	public long getId() {
-		return _news.getId();
+	public long getNewsId() {
+		return _news.getNewsId();
 	}
 
 	/**
-	* Sets the ID of this news.
+	* Sets the news ID of this news.
 	*
-	* @param id the ID of this news
+	* @param newsId the news ID of this news
 	*/
 	@Override
-	public void setId(long id) {
-		_news.setId(id);
+	public void setNewsId(long newsId) {
+		_news.setNewsId(newsId);
 	}
 
 	/**

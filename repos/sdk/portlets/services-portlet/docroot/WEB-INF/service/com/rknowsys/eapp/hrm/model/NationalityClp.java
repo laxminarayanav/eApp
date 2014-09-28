@@ -76,12 +76,13 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
 		attributes.put("nationalityId", getNationalityId());
+		attributes.put("employeeId", getEmployeeId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("userId", getUserId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("Name", getName());
+		attributes.put("name", getName());
 
 		return attributes;
 	}
@@ -92,6 +93,12 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 
 		if (nationalityId != null) {
 			setNationalityId(nationalityId);
+		}
+
+		Long employeeId = (Long)attributes.get("employeeId");
+
+		if (employeeId != null) {
+			setEmployeeId(employeeId);
 		}
 
 		Long groupId = (Long)attributes.get("groupId");
@@ -124,10 +131,10 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 			setModifiedDate(modifiedDate);
 		}
 
-		String Name = (String)attributes.get("Name");
+		String name = (String)attributes.get("name");
 
-		if (Name != null) {
-			setName(Name);
+		if (name != null) {
+			setName(name);
 		}
 	}
 
@@ -147,6 +154,29 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 				Method method = clazz.getMethod("setNationalityId", long.class);
 
 				method.invoke(_nationalityRemoteModel, nationalityId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public long getEmployeeId() {
+		return _employeeId;
+	}
+
+	@Override
+	public void setEmployeeId(long employeeId) {
+		_employeeId = employeeId;
+
+		if (_nationalityRemoteModel != null) {
+			try {
+				Class<?> clazz = _nationalityRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setEmployeeId", long.class);
+
+				method.invoke(_nationalityRemoteModel, employeeId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -281,12 +311,12 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 
 	@Override
 	public String getName() {
-		return _Name;
+		return _name;
 	}
 
 	@Override
-	public void setName(String Name) {
-		_Name = Name;
+	public void setName(String name) {
+		_name = name;
 
 		if (_nationalityRemoteModel != null) {
 			try {
@@ -294,7 +324,7 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 
 				Method method = clazz.getMethod("setName", String.class);
 
-				method.invoke(_nationalityRemoteModel, Name);
+				method.invoke(_nationalityRemoteModel, name);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -372,6 +402,7 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 		NationalityClp clone = new NationalityClp();
 
 		clone.setNationalityId(getNationalityId());
+		clone.setEmployeeId(getEmployeeId());
 		clone.setGroupId(getGroupId());
 		clone.setCompanyId(getCompanyId());
 		clone.setUserId(getUserId());
@@ -426,10 +457,12 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(15);
+		StringBundler sb = new StringBundler(17);
 
 		sb.append("{nationalityId=");
 		sb.append(getNationalityId());
+		sb.append(", employeeId=");
+		sb.append(getEmployeeId());
 		sb.append(", groupId=");
 		sb.append(getGroupId());
 		sb.append(", companyId=");
@@ -440,7 +473,7 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
 		sb.append(getModifiedDate());
-		sb.append(", Name=");
+		sb.append(", name=");
 		sb.append(getName());
 		sb.append("}");
 
@@ -449,7 +482,7 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(28);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.Nationality");
@@ -458,6 +491,10 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 		sb.append(
 			"<column><column-name>nationalityId</column-name><column-value><![CDATA[");
 		sb.append(getNationalityId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>employeeId</column-name><column-value><![CDATA[");
+		sb.append(getEmployeeId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>groupId</column-name><column-value><![CDATA[");
@@ -480,7 +517,7 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 		sb.append(getModifiedDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>Name</column-name><column-value><![CDATA[");
+			"<column><column-name>name</column-name><column-value><![CDATA[");
 		sb.append(getName());
 		sb.append("]]></column-value></column>");
 
@@ -490,12 +527,13 @@ public class NationalityClp extends BaseModelImpl<Nationality>
 	}
 
 	private long _nationalityId;
+	private long _employeeId;
 	private long _groupId;
 	private long _companyId;
 	private long _userId;
 	private String _userUuid;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private String _Name;
+	private String _name;
 	private BaseModel<?> _nationalityRemoteModel;
 }

@@ -57,7 +57,6 @@ public class SubUnitWrapper implements SubUnit, ModelWrapper<SubUnit> {
 		attributes.put("userId", getUserId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -110,12 +109,6 @@ public class SubUnitWrapper implements SubUnit, ModelWrapper<SubUnit> {
 
 		if (modifiedDate != null) {
 			setModifiedDate(modifiedDate);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -319,26 +312,6 @@ public class SubUnitWrapper implements SubUnit, ModelWrapper<SubUnit> {
 	@Override
 	public void setModifiedDate(java.util.Date modifiedDate) {
 		_subUnit.setModifiedDate(modifiedDate);
-	}
-
-	/**
-	* Returns the job ID of this SubUnit.
-	*
-	* @return the job ID of this SubUnit
-	*/
-	@Override
-	public long getJobId() {
-		return _subUnit.getJobId();
-	}
-
-	/**
-	* Sets the job ID of this SubUnit.
-	*
-	* @param jobId the job ID of this SubUnit
-	*/
-	@Override
-	public void setJobId(long jobId) {
-		_subUnit.setJobId(jobId);
 	}
 
 	@Override

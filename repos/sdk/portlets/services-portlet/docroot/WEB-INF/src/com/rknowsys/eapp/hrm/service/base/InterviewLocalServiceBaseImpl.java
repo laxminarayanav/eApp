@@ -52,6 +52,7 @@ import com.rknowsys.eapp.hrm.service.persistence.LocationPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.MembershipPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.NationalityPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.NewsPersistence;
+import com.rknowsys.eapp.hrm.service.persistence.OrganizationPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.PayGradeCurrencyPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.PayGradePersistence;
 import com.rknowsys.eapp.hrm.service.persistence.SalaryComponentPersistence;
@@ -106,27 +107,27 @@ public abstract class InterviewLocalServiceBaseImpl extends BaseLocalServiceImpl
 	/**
 	 * Creates a new interview with the primary key. Does not add the interview to the database.
 	 *
-	 * @param id the primary key for the new interview
+	 * @param interviewId the primary key for the new interview
 	 * @return the new interview
 	 */
 	@Override
-	public Interview createInterview(long id) {
-		return interviewPersistence.create(id);
+	public Interview createInterview(long interviewId) {
+		return interviewPersistence.create(interviewId);
 	}
 
 	/**
 	 * Deletes the interview with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param id the primary key of the interview
+	 * @param interviewId the primary key of the interview
 	 * @return the interview that was removed
 	 * @throws PortalException if a interview with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public Interview deleteInterview(long id)
+	public Interview deleteInterview(long interviewId)
 		throws PortalException, SystemException {
-		return interviewPersistence.remove(id);
+		return interviewPersistence.remove(interviewId);
 	}
 
 	/**
@@ -237,22 +238,22 @@ public abstract class InterviewLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	@Override
-	public Interview fetchInterview(long id) throws SystemException {
-		return interviewPersistence.fetchByPrimaryKey(id);
+	public Interview fetchInterview(long interviewId) throws SystemException {
+		return interviewPersistence.fetchByPrimaryKey(interviewId);
 	}
 
 	/**
 	 * Returns the interview with the primary key.
 	 *
-	 * @param id the primary key of the interview
+	 * @param interviewId the primary key of the interview
 	 * @return the interview
 	 * @throws PortalException if a interview with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Interview getInterview(long id)
+	public Interview getInterview(long interviewId)
 		throws PortalException, SystemException {
-		return interviewPersistence.findByPrimaryKey(id);
+		return interviewPersistence.findByPrimaryKey(interviewId);
 	}
 
 	@Override
@@ -945,18 +946,18 @@ public abstract class InterviewLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	/**
-	 * Returns the nationality local service.
+	 * Returns the Nationality local service.
 	 *
-	 * @return the nationality local service
+	 * @return the Nationality local service
 	 */
 	public com.rknowsys.eapp.hrm.service.NationalityLocalService getNationalityLocalService() {
 		return nationalityLocalService;
 	}
 
 	/**
-	 * Sets the nationality local service.
+	 * Sets the Nationality local service.
 	 *
-	 * @param nationalityLocalService the nationality local service
+	 * @param nationalityLocalService the Nationality local service
 	 */
 	public void setNationalityLocalService(
 		com.rknowsys.eapp.hrm.service.NationalityLocalService nationalityLocalService) {
@@ -964,18 +965,18 @@ public abstract class InterviewLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	/**
-	 * Returns the nationality persistence.
+	 * Returns the Nationality persistence.
 	 *
-	 * @return the nationality persistence
+	 * @return the Nationality persistence
 	 */
 	public NationalityPersistence getNationalityPersistence() {
 		return nationalityPersistence;
 	}
 
 	/**
-	 * Sets the nationality persistence.
+	 * Sets the Nationality persistence.
 	 *
-	 * @param nationalityPersistence the nationality persistence
+	 * @param nationalityPersistence the Nationality persistence
 	 */
 	public void setNationalityPersistence(
 		NationalityPersistence nationalityPersistence) {
@@ -1017,6 +1018,44 @@ public abstract class InterviewLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 */
 	public void setNewsPersistence(NewsPersistence newsPersistence) {
 		this.newsPersistence = newsPersistence;
+	}
+
+	/**
+	 * Returns the organization local service.
+	 *
+	 * @return the organization local service
+	 */
+	public com.rknowsys.eapp.hrm.service.OrganizationLocalService getOrganizationLocalService() {
+		return organizationLocalService;
+	}
+
+	/**
+	 * Sets the organization local service.
+	 *
+	 * @param organizationLocalService the organization local service
+	 */
+	public void setOrganizationLocalService(
+		com.rknowsys.eapp.hrm.service.OrganizationLocalService organizationLocalService) {
+		this.organizationLocalService = organizationLocalService;
+	}
+
+	/**
+	 * Returns the organization persistence.
+	 *
+	 * @return the organization persistence
+	 */
+	public OrganizationPersistence getOrganizationPersistence() {
+		return organizationPersistence;
+	}
+
+	/**
+	 * Sets the organization persistence.
+	 *
+	 * @param organizationPersistence the organization persistence
+	 */
+	public void setOrganizationPersistence(
+		OrganizationPersistence organizationPersistence) {
+		this.organizationPersistence = organizationPersistence;
 	}
 
 	/**
@@ -1572,6 +1611,10 @@ public abstract class InterviewLocalServiceBaseImpl extends BaseLocalServiceImpl
 	protected com.rknowsys.eapp.hrm.service.NewsLocalService newsLocalService;
 	@BeanReference(type = NewsPersistence.class)
 	protected NewsPersistence newsPersistence;
+	@BeanReference(type = com.rknowsys.eapp.hrm.service.OrganizationLocalService.class)
+	protected com.rknowsys.eapp.hrm.service.OrganizationLocalService organizationLocalService;
+	@BeanReference(type = OrganizationPersistence.class)
+	protected OrganizationPersistence organizationPersistence;
 	@BeanReference(type = com.rknowsys.eapp.hrm.service.PayGradeLocalService.class)
 	protected com.rknowsys.eapp.hrm.service.PayGradeLocalService payGradeLocalService;
 	@BeanReference(type = PayGradePersistence.class)

@@ -68,16 +68,15 @@ public class SubUnitModelImpl extends BaseModelImpl<SubUnit>
 			{ "companyId", Types.BIGINT },
 			{ "userId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
-			{ "modifiedDate", Types.TIMESTAMP },
-			{ "jobId", Types.BIGINT }
+			{ "modifiedDate", Types.TIMESTAMP }
 		};
-	public static final String TABLE_SQL_CREATE = "create table sub_unit (subUnitId LONG not null primary key,name VARCHAR(75) null,description VARCHAR(75) null,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,jobId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table sub_unit (subUnitId LONG not null primary key,name VARCHAR(75) null,description VARCHAR(75) null,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null)";
 	public static final String TABLE_SQL_DROP = "drop table sub_unit";
 	public static final String ORDER_BY_JPQL = " ORDER BY subUnit.subUnitId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY sub_unit.subUnitId ASC";
-	public static final String DATA_SOURCE = "anotherDataSource";
-	public static final String SESSION_FACTORY = "anotherSessionFactory";
-	public static final String TX_MANAGER = "anotherTransactionManager";
+	public static final String DATA_SOURCE = "hrmDataSource";
+	public static final String SESSION_FACTORY = "hrmSessionFactory";
+	public static final String TX_MANAGER = "hrmTransactionManager";
 	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.entity.cache.enabled.com.rknowsys.eapp.hrm.model.SubUnit"),
 			true);
@@ -133,7 +132,6 @@ public class SubUnitModelImpl extends BaseModelImpl<SubUnit>
 		attributes.put("userId", getUserId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -186,12 +184,6 @@ public class SubUnitModelImpl extends BaseModelImpl<SubUnit>
 
 		if (modifiedDate != null) {
 			setModifiedDate(modifiedDate);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -296,16 +288,6 @@ public class SubUnitModelImpl extends BaseModelImpl<SubUnit>
 	}
 
 	@Override
-	public long getJobId() {
-		return _jobId;
-	}
-
-	@Override
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-	}
-
-	@Override
 	public ExpandoBridge getExpandoBridge() {
 		return ExpandoBridgeFactoryUtil.getExpandoBridge(getCompanyId(),
 			SubUnit.class.getName(), getPrimaryKey());
@@ -340,7 +322,6 @@ public class SubUnitModelImpl extends BaseModelImpl<SubUnit>
 		subUnitImpl.setUserId(getUserId());
 		subUnitImpl.setCreateDate(getCreateDate());
 		subUnitImpl.setModifiedDate(getModifiedDate());
-		subUnitImpl.setJobId(getJobId());
 
 		subUnitImpl.resetOriginalValues();
 
@@ -439,14 +420,12 @@ public class SubUnitModelImpl extends BaseModelImpl<SubUnit>
 			subUnitCacheModel.modifiedDate = Long.MIN_VALUE;
 		}
 
-		subUnitCacheModel.jobId = getJobId();
-
 		return subUnitCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(17);
 
 		sb.append("{subUnitId=");
 		sb.append(getSubUnitId());
@@ -464,8 +443,6 @@ public class SubUnitModelImpl extends BaseModelImpl<SubUnit>
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
 		sb.append(getModifiedDate());
-		sb.append(", jobId=");
-		sb.append(getJobId());
 		sb.append("}");
 
 		return sb.toString();
@@ -473,7 +450,7 @@ public class SubUnitModelImpl extends BaseModelImpl<SubUnit>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(28);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.SubUnit");
@@ -511,10 +488,6 @@ public class SubUnitModelImpl extends BaseModelImpl<SubUnit>
 			"<column><column-name>modifiedDate</column-name><column-value><![CDATA[");
 		sb.append(getModifiedDate());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>jobId</column-name><column-value><![CDATA[");
-		sb.append(getJobId());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -534,6 +507,5 @@ public class SubUnitModelImpl extends BaseModelImpl<SubUnit>
 	private String _userUuid;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private long _jobId;
 	private SubUnit _escapedModel;
 }

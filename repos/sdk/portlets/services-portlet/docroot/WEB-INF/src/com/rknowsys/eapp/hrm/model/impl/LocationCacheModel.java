@@ -37,7 +37,7 @@ import java.util.Date;
 public class LocationCacheModel implements CacheModel<Location>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(33);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("{locationId=");
 		sb.append(locationId);
@@ -69,8 +69,6 @@ public class LocationCacheModel implements CacheModel<Location>, Externalizable 
 		sb.append(fax);
 		sb.append(", notes=");
 		sb.append(notes);
-		sb.append(", jobId=");
-		sb.append(jobId);
 		sb.append("}");
 
 		return sb.toString();
@@ -163,8 +161,6 @@ public class LocationCacheModel implements CacheModel<Location>, Externalizable 
 			locationImpl.setNotes(notes);
 		}
 
-		locationImpl.setJobId(jobId);
-
 		locationImpl.resetOriginalValues();
 
 		return locationImpl;
@@ -187,7 +183,6 @@ public class LocationCacheModel implements CacheModel<Location>, Externalizable 
 		phone = objectInput.readUTF();
 		fax = objectInput.readUTF();
 		notes = objectInput.readUTF();
-		jobId = objectInput.readLong();
 	}
 
 	@Override
@@ -262,8 +257,6 @@ public class LocationCacheModel implements CacheModel<Location>, Externalizable 
 		else {
 			objectOutput.writeUTF(notes);
 		}
-
-		objectOutput.writeLong(jobId);
 	}
 
 	public long locationId;
@@ -281,5 +274,4 @@ public class LocationCacheModel implements CacheModel<Location>, Externalizable 
 	public String phone;
 	public String fax;
 	public String notes;
-	public long jobId;
 }

@@ -45,7 +45,6 @@ public class LocationSoap implements Serializable {
 		soapModel.setPhone(model.getPhone());
 		soapModel.setFax(model.getFax());
 		soapModel.setNotes(model.getNotes());
-		soapModel.setJobId(model.getJobId());
 
 		return soapModel;
 	}
@@ -218,14 +217,6 @@ public class LocationSoap implements Serializable {
 		_notes = notes;
 	}
 
-	public long getJobId() {
-		return _jobId;
-	}
-
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-	}
-
 	private long _locationId;
 	private long _companyId;
 	private long _groupId;
@@ -241,5 +232,4 @@ public class LocationSoap implements Serializable {
 	private String _phone;
 	private String _fax;
 	private String _notes;
-	private long _jobId;
 }

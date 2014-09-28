@@ -36,12 +36,10 @@ public class JobTitleSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setUserId(model.getUserId());
-		soapModel.setEmployeeId(model.getEmployeeId());
 		soapModel.setTitle(model.getTitle());
 		soapModel.setDescription(model.getDescription());
 		soapModel.setNotes(model.getNotes());
 		soapModel.setSpecification(model.getSpecification());
-		soapModel.setJobId(model.getJobId());
 
 		return soapModel;
 	}
@@ -142,14 +140,6 @@ public class JobTitleSoap implements Serializable {
 		_userId = userId;
 	}
 
-	public long getEmployeeId() {
-		return _employeeId;
-	}
-
-	public void setEmployeeId(long employeeId) {
-		_employeeId = employeeId;
-	}
-
 	public String getTitle() {
 		return _title;
 	}
@@ -182,24 +172,14 @@ public class JobTitleSoap implements Serializable {
 		_specification = specification;
 	}
 
-	public long getJobId() {
-		return _jobId;
-	}
-
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-	}
-
 	private long _jobTitleId;
 	private long _companyId;
 	private long _groupId;
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _userId;
-	private long _employeeId;
 	private String _title;
 	private String _description;
 	private String _notes;
 	private String _specification;
-	private long _jobId;
 }

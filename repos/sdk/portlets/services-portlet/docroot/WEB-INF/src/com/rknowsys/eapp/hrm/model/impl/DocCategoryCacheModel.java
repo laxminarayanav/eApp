@@ -40,8 +40,8 @@ public class DocCategoryCacheModel implements CacheModel<DocCategory>,
 	public String toString() {
 		StringBundler sb = new StringBundler(15);
 
-		sb.append("{id=");
-		sb.append(id);
+		sb.append("{docCategoryId=");
+		sb.append(docCategoryId);
 		sb.append(", companyId=");
 		sb.append(companyId);
 		sb.append(", groupId=");
@@ -63,7 +63,7 @@ public class DocCategoryCacheModel implements CacheModel<DocCategory>,
 	public DocCategory toEntityModel() {
 		DocCategoryImpl docCategoryImpl = new DocCategoryImpl();
 
-		docCategoryImpl.setId(id);
+		docCategoryImpl.setDocCategoryId(docCategoryId);
 		docCategoryImpl.setCompanyId(companyId);
 		docCategoryImpl.setGroupId(groupId);
 
@@ -97,7 +97,7 @@ public class DocCategoryCacheModel implements CacheModel<DocCategory>,
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readLong();
+		docCategoryId = objectInput.readLong();
 		companyId = objectInput.readLong();
 		groupId = objectInput.readLong();
 		createDate = objectInput.readLong();
@@ -109,7 +109,7 @@ public class DocCategoryCacheModel implements CacheModel<DocCategory>,
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(id);
+		objectOutput.writeLong(docCategoryId);
 		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(createDate);
@@ -124,7 +124,7 @@ public class DocCategoryCacheModel implements CacheModel<DocCategory>,
 		}
 	}
 
-	public long id;
+	public long docCategoryId;
 	public long companyId;
 	public long groupId;
 	public long createDate;

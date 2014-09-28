@@ -235,7 +235,8 @@
 		<!-- Order -->
 
 		<!-- Finder methods -->
-        <column name="expiryDate" type="Date"></column>
+		<column name="expiryDate" type="Date"></column>
+		<column name="licenseNumber" type="String"></column>
 
 		<finder name="GroupId" return-type="Collection">
 			<finder-column name="groupId" />
@@ -351,7 +352,6 @@
 		<!-- Order -->
 
 		<!-- Finder methods -->
-        <column name="jobId" type="long"></column>
 
 		<finder name="GroupId" return-type="Collection">
 			<finder-column name="groupId" />
@@ -417,10 +417,7 @@
 		<column name="modifiedDate" type="Date" />
 		<column name="userId" type="long" />
 
-		<column name="employeeId" type="long" />
-
 		<!-- Other fields -->
-		<column name="employees" type="Collection" entity="Employee" />
 		<column name="title" type="String" />
 		<column name="description" type="String" />
 		<column name="notes" type="String" />
@@ -429,16 +426,9 @@
 		<!-- Order -->
 
 		<!-- Finder methods -->
-        <column name="jobId" type="long"></column>
 
 		<finder name="GroupId" return-type="Collection">
 			<finder-column name="groupId" />
-		</finder>
-		<finder name="employeeId" return-type="Collection">
-			<finder-column name="employeeId" />
-		</finder>
-		<finder name="jobTitleId" return-type="Collection">
-			<finder-column name="jobTitleId" />
 		</finder>
 	</entity>
 
@@ -466,7 +456,6 @@
 		<!-- Order -->
 
 		<!-- Finder methods -->
-        <column name="jobId" type="long"></column>
 
 		<finder name="GroupId" return-type="Collection">
 			<finder-column name="groupId" />
@@ -492,8 +481,6 @@
 		<column name="createDate" type="Date"></column>
 		<column name="modifiedDate" type="Date"></column>
 		<column name="employmentstatus" type="String"></column>
-		<column name="employees" type="Collection" entity="Employee" />
-        <column name="jobId" type="long"></column>
 	</entity>
 
 	<entity name="PayGrade" table="pay_grade" data-source="hrmDataSource"
@@ -633,10 +620,9 @@
 		<column name="firstName" type="String"></column>
 		<column name="lastName" type="String"></column>
 		<column name="middleName" type="String"></column>
-		<column name="photograph" type="Blob"></column>
 		<column name="gender" type="int"></column>
 		<column name="maritalStatus" type="int"></column>
-		<column name="nationality" type="String"></column>
+		<column name="nationalityId" type="long"></column>
 		<column name="dateOfBirth" type="Date"></column>
 		<column name="otherId" type="String"></column>
 
@@ -795,7 +781,7 @@
 		</finder>
 
 		<finder return-type="Collection" name="attachmentType">
-            <finder-column name="employeeId" />
+			<finder-column name="employeeId" />
 			<finder-column name="attachmentType" />
 		</finder>
 		<!-- PK fields -->
@@ -816,8 +802,6 @@
 		<column name="name" type="String"></column>
 		<column name="description" type="String"></column>
 
-		<column name="employees" type="Collection" entity="Employee" />
-
 		<!-- Group instance -->
 
 		<column name="groupId" type="long"></column>
@@ -828,7 +812,6 @@
 		<column name="userId" type="long"></column>
 		<column name="createDate" type="Date"></column>
 		<column name="modifiedDate" type="Date"></column>
-        <column name="jobId" type="long"></column>
 	</entity>
 	<entity name="Job" local-service="true" remote-service="false"
 		data-source="hrmDataSource" session-factory="hrmSessionFactory"
@@ -917,12 +900,14 @@
 		<column name="modifiedDate" type="Date"></column>
 		<column name="reportingMethod" type="long"></column>
 	</entity>
-	<entity name="Nationality" local-service="true"
-		remote-service="false">
+	<entity name="Nationality" local-service="true" remote-service="false"
+		human-name="Nationality" table="nationality" data-source="hrmDataSource"
+		session-factory="hrmSessionFactory" tx-manager="hrmTransactionManager">
 
 		<!-- PK fields -->
 
 		<column name="nationalityId" type="long" primary="true"></column>
+		<column name="employeeId" type="long"></column>
 
 		<!-- Group instance -->
 
@@ -934,8 +919,46 @@
 		<column name="userId" type="long"></column>
 		<column name="createDate" type="Date"></column>
 		<column name="modifiedDate" type="Date"></column>
-        <column name="Name" type="String"></column>
+		<column name="name" type="String"></column>
 	</entity>
 
+	<entity name="Organization" local-service="true" remote-service="false"
+		data-source="hrmDataSource" session-factory="hrmSessionFactory"
+		tx-manager="hrmTransactionManager">
+
+		<!-- PK fields -->
+
+		<column name="organizationId" type="long" primary="true">
+		</column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" primary="false"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+
+		<column name="organizationName" type="String"></column>
+		<column name="taxId" type="String"></column>
+		<column name="numberOfEmployees" type="int"></column>
+		<column name="registrationNumber" type="String"></column>
+
+		<column name="phone" type="String"></column>
+		<column name="fax" type="String"></column>
+		<column name="email" type="String"></column>
+
+		<column name="addressStreet1" type="String"></column>
+		<column name="addressStreet2" type="String"></column>
+		<column name="city" type="String"></column>
+		<column name="state" type="String"></column>
+		<column name="postalCode" type="String"></column>
+		<column name="nationalityId" type="long"></column>
+		<column name="note" type="String"></column>
+
+	</entity>
 
 </service-builder>

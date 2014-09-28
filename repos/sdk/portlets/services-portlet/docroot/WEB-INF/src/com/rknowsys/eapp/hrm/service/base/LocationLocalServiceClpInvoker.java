@@ -106,13 +106,13 @@ public class LocationLocalServiceClpInvoker {
 				"com.rknowsys.eapp.hrm.model.Location"
 			};
 
-		_methodName136 = "getBeanIdentifier";
+		_methodName140 = "getBeanIdentifier";
 
-		_methodParameterTypes136 = new String[] {  };
+		_methodParameterTypes140 = new String[] {  };
 
-		_methodName137 = "setBeanIdentifier";
+		_methodName141 = "setBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] { "java.lang.String" };
+		_methodParameterTypes141 = new String[] { "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -204,13 +204,13 @@ public class LocationLocalServiceClpInvoker {
 			return LocationLocalServiceUtil.updateLocation((com.rknowsys.eapp.hrm.model.Location)arguments[0]);
 		}
 
-		if (_methodName136.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
+		if (_methodName140.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes140, parameterTypes)) {
 			return LocationLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName141.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes141, parameterTypes)) {
 			LocationLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
@@ -251,8 +251,8 @@ public class LocationLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName136;
-	private String[] _methodParameterTypes136;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
+	private String _methodName140;
+	private String[] _methodParameterTypes140;
+	private String _methodName141;
+	private String[] _methodParameterTypes141;
 }

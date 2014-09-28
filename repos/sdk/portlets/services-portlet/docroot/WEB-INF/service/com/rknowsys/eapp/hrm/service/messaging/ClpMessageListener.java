@@ -37,6 +37,7 @@ import com.rknowsys.eapp.hrm.service.LocationLocalServiceUtil;
 import com.rknowsys.eapp.hrm.service.MembershipLocalServiceUtil;
 import com.rknowsys.eapp.hrm.service.NationalityLocalServiceUtil;
 import com.rknowsys.eapp.hrm.service.NewsLocalServiceUtil;
+import com.rknowsys.eapp.hrm.service.OrganizationLocalServiceUtil;
 import com.rknowsys.eapp.hrm.service.PayGradeCurrencyLocalServiceUtil;
 import com.rknowsys.eapp.hrm.service.PayGradeLocalServiceUtil;
 import com.rknowsys.eapp.hrm.service.SalaryComponentLocalServiceUtil;
@@ -98,6 +99,8 @@ public class ClpMessageListener extends BaseMessageListener {
 			NationalityLocalServiceUtil.clearService();
 
 			NewsLocalServiceUtil.clearService();
+
+			OrganizationLocalServiceUtil.clearService();
 
 			PayGradeLocalServiceUtil.clearService();
 

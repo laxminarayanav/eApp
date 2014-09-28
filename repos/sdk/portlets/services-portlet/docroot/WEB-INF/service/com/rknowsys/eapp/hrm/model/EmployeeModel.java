@@ -24,8 +24,6 @@ import com.liferay.portlet.expando.model.ExpandoBridge;
 
 import java.io.Serializable;
 
-import java.sql.Blob;
-
 import java.util.Date;
 
 /**
@@ -263,20 +261,6 @@ public interface EmployeeModel extends BaseModel<Employee> {
 	public void setMiddleName(String middleName);
 
 	/**
-	 * Returns the photograph of this Employee.
-	 *
-	 * @return the photograph of this Employee
-	 */
-	public Blob getPhotograph();
-
-	/**
-	 * Sets the photograph of this Employee.
-	 *
-	 * @param photograph the photograph of this Employee
-	 */
-	public void setPhotograph(Blob photograph);
-
-	/**
 	 * Returns the gender of this Employee.
 	 *
 	 * @return the gender of this Employee
@@ -305,19 +289,18 @@ public interface EmployeeModel extends BaseModel<Employee> {
 	public void setMaritalStatus(int maritalStatus);
 
 	/**
-	 * Returns the nationality of this Employee.
+	 * Returns the nationality ID of this Employee.
 	 *
-	 * @return the nationality of this Employee
+	 * @return the nationality ID of this Employee
 	 */
-	@AutoEscape
-	public String getNationality();
+	public long getNationalityId();
 
 	/**
-	 * Sets the nationality of this Employee.
+	 * Sets the nationality ID of this Employee.
 	 *
-	 * @param nationality the nationality of this Employee
+	 * @param nationalityId the nationality ID of this Employee
 	 */
-	public void setNationality(String nationality);
+	public void setNationalityId(long nationalityId);
 
 	/**
 	 * Returns the date of birth of this Employee.

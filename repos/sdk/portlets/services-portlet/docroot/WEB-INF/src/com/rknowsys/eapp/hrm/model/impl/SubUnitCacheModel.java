@@ -37,7 +37,7 @@ import java.util.Date;
 public class SubUnitCacheModel implements CacheModel<SubUnit>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(17);
 
 		sb.append("{subUnitId=");
 		sb.append(subUnitId);
@@ -55,8 +55,6 @@ public class SubUnitCacheModel implements CacheModel<SubUnit>, Externalizable {
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
-		sb.append(", jobId=");
-		sb.append(jobId);
 		sb.append("}");
 
 		return sb.toString();
@@ -100,8 +98,6 @@ public class SubUnitCacheModel implements CacheModel<SubUnit>, Externalizable {
 			subUnitImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
-		subUnitImpl.setJobId(jobId);
-
 		subUnitImpl.resetOriginalValues();
 
 		return subUnitImpl;
@@ -117,7 +113,6 @@ public class SubUnitCacheModel implements CacheModel<SubUnit>, Externalizable {
 		userId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
-		jobId = objectInput.readLong();
 	}
 
 	@Override
@@ -144,7 +139,6 @@ public class SubUnitCacheModel implements CacheModel<SubUnit>, Externalizable {
 		objectOutput.writeLong(userId);
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
-		objectOutput.writeLong(jobId);
 	}
 
 	public long subUnitId;
@@ -155,5 +149,4 @@ public class SubUnitCacheModel implements CacheModel<SubUnit>, Externalizable {
 	public long userId;
 	public long createDate;
 	public long modifiedDate;
-	public long jobId;
 }

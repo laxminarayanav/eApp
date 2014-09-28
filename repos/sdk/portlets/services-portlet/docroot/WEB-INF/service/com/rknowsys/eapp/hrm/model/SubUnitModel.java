@@ -189,20 +189,6 @@ public interface SubUnitModel extends BaseModel<SubUnit> {
 	 */
 	public void setModifiedDate(Date modifiedDate);
 
-	/**
-	 * Returns the job ID of this SubUnit.
-	 *
-	 * @return the job ID of this SubUnit
-	 */
-	public long getJobId();
-
-	/**
-	 * Sets the job ID of this SubUnit.
-	 *
-	 * @param jobId the job ID of this SubUnit
-	 */
-	public void setJobId(long jobId);
-
 	@Override
 	public boolean isNew();
 

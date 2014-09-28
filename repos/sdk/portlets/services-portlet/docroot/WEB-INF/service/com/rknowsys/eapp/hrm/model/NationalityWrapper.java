@@ -51,12 +51,13 @@ public class NationalityWrapper implements Nationality,
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
 		attributes.put("nationalityId", getNationalityId());
+		attributes.put("employeeId", getEmployeeId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("userId", getUserId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("Name", getName());
+		attributes.put("name", getName());
 
 		return attributes;
 	}
@@ -67,6 +68,12 @@ public class NationalityWrapper implements Nationality,
 
 		if (nationalityId != null) {
 			setNationalityId(nationalityId);
+		}
+
+		Long employeeId = (Long)attributes.get("employeeId");
+
+		if (employeeId != null) {
+			setEmployeeId(employeeId);
 		}
 
 		Long groupId = (Long)attributes.get("groupId");
@@ -99,17 +106,17 @@ public class NationalityWrapper implements Nationality,
 			setModifiedDate(modifiedDate);
 		}
 
-		String Name = (String)attributes.get("Name");
+		String name = (String)attributes.get("name");
 
-		if (Name != null) {
-			setName(Name);
+		if (name != null) {
+			setName(name);
 		}
 	}
 
 	/**
-	* Returns the primary key of this nationality.
+	* Returns the primary key of this Nationality.
 	*
-	* @return the primary key of this nationality
+	* @return the primary key of this Nationality
 	*/
 	@Override
 	public long getPrimaryKey() {
@@ -117,9 +124,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Sets the primary key of this nationality.
+	* Sets the primary key of this Nationality.
 	*
-	* @param primaryKey the primary key of this nationality
+	* @param primaryKey the primary key of this Nationality
 	*/
 	@Override
 	public void setPrimaryKey(long primaryKey) {
@@ -127,9 +134,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Returns the nationality ID of this nationality.
+	* Returns the nationality ID of this Nationality.
 	*
-	* @return the nationality ID of this nationality
+	* @return the nationality ID of this Nationality
 	*/
 	@Override
 	public long getNationalityId() {
@@ -137,9 +144,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Sets the nationality ID of this nationality.
+	* Sets the nationality ID of this Nationality.
 	*
-	* @param nationalityId the nationality ID of this nationality
+	* @param nationalityId the nationality ID of this Nationality
 	*/
 	@Override
 	public void setNationalityId(long nationalityId) {
@@ -147,9 +154,29 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Returns the group ID of this nationality.
+	* Returns the employee ID of this Nationality.
 	*
-	* @return the group ID of this nationality
+	* @return the employee ID of this Nationality
+	*/
+	@Override
+	public long getEmployeeId() {
+		return _nationality.getEmployeeId();
+	}
+
+	/**
+	* Sets the employee ID of this Nationality.
+	*
+	* @param employeeId the employee ID of this Nationality
+	*/
+	@Override
+	public void setEmployeeId(long employeeId) {
+		_nationality.setEmployeeId(employeeId);
+	}
+
+	/**
+	* Returns the group ID of this Nationality.
+	*
+	* @return the group ID of this Nationality
 	*/
 	@Override
 	public long getGroupId() {
@@ -157,9 +184,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Sets the group ID of this nationality.
+	* Sets the group ID of this Nationality.
 	*
-	* @param groupId the group ID of this nationality
+	* @param groupId the group ID of this Nationality
 	*/
 	@Override
 	public void setGroupId(long groupId) {
@@ -167,9 +194,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Returns the company ID of this nationality.
+	* Returns the company ID of this Nationality.
 	*
-	* @return the company ID of this nationality
+	* @return the company ID of this Nationality
 	*/
 	@Override
 	public long getCompanyId() {
@@ -177,9 +204,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Sets the company ID of this nationality.
+	* Sets the company ID of this Nationality.
 	*
-	* @param companyId the company ID of this nationality
+	* @param companyId the company ID of this Nationality
 	*/
 	@Override
 	public void setCompanyId(long companyId) {
@@ -187,9 +214,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Returns the user ID of this nationality.
+	* Returns the user ID of this Nationality.
 	*
-	* @return the user ID of this nationality
+	* @return the user ID of this Nationality
 	*/
 	@Override
 	public long getUserId() {
@@ -197,9 +224,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Sets the user ID of this nationality.
+	* Sets the user ID of this Nationality.
 	*
-	* @param userId the user ID of this nationality
+	* @param userId the user ID of this Nationality
 	*/
 	@Override
 	public void setUserId(long userId) {
@@ -207,9 +234,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Returns the user uuid of this nationality.
+	* Returns the user uuid of this Nationality.
 	*
-	* @return the user uuid of this nationality
+	* @return the user uuid of this Nationality
 	* @throws SystemException if a system exception occurred
 	*/
 	@Override
@@ -219,9 +246,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Sets the user uuid of this nationality.
+	* Sets the user uuid of this Nationality.
 	*
-	* @param userUuid the user uuid of this nationality
+	* @param userUuid the user uuid of this Nationality
 	*/
 	@Override
 	public void setUserUuid(java.lang.String userUuid) {
@@ -229,9 +256,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Returns the create date of this nationality.
+	* Returns the create date of this Nationality.
 	*
-	* @return the create date of this nationality
+	* @return the create date of this Nationality
 	*/
 	@Override
 	public java.util.Date getCreateDate() {
@@ -239,9 +266,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Sets the create date of this nationality.
+	* Sets the create date of this Nationality.
 	*
-	* @param createDate the create date of this nationality
+	* @param createDate the create date of this Nationality
 	*/
 	@Override
 	public void setCreateDate(java.util.Date createDate) {
@@ -249,9 +276,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Returns the modified date of this nationality.
+	* Returns the modified date of this Nationality.
 	*
-	* @return the modified date of this nationality
+	* @return the modified date of this Nationality
 	*/
 	@Override
 	public java.util.Date getModifiedDate() {
@@ -259,9 +286,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Sets the modified date of this nationality.
+	* Sets the modified date of this Nationality.
 	*
-	* @param modifiedDate the modified date of this nationality
+	* @param modifiedDate the modified date of this Nationality
 	*/
 	@Override
 	public void setModifiedDate(java.util.Date modifiedDate) {
@@ -269,9 +296,9 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Returns the name of this nationality.
+	* Returns the name of this Nationality.
 	*
-	* @return the name of this nationality
+	* @return the name of this Nationality
 	*/
 	@Override
 	public java.lang.String getName() {
@@ -279,13 +306,13 @@ public class NationalityWrapper implements Nationality,
 	}
 
 	/**
-	* Sets the name of this nationality.
+	* Sets the name of this Nationality.
 	*
-	* @param Name the name of this nationality
+	* @param name the name of this Nationality
 	*/
 	@Override
-	public void setName(java.lang.String Name) {
-		_nationality.setName(Name);
+	public void setName(java.lang.String name) {
+		_nationality.setName(name);
 	}
 
 	@Override

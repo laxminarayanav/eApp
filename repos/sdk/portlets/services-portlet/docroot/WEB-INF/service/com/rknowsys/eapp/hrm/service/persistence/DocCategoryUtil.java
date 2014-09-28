@@ -231,7 +231,7 @@ public class DocCategoryUtil {
 	/**
 	* Returns the doc categories before and after the current doc category in the ordered set where groupId = &#63;.
 	*
-	* @param id the primary key of the current doc category
+	* @param docCategoryId the primary key of the current doc category
 	* @param groupId the group ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next doc category
@@ -239,12 +239,13 @@ public class DocCategoryUtil {
 	* @throws SystemException if a system exception occurred
 	*/
 	public static com.rknowsys.eapp.hrm.model.DocCategory[] findByGroupId_PrevAndNext(
-		long id, long groupId,
+		long docCategoryId, long groupId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchDocCategoryException {
 		return getPersistence()
-				   .findByGroupId_PrevAndNext(id, groupId, orderByComparator);
+				   .findByGroupId_PrevAndNext(docCategoryId, groupId,
+			orderByComparator);
 	}
 
 	/**
@@ -293,25 +294,27 @@ public class DocCategoryUtil {
 	/**
 	* Creates a new doc category with the primary key. Does not add the doc category to the database.
 	*
-	* @param id the primary key for the new doc category
+	* @param docCategoryId the primary key for the new doc category
 	* @return the new doc category
 	*/
-	public static com.rknowsys.eapp.hrm.model.DocCategory create(long id) {
-		return getPersistence().create(id);
+	public static com.rknowsys.eapp.hrm.model.DocCategory create(
+		long docCategoryId) {
+		return getPersistence().create(docCategoryId);
 	}
 
 	/**
 	* Removes the doc category with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the doc category
+	* @param docCategoryId the primary key of the doc category
 	* @return the doc category that was removed
 	* @throws com.rknowsys.eapp.hrm.NoSuchDocCategoryException if a doc category with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static com.rknowsys.eapp.hrm.model.DocCategory remove(long id)
+	public static com.rknowsys.eapp.hrm.model.DocCategory remove(
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchDocCategoryException {
-		return getPersistence().remove(id);
+		return getPersistence().remove(docCategoryId);
 	}
 
 	public static com.rknowsys.eapp.hrm.model.DocCategory updateImpl(
@@ -323,28 +326,29 @@ public class DocCategoryUtil {
 	/**
 	* Returns the doc category with the primary key or throws a {@link com.rknowsys.eapp.hrm.NoSuchDocCategoryException} if it could not be found.
 	*
-	* @param id the primary key of the doc category
+	* @param docCategoryId the primary key of the doc category
 	* @return the doc category
 	* @throws com.rknowsys.eapp.hrm.NoSuchDocCategoryException if a doc category with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static com.rknowsys.eapp.hrm.model.DocCategory findByPrimaryKey(
-		long id)
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchDocCategoryException {
-		return getPersistence().findByPrimaryKey(id);
+		return getPersistence().findByPrimaryKey(docCategoryId);
 	}
 
 	/**
 	* Returns the doc category with the primary key or returns <code>null</code> if it could not be found.
 	*
-	* @param id the primary key of the doc category
+	* @param docCategoryId the primary key of the doc category
 	* @return the doc category, or <code>null</code> if a doc category with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static com.rknowsys.eapp.hrm.model.DocCategory fetchByPrimaryKey(
-		long id) throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().fetchByPrimaryKey(id);
+		long docCategoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByPrimaryKey(docCategoryId);
 	}
 
 	/**

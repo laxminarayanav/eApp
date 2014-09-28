@@ -38,7 +38,7 @@ public class EmploymentStatusCacheModel implements CacheModel<EmploymentStatus>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(17);
+		StringBundler sb = new StringBundler(15);
 
 		sb.append("{employmentStatusId=");
 		sb.append(employmentStatusId);
@@ -54,8 +54,6 @@ public class EmploymentStatusCacheModel implements CacheModel<EmploymentStatus>,
 		sb.append(modifiedDate);
 		sb.append(", employmentstatus=");
 		sb.append(employmentstatus);
-		sb.append(", jobId=");
-		sb.append(jobId);
 		sb.append("}");
 
 		return sb.toString();
@@ -91,8 +89,6 @@ public class EmploymentStatusCacheModel implements CacheModel<EmploymentStatus>,
 			employmentStatusImpl.setEmploymentstatus(employmentstatus);
 		}
 
-		employmentStatusImpl.setJobId(jobId);
-
 		employmentStatusImpl.resetOriginalValues();
 
 		return employmentStatusImpl;
@@ -107,7 +103,6 @@ public class EmploymentStatusCacheModel implements CacheModel<EmploymentStatus>,
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		employmentstatus = objectInput.readUTF();
-		jobId = objectInput.readLong();
 	}
 
 	@Override
@@ -126,8 +121,6 @@ public class EmploymentStatusCacheModel implements CacheModel<EmploymentStatus>,
 		else {
 			objectOutput.writeUTF(employmentstatus);
 		}
-
-		objectOutput.writeLong(jobId);
 	}
 
 	public long employmentStatusId;
@@ -137,5 +130,4 @@ public class EmploymentStatusCacheModel implements CacheModel<EmploymentStatus>,
 	public long createDate;
 	public long modifiedDate;
 	public String employmentstatus;
-	public long jobId;
 }

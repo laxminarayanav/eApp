@@ -58,6 +58,7 @@ public class LicenseWrapper implements License, ModelWrapper<License> {
 		attributes.put("userId", getUserId());
 		attributes.put("licenseName", getLicenseName());
 		attributes.put("expiryDate", getExpiryDate());
+		attributes.put("licenseNumber", getLicenseNumber());
 
 		return attributes;
 	}
@@ -116,6 +117,12 @@ public class LicenseWrapper implements License, ModelWrapper<License> {
 
 		if (expiryDate != null) {
 			setExpiryDate(expiryDate);
+		}
+
+		String licenseNumber = (String)attributes.get("licenseNumber");
+
+		if (licenseNumber != null) {
+			setLicenseNumber(licenseNumber);
 		}
 	}
 
@@ -339,6 +346,26 @@ public class LicenseWrapper implements License, ModelWrapper<License> {
 	@Override
 	public void setExpiryDate(java.util.Date expiryDate) {
 		_license.setExpiryDate(expiryDate);
+	}
+
+	/**
+	* Returns the license number of this license.
+	*
+	* @return the license number of this license
+	*/
+	@Override
+	public java.lang.String getLicenseNumber() {
+		return _license.getLicenseNumber();
+	}
+
+	/**
+	* Sets the license number of this license.
+	*
+	* @param licenseNumber the license number of this license
+	*/
+	@Override
+	public void setLicenseNumber(java.lang.String licenseNumber) {
+		_license.setLicenseNumber(licenseNumber);
 	}
 
 	@Override

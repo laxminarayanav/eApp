@@ -30,7 +30,6 @@ import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
-import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
@@ -49,7 +48,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The persistence implementation for the news service.
@@ -359,7 +357,7 @@ public class NewsPersistenceImpl extends BasePersistenceImpl<News>
 	/**
 	 * Returns the newses before and after the current news in the ordered set where groupId = &#63;.
 	 *
-	 * @param id the primary key of the current news
+	 * @param newsId the primary key of the current news
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next news
@@ -367,10 +365,10 @@ public class NewsPersistenceImpl extends BasePersistenceImpl<News>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public News[] findByGroupId_PrevAndNext(long id, long groupId,
+	public News[] findByGroupId_PrevAndNext(long newsId, long groupId,
 		OrderByComparator orderByComparator)
 		throws NoSuchNewsException, SystemException {
-		News news = findByPrimaryKey(id);
+		News news = findByPrimaryKey(newsId);
 
 		Session session = null;
 
@@ -655,15 +653,15 @@ public class NewsPersistenceImpl extends BasePersistenceImpl<News>
 	/**
 	 * Creates a new news with the primary key. Does not add the news to the database.
 	 *
-	 * @param id the primary key for the new news
+	 * @param newsId the primary key for the new news
 	 * @return the new news
 	 */
 	@Override
-	public News create(long id) {
+	public News create(long newsId) {
 		News news = new NewsImpl();
 
 		news.setNew(true);
-		news.setPrimaryKey(id);
+		news.setPrimaryKey(newsId);
 
 		return news;
 	}
@@ -671,14 +669,14 @@ public class NewsPersistenceImpl extends BasePersistenceImpl<News>
 	/**
 	 * Removes the news with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param id the primary key of the news
+	 * @param newsId the primary key of the news
 	 * @return the news that was removed
 	 * @throws com.rknowsys.eapp.hrm.NoSuchNewsException if a news with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public News remove(long id) throws NoSuchNewsException, SystemException {
-		return remove((Serializable)id);
+	public News remove(long newsId) throws NoSuchNewsException, SystemException {
+		return remove((Serializable)newsId);
 	}
 
 	/**
@@ -821,7 +819,7 @@ public class NewsPersistenceImpl extends BasePersistenceImpl<News>
 		newsImpl.setNew(news.isNew());
 		newsImpl.setPrimaryKey(news.getPrimaryKey());
 
-		newsImpl.setId(news.getId());
+		newsImpl.setNewsId(news.getNewsId());
 		newsImpl.setCompanyId(news.getCompanyId());
 		newsImpl.setGroupId(news.getGroupId());
 		newsImpl.setCreateDate(news.getCreateDate());
@@ -863,15 +861,15 @@ public class NewsPersistenceImpl extends BasePersistenceImpl<News>
 	/**
 	 * Returns the news with the primary key or throws a {@link com.rknowsys.eapp.hrm.NoSuchNewsException} if it could not be found.
 	 *
-	 * @param id the primary key of the news
+	 * @param newsId the primary key of the news
 	 * @return the news
 	 * @throws com.rknowsys.eapp.hrm.NoSuchNewsException if a news with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public News findByPrimaryKey(long id)
+	public News findByPrimaryKey(long newsId)
 		throws NoSuchNewsException, SystemException {
-		return findByPrimaryKey((Serializable)id);
+		return findByPrimaryKey((Serializable)newsId);
 	}
 
 	/**
@@ -924,13 +922,13 @@ public class NewsPersistenceImpl extends BasePersistenceImpl<News>
 	/**
 	 * Returns the news with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param id the primary key of the news
+	 * @param newsId the primary key of the news
 	 * @return the news, or <code>null</code> if a news with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public News fetchByPrimaryKey(long id) throws SystemException {
-		return fetchByPrimaryKey((Serializable)id);
+	public News fetchByPrimaryKey(long newsId) throws SystemException {
+		return fetchByPrimaryKey((Serializable)newsId);
 	}
 
 	/**
@@ -1105,11 +1103,6 @@ public class NewsPersistenceImpl extends BasePersistenceImpl<News>
 		return count.intValue();
 	}
 
-	@Override
-	protected Set<String> getBadColumnNames() {
-		return _badColumnNames;
-	}
-
 	/**
 	 * Initializes the news persistence.
 	 */
@@ -1152,9 +1145,6 @@ public class NewsPersistenceImpl extends BasePersistenceImpl<News>
 	private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
 				PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
 	private static Log _log = LogFactoryUtil.getLog(NewsPersistenceImpl.class);
-	private static Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"id"
-			});
 	private static News _nullNews = new NewsImpl() {
 			@Override
 			public Object clone() {

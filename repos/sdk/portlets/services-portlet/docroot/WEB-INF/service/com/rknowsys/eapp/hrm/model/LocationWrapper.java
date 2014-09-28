@@ -64,7 +64,6 @@ public class LocationWrapper implements Location, ModelWrapper<Location> {
 		attributes.put("phone", getPhone());
 		attributes.put("fax", getFax());
 		attributes.put("notes", getNotes());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -159,12 +158,6 @@ public class LocationWrapper implements Location, ModelWrapper<Location> {
 
 		if (notes != null) {
 			setNotes(notes);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -508,26 +501,6 @@ public class LocationWrapper implements Location, ModelWrapper<Location> {
 	@Override
 	public void setNotes(java.lang.String notes) {
 		_location.setNotes(notes);
-	}
-
-	/**
-	* Returns the job ID of this location.
-	*
-	* @return the job ID of this location
-	*/
-	@Override
-	public long getJobId() {
-		return _location.getJobId();
-	}
-
-	/**
-	* Sets the job ID of this location.
-	*
-	* @param jobId the job ID of this location
-	*/
-	@Override
-	public void setJobId(long jobId) {
-		_location.setJobId(jobId);
 	}
 
 	@Override

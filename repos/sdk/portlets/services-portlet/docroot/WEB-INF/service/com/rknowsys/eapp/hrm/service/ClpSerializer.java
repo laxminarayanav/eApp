@@ -44,6 +44,7 @@ import com.rknowsys.eapp.hrm.model.LocationClp;
 import com.rknowsys.eapp.hrm.model.MembershipClp;
 import com.rknowsys.eapp.hrm.model.NationalityClp;
 import com.rknowsys.eapp.hrm.model.NewsClp;
+import com.rknowsys.eapp.hrm.model.OrganizationClp;
 import com.rknowsys.eapp.hrm.model.PayGradeClp;
 import com.rknowsys.eapp.hrm.model.PayGradeCurrencyClp;
 import com.rknowsys.eapp.hrm.model.SalaryComponentClp;
@@ -202,6 +203,10 @@ public class ClpSerializer {
 
 		if (oldModelClassName.equals(NewsClp.class.getName())) {
 			return translateInputNews(oldModel);
+		}
+
+		if (oldModelClassName.equals(OrganizationClp.class.getName())) {
+			return translateInputOrganization(oldModel);
 		}
 
 		if (oldModelClassName.equals(PayGradeClp.class.getName())) {
@@ -442,6 +447,16 @@ public class ClpSerializer {
 		return newModel;
 	}
 
+	public static Object translateInputOrganization(BaseModel<?> oldModel) {
+		OrganizationClp oldClpModel = (OrganizationClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getOrganizationRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
 	public static Object translateInputPayGrade(BaseModel<?> oldModel) {
 		PayGradeClp oldClpModel = (PayGradeClp)oldModel;
 
@@ -631,6 +646,11 @@ public class ClpSerializer {
 		if (oldModelClassName.equals(
 					"com.rknowsys.eapp.hrm.model.impl.NewsImpl")) {
 			return translateOutputNews(oldModel);
+		}
+
+		if (oldModelClassName.equals(
+					"com.rknowsys.eapp.hrm.model.impl.OrganizationImpl")) {
+			return translateOutputOrganization(oldModel);
 		}
 
 		if (oldModelClassName.equals(
@@ -831,6 +851,11 @@ public class ClpSerializer {
 
 		if (className.equals("com.rknowsys.eapp.hrm.NoSuchNewsException")) {
 			return new com.rknowsys.eapp.hrm.NoSuchNewsException();
+		}
+
+		if (className.equals(
+					"com.rknowsys.eapp.hrm.NoSuchOrganizationException")) {
+			return new com.rknowsys.eapp.hrm.NoSuchOrganizationException();
 		}
 
 		if (className.equals("com.rknowsys.eapp.hrm.NoSuchPayGradeException")) {
@@ -1058,6 +1083,16 @@ public class ClpSerializer {
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
 		newModel.setNewsRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputOrganization(BaseModel<?> oldModel) {
+		OrganizationClp newModel = new OrganizationClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setOrganizationRemoteModel(oldModel);
 
 		return newModel;
 	}

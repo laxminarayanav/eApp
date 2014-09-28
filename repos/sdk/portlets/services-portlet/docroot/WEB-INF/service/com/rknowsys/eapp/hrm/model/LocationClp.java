@@ -89,7 +89,6 @@ public class LocationClp extends BaseModelImpl<Location> implements Location {
 		attributes.put("phone", getPhone());
 		attributes.put("fax", getFax());
 		attributes.put("notes", getNotes());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -184,12 +183,6 @@ public class LocationClp extends BaseModelImpl<Location> implements Location {
 
 		if (notes != null) {
 			setNotes(notes);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -548,29 +541,6 @@ public class LocationClp extends BaseModelImpl<Location> implements Location {
 		}
 	}
 
-	@Override
-	public long getJobId() {
-		return _jobId;
-	}
-
-	@Override
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-
-		if (_locationRemoteModel != null) {
-			try {
-				Class<?> clazz = _locationRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setJobId", long.class);
-
-				method.invoke(_locationRemoteModel, jobId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
 	public BaseModel<?> getLocationRemoteModel() {
 		return _locationRemoteModel;
 	}
@@ -655,7 +625,6 @@ public class LocationClp extends BaseModelImpl<Location> implements Location {
 		clone.setPhone(getPhone());
 		clone.setFax(getFax());
 		clone.setNotes(getNotes());
-		clone.setJobId(getJobId());
 
 		return clone;
 	}
@@ -704,7 +673,7 @@ public class LocationClp extends BaseModelImpl<Location> implements Location {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(33);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("{locationId=");
 		sb.append(getLocationId());
@@ -736,8 +705,6 @@ public class LocationClp extends BaseModelImpl<Location> implements Location {
 		sb.append(getFax());
 		sb.append(", notes=");
 		sb.append(getNotes());
-		sb.append(", jobId=");
-		sb.append(getJobId());
 		sb.append("}");
 
 		return sb.toString();
@@ -745,7 +712,7 @@ public class LocationClp extends BaseModelImpl<Location> implements Location {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(52);
+		StringBundler sb = new StringBundler(49);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.Location");
@@ -811,10 +778,6 @@ public class LocationClp extends BaseModelImpl<Location> implements Location {
 			"<column><column-name>notes</column-name><column-value><![CDATA[");
 		sb.append(getNotes());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>jobId</column-name><column-value><![CDATA[");
-		sb.append(getJobId());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -837,6 +800,5 @@ public class LocationClp extends BaseModelImpl<Location> implements Location {
 	private String _phone;
 	private String _fax;
 	private String _notes;
-	private long _jobId;
 	private BaseModel<?> _locationRemoteModel;
 }

@@ -82,7 +82,6 @@ public class SubUnitClp extends BaseModelImpl<SubUnit> implements SubUnit {
 		attributes.put("userId", getUserId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -135,12 +134,6 @@ public class SubUnitClp extends BaseModelImpl<SubUnit> implements SubUnit {
 
 		if (modifiedDate != null) {
 			setModifiedDate(modifiedDate);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -338,29 +331,6 @@ public class SubUnitClp extends BaseModelImpl<SubUnit> implements SubUnit {
 		}
 	}
 
-	@Override
-	public long getJobId() {
-		return _jobId;
-	}
-
-	@Override
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-
-		if (_subUnitRemoteModel != null) {
-			try {
-				Class<?> clazz = _subUnitRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setJobId", long.class);
-
-				method.invoke(_subUnitRemoteModel, jobId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
 	public BaseModel<?> getSubUnitRemoteModel() {
 		return _subUnitRemoteModel;
 	}
@@ -438,7 +408,6 @@ public class SubUnitClp extends BaseModelImpl<SubUnit> implements SubUnit {
 		clone.setUserId(getUserId());
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
-		clone.setJobId(getJobId());
 
 		return clone;
 	}
@@ -487,7 +456,7 @@ public class SubUnitClp extends BaseModelImpl<SubUnit> implements SubUnit {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(17);
 
 		sb.append("{subUnitId=");
 		sb.append(getSubUnitId());
@@ -505,8 +474,6 @@ public class SubUnitClp extends BaseModelImpl<SubUnit> implements SubUnit {
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
 		sb.append(getModifiedDate());
-		sb.append(", jobId=");
-		sb.append(getJobId());
 		sb.append("}");
 
 		return sb.toString();
@@ -514,7 +481,7 @@ public class SubUnitClp extends BaseModelImpl<SubUnit> implements SubUnit {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(28);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.SubUnit");
@@ -552,10 +519,6 @@ public class SubUnitClp extends BaseModelImpl<SubUnit> implements SubUnit {
 			"<column><column-name>modifiedDate</column-name><column-value><![CDATA[");
 		sb.append(getModifiedDate());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>jobId</column-name><column-value><![CDATA[");
-		sb.append(getJobId());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -571,6 +534,5 @@ public class SubUnitClp extends BaseModelImpl<SubUnit> implements SubUnit {
 	private String _userUuid;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private long _jobId;
 	private BaseModel<?> _subUnitRemoteModel;
 }

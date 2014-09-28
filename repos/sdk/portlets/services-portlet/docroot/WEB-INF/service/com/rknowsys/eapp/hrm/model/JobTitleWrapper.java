@@ -55,12 +55,10 @@ public class JobTitleWrapper implements JobTitle, ModelWrapper<JobTitle> {
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("userId", getUserId());
-		attributes.put("employeeId", getEmployeeId());
 		attributes.put("title", getTitle());
 		attributes.put("description", getDescription());
 		attributes.put("notes", getNotes());
 		attributes.put("specification", getSpecification());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -103,12 +101,6 @@ public class JobTitleWrapper implements JobTitle, ModelWrapper<JobTitle> {
 			setUserId(userId);
 		}
 
-		Long employeeId = (Long)attributes.get("employeeId");
-
-		if (employeeId != null) {
-			setEmployeeId(employeeId);
-		}
-
 		String title = (String)attributes.get("title");
 
 		if (title != null) {
@@ -131,12 +123,6 @@ public class JobTitleWrapper implements JobTitle, ModelWrapper<JobTitle> {
 
 		if (specification != null) {
 			setSpecification(specification);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -303,26 +289,6 @@ public class JobTitleWrapper implements JobTitle, ModelWrapper<JobTitle> {
 	}
 
 	/**
-	* Returns the employee ID of this job title.
-	*
-	* @return the employee ID of this job title
-	*/
-	@Override
-	public long getEmployeeId() {
-		return _jobTitle.getEmployeeId();
-	}
-
-	/**
-	* Sets the employee ID of this job title.
-	*
-	* @param employeeId the employee ID of this job title
-	*/
-	@Override
-	public void setEmployeeId(long employeeId) {
-		_jobTitle.setEmployeeId(employeeId);
-	}
-
-	/**
 	* Returns the title of this job title.
 	*
 	* @return the title of this job title
@@ -400,26 +366,6 @@ public class JobTitleWrapper implements JobTitle, ModelWrapper<JobTitle> {
 	@Override
 	public void setSpecification(java.lang.String specification) {
 		_jobTitle.setSpecification(specification);
-	}
-
-	/**
-	* Returns the job ID of this job title.
-	*
-	* @return the job ID of this job title
-	*/
-	@Override
-	public long getJobId() {
-		return _jobTitle.getJobId();
-	}
-
-	/**
-	* Sets the job ID of this job title.
-	*
-	* @param jobId the job ID of this job title
-	*/
-	@Override
-	public void setJobId(long jobId) {
-		_jobTitle.setJobId(jobId);
 	}
 
 	@Override

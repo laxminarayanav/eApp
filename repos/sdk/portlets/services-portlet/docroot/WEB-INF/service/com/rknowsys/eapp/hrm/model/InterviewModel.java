@@ -61,18 +61,18 @@ public interface InterviewModel extends BaseModel<Interview> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the ID of this interview.
+	 * Returns the interview ID of this interview.
 	 *
-	 * @return the ID of this interview
+	 * @return the interview ID of this interview
 	 */
-	public long getId();
+	public long getInterviewId();
 
 	/**
-	 * Sets the ID of this interview.
+	 * Sets the interview ID of this interview.
 	 *
-	 * @param id the ID of this interview
+	 * @param interviewId the interview ID of this interview
 	 */
-	public void setId(long id);
+	public void setInterviewId(long interviewId);
 
 	/**
 	 * Returns the company ID of this interview.

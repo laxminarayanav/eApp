@@ -104,13 +104,13 @@ public class JobLocalServiceClpInvoker {
 
 		_methodParameterTypes16 = new String[] { "java.io.Serializable" };
 
-		_methodName137 = "getBeanIdentifier";
+		_methodName141 = "getBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] {  };
+		_methodParameterTypes141 = new String[] {  };
 
-		_methodName138 = "setBeanIdentifier";
+		_methodName142 = "setBeanIdentifier";
 
-		_methodParameterTypes138 = new String[] { "java.lang.String" };
+		_methodParameterTypes142 = new String[] { "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -207,13 +207,13 @@ public class JobLocalServiceClpInvoker {
 			return JobLocalServiceUtil.getContractDetailsBlobModel((java.io.Serializable)arguments[0]);
 		}
 
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName141.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes141, parameterTypes)) {
 			return JobLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName138.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes138, parameterTypes)) {
+		if (_methodName142.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes142, parameterTypes)) {
 			JobLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
@@ -256,8 +256,8 @@ public class JobLocalServiceClpInvoker {
 	private String[] _methodParameterTypes15;
 	private String _methodName16;
 	private String[] _methodParameterTypes16;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
-	private String _methodName138;
-	private String[] _methodParameterTypes138;
+	private String _methodName141;
+	private String[] _methodParameterTypes141;
+	private String _methodName142;
+	private String[] _methodParameterTypes142;
 }

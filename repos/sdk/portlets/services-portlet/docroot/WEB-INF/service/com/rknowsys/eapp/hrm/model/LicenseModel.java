@@ -202,6 +202,21 @@ public interface LicenseModel extends BaseModel<License> {
 	 */
 	public void setExpiryDate(Date expiryDate);
 
+	/**
+	 * Returns the license number of this license.
+	 *
+	 * @return the license number of this license
+	 */
+	@AutoEscape
+	public String getLicenseNumber();
+
+	/**
+	 * Sets the license number of this license.
+	 *
+	 * @param licenseNumber the license number of this license
+	 */
+	public void setLicenseNumber(String licenseNumber);
+
 	@Override
 	public boolean isNew();
 

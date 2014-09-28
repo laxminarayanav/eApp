@@ -38,7 +38,7 @@ public class JobCategoryCacheModel implements CacheModel<JobCategory>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(17);
+		StringBundler sb = new StringBundler(15);
 
 		sb.append("{jobCategoryId=");
 		sb.append(jobCategoryId);
@@ -54,8 +54,6 @@ public class JobCategoryCacheModel implements CacheModel<JobCategory>,
 		sb.append(userId);
 		sb.append(", jobcategory=");
 		sb.append(jobcategory);
-		sb.append(", jobId=");
-		sb.append(jobId);
 		sb.append("}");
 
 		return sb.toString();
@@ -92,8 +90,6 @@ public class JobCategoryCacheModel implements CacheModel<JobCategory>,
 			jobCategoryImpl.setJobcategory(jobcategory);
 		}
 
-		jobCategoryImpl.setJobId(jobId);
-
 		jobCategoryImpl.resetOriginalValues();
 
 		return jobCategoryImpl;
@@ -108,7 +104,6 @@ public class JobCategoryCacheModel implements CacheModel<JobCategory>,
 		modifiedDate = objectInput.readLong();
 		userId = objectInput.readLong();
 		jobcategory = objectInput.readUTF();
-		jobId = objectInput.readLong();
 	}
 
 	@Override
@@ -127,8 +122,6 @@ public class JobCategoryCacheModel implements CacheModel<JobCategory>,
 		else {
 			objectOutput.writeUTF(jobcategory);
 		}
-
-		objectOutput.writeLong(jobId);
 	}
 
 	public long jobCategoryId;
@@ -138,5 +131,4 @@ public class JobCategoryCacheModel implements CacheModel<JobCategory>,
 	public long modifiedDate;
 	public long userId;
 	public String jobcategory;
-	public long jobId;
 }

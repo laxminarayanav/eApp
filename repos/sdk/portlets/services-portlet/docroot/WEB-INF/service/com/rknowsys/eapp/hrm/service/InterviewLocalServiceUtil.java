@@ -55,25 +55,27 @@ public class InterviewLocalServiceUtil {
 	/**
 	* Creates a new interview with the primary key. Does not add the interview to the database.
 	*
-	* @param id the primary key for the new interview
+	* @param interviewId the primary key for the new interview
 	* @return the new interview
 	*/
-	public static com.rknowsys.eapp.hrm.model.Interview createInterview(long id) {
-		return getService().createInterview(id);
+	public static com.rknowsys.eapp.hrm.model.Interview createInterview(
+		long interviewId) {
+		return getService().createInterview(interviewId);
 	}
 
 	/**
 	* Deletes the interview with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the interview
+	* @param interviewId the primary key of the interview
 	* @return the interview that was removed
 	* @throws PortalException if a interview with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static com.rknowsys.eapp.hrm.model.Interview deleteInterview(long id)
+	public static com.rknowsys.eapp.hrm.model.Interview deleteInterview(
+		long interviewId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().deleteInterview(id);
+		return getService().deleteInterview(interviewId);
 	}
 
 	/**
@@ -179,23 +181,25 @@ public class InterviewLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static com.rknowsys.eapp.hrm.model.Interview fetchInterview(long id)
+	public static com.rknowsys.eapp.hrm.model.Interview fetchInterview(
+		long interviewId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getService().fetchInterview(id);
+		return getService().fetchInterview(interviewId);
 	}
 
 	/**
 	* Returns the interview with the primary key.
 	*
-	* @param id the primary key of the interview
+	* @param interviewId the primary key of the interview
 	* @return the interview
 	* @throws PortalException if a interview with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static com.rknowsys.eapp.hrm.model.Interview getInterview(long id)
+	public static com.rknowsys.eapp.hrm.model.Interview getInterview(
+		long interviewId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().getInterview(id);
+		return getService().getInterview(interviewId);
 	}
 
 	public static com.liferay.portal.model.PersistedModel getPersistedModel(

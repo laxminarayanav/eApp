@@ -174,20 +174,6 @@ public interface EmploymentStatusModel extends BaseModel<EmploymentStatus> {
 	 */
 	public void setEmploymentstatus(String employmentstatus);
 
-	/**
-	 * Returns the job ID of this employment status.
-	 *
-	 * @return the job ID of this employment status
-	 */
-	public long getJobId();
-
-	/**
-	 * Sets the job ID of this employment status.
-	 *
-	 * @param jobId the job ID of this employment status
-	 */
-	public void setJobId(long jobId);
-
 	@Override
 	public boolean isNew();
 

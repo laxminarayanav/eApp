@@ -18,4 +18,4 @@
 
 <portlet:defineObjects />
 
-This is the <b>Services Portlet1</b> portlet.
+This is the <b>Services Portlet</b>.

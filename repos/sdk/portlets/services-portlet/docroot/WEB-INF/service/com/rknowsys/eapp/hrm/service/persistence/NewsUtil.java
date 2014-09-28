@@ -229,7 +229,7 @@ public class NewsUtil {
 	/**
 	* Returns the newses before and after the current news in the ordered set where groupId = &#63;.
 	*
-	* @param id the primary key of the current news
+	* @param newsId the primary key of the current news
 	* @param groupId the group ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next news
@@ -237,12 +237,12 @@ public class NewsUtil {
 	* @throws SystemException if a system exception occurred
 	*/
 	public static com.rknowsys.eapp.hrm.model.News[] findByGroupId_PrevAndNext(
-		long id, long groupId,
+		long newsId, long groupId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchNewsException {
 		return getPersistence()
-				   .findByGroupId_PrevAndNext(id, groupId, orderByComparator);
+				   .findByGroupId_PrevAndNext(newsId, groupId, orderByComparator);
 	}
 
 	/**
@@ -290,25 +290,25 @@ public class NewsUtil {
 	/**
 	* Creates a new news with the primary key. Does not add the news to the database.
 	*
-	* @param id the primary key for the new news
+	* @param newsId the primary key for the new news
 	* @return the new news
 	*/
-	public static com.rknowsys.eapp.hrm.model.News create(long id) {
-		return getPersistence().create(id);
+	public static com.rknowsys.eapp.hrm.model.News create(long newsId) {
+		return getPersistence().create(newsId);
 	}
 
 	/**
 	* Removes the news with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the news
+	* @param newsId the primary key of the news
 	* @return the news that was removed
 	* @throws com.rknowsys.eapp.hrm.NoSuchNewsException if a news with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static com.rknowsys.eapp.hrm.model.News remove(long id)
+	public static com.rknowsys.eapp.hrm.model.News remove(long newsId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchNewsException {
-		return getPersistence().remove(id);
+		return getPersistence().remove(newsId);
 	}
 
 	public static com.rknowsys.eapp.hrm.model.News updateImpl(
@@ -320,27 +320,27 @@ public class NewsUtil {
 	/**
 	* Returns the news with the primary key or throws a {@link com.rknowsys.eapp.hrm.NoSuchNewsException} if it could not be found.
 	*
-	* @param id the primary key of the news
+	* @param newsId the primary key of the news
 	* @return the news
 	* @throws com.rknowsys.eapp.hrm.NoSuchNewsException if a news with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static com.rknowsys.eapp.hrm.model.News findByPrimaryKey(long id)
+	public static com.rknowsys.eapp.hrm.model.News findByPrimaryKey(long newsId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchNewsException {
-		return getPersistence().findByPrimaryKey(id);
+		return getPersistence().findByPrimaryKey(newsId);
 	}
 
 	/**
 	* Returns the news with the primary key or returns <code>null</code> if it could not be found.
 	*
-	* @param id the primary key of the news
+	* @param newsId the primary key of the news
 	* @return the news, or <code>null</code> if a news with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static com.rknowsys.eapp.hrm.model.News fetchByPrimaryKey(long id)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().fetchByPrimaryKey(id);
+	public static com.rknowsys.eapp.hrm.model.News fetchByPrimaryKey(
+		long newsId) throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByPrimaryKey(newsId);
 	}
 
 	/**

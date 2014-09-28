@@ -332,7 +332,6 @@ public class EmploymentStatusPersistenceImpl extends BasePersistenceImpl<Employm
 		employmentStatusImpl.setCreateDate(employmentStatus.getCreateDate());
 		employmentStatusImpl.setModifiedDate(employmentStatus.getModifiedDate());
 		employmentStatusImpl.setEmploymentstatus(employmentStatus.getEmploymentstatus());
-		employmentStatusImpl.setJobId(employmentStatus.getJobId());
 
 		return employmentStatusImpl;
 	}

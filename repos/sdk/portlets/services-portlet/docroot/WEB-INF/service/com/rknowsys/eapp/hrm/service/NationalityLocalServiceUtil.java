@@ -40,10 +40,10 @@ public class NationalityLocalServiceUtil {
 	 */
 
 	/**
-	* Adds the nationality to the database. Also notifies the appropriate model listeners.
+	* Adds the Nationality to the database. Also notifies the appropriate model listeners.
 	*
-	* @param nationality the nationality
-	* @return the nationality that was added
+	* @param nationality the Nationality
+	* @return the Nationality that was added
 	* @throws SystemException if a system exception occurred
 	*/
 	public static com.rknowsys.eapp.hrm.model.Nationality addNationality(
@@ -53,10 +53,10 @@ public class NationalityLocalServiceUtil {
 	}
 
 	/**
-	* Creates a new nationality with the primary key. Does not add the nationality to the database.
+	* Creates a new Nationality with the primary key. Does not add the Nationality to the database.
 	*
-	* @param nationalityId the primary key for the new nationality
-	* @return the new nationality
+	* @param nationalityId the primary key for the new Nationality
+	* @return the new Nationality
 	*/
 	public static com.rknowsys.eapp.hrm.model.Nationality createNationality(
 		long nationalityId) {
@@ -64,11 +64,11 @@ public class NationalityLocalServiceUtil {
 	}
 
 	/**
-	* Deletes the nationality with the primary key from the database. Also notifies the appropriate model listeners.
+	* Deletes the Nationality with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param nationalityId the primary key of the nationality
-	* @return the nationality that was removed
-	* @throws PortalException if a nationality with the primary key could not be found
+	* @param nationalityId the primary key of the Nationality
+	* @return the Nationality that was removed
+	* @throws PortalException if a Nationality with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static com.rknowsys.eapp.hrm.model.Nationality deleteNationality(
@@ -79,10 +79,10 @@ public class NationalityLocalServiceUtil {
 	}
 
 	/**
-	* Deletes the nationality from the database. Also notifies the appropriate model listeners.
+	* Deletes the Nationality from the database. Also notifies the appropriate model listeners.
 	*
-	* @param nationality the nationality
-	* @return the nationality that was removed
+	* @param nationality the Nationality
+	* @return the Nationality that was removed
 	* @throws SystemException if a system exception occurred
 	*/
 	public static com.rknowsys.eapp.hrm.model.Nationality deleteNationality(
@@ -188,11 +188,11 @@ public class NationalityLocalServiceUtil {
 	}
 
 	/**
-	* Returns the nationality with the primary key.
+	* Returns the Nationality with the primary key.
 	*
-	* @param nationalityId the primary key of the nationality
-	* @return the nationality
-	* @throws PortalException if a nationality with the primary key could not be found
+	* @param nationalityId the primary key of the Nationality
+	* @return the Nationality
+	* @throws PortalException if a Nationality with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static com.rknowsys.eapp.hrm.model.Nationality getNationality(
@@ -210,15 +210,15 @@ public class NationalityLocalServiceUtil {
 	}
 
 	/**
-	* Returns a range of all the nationalities.
+	* Returns a range of all the Nationalities.
 	*
 	* <p>
 	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.rknowsys.eapp.hrm.model.impl.NationalityModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
-	* @param start the lower bound of the range of nationalities
-	* @param end the upper bound of the range of nationalities (not inclusive)
-	* @return the range of nationalities
+	* @param start the lower bound of the range of Nationalities
+	* @param end the upper bound of the range of Nationalities (not inclusive)
+	* @return the range of Nationalities
 	* @throws SystemException if a system exception occurred
 	*/
 	public static java.util.List<com.rknowsys.eapp.hrm.model.Nationality> getNationalities(
@@ -228,9 +228,9 @@ public class NationalityLocalServiceUtil {
 	}
 
 	/**
-	* Returns the number of nationalities.
+	* Returns the number of Nationalities.
 	*
-	* @return the number of nationalities
+	* @return the number of Nationalities
 	* @throws SystemException if a system exception occurred
 	*/
 	public static int getNationalitiesCount()
@@ -239,10 +239,10 @@ public class NationalityLocalServiceUtil {
 	}
 
 	/**
-	* Updates the nationality in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
+	* Updates the Nationality in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*
-	* @param nationality the nationality
-	* @return the nationality that was updated
+	* @param nationality the Nationality
+	* @return the Nationality that was updated
 	* @throws SystemException if a system exception occurred
 	*/
 	public static com.rknowsys.eapp.hrm.model.Nationality updateNationality(

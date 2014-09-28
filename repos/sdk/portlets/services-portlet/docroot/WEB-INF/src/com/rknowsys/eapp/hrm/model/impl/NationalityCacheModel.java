@@ -38,10 +38,12 @@ public class NationalityCacheModel implements CacheModel<Nationality>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(15);
+		StringBundler sb = new StringBundler(17);
 
 		sb.append("{nationalityId=");
 		sb.append(nationalityId);
+		sb.append(", employeeId=");
+		sb.append(employeeId);
 		sb.append(", groupId=");
 		sb.append(groupId);
 		sb.append(", companyId=");
@@ -52,8 +54,8 @@ public class NationalityCacheModel implements CacheModel<Nationality>,
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
-		sb.append(", Name=");
-		sb.append(Name);
+		sb.append(", name=");
+		sb.append(name);
 		sb.append("}");
 
 		return sb.toString();
@@ -64,6 +66,7 @@ public class NationalityCacheModel implements CacheModel<Nationality>,
 		NationalityImpl nationalityImpl = new NationalityImpl();
 
 		nationalityImpl.setNationalityId(nationalityId);
+		nationalityImpl.setEmployeeId(employeeId);
 		nationalityImpl.setGroupId(groupId);
 		nationalityImpl.setCompanyId(companyId);
 		nationalityImpl.setUserId(userId);
@@ -82,11 +85,11 @@ public class NationalityCacheModel implements CacheModel<Nationality>,
 			nationalityImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
-		if (Name == null) {
+		if (name == null) {
 			nationalityImpl.setName(StringPool.BLANK);
 		}
 		else {
-			nationalityImpl.setName(Name);
+			nationalityImpl.setName(name);
 		}
 
 		nationalityImpl.resetOriginalValues();
@@ -97,37 +100,40 @@ public class NationalityCacheModel implements CacheModel<Nationality>,
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		nationalityId = objectInput.readLong();
+		employeeId = objectInput.readLong();
 		groupId = objectInput.readLong();
 		companyId = objectInput.readLong();
 		userId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
-		Name = objectInput.readUTF();
+		name = objectInput.readUTF();
 	}
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
 		objectOutput.writeLong(nationalityId);
+		objectOutput.writeLong(employeeId);
 		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(userId);
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 
-		if (Name == null) {
+		if (name == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(Name);
+			objectOutput.writeUTF(name);
 		}
 	}
 
 	public long nationalityId;
+	public long employeeId;
 	public long groupId;
 	public long companyId;
 	public long userId;
 	public long createDate;
 	public long modifiedDate;
-	public String Name;
+	public String name;
 }

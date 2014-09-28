@@ -59,20 +59,20 @@ public interface NewsLocalService extends BaseLocalService, InvokableLocalServic
 	/**
 	* Creates a new news with the primary key. Does not add the news to the database.
 	*
-	* @param id the primary key for the new news
+	* @param newsId the primary key for the new news
 	* @return the new news
 	*/
-	public com.rknowsys.eapp.hrm.model.News createNews(long id);
+	public com.rknowsys.eapp.hrm.model.News createNews(long newsId);
 
 	/**
 	* Deletes the news with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the news
+	* @param newsId the primary key of the news
 	* @return the news that was removed
 	* @throws PortalException if a news with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.rknowsys.eapp.hrm.model.News deleteNews(long id)
+	public com.rknowsys.eapp.hrm.model.News deleteNews(long newsId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
@@ -165,19 +165,19 @@ public interface NewsLocalService extends BaseLocalService, InvokableLocalServic
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public com.rknowsys.eapp.hrm.model.News fetchNews(long id)
+	public com.rknowsys.eapp.hrm.model.News fetchNews(long newsId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns the news with the primary key.
 	*
-	* @param id the primary key of the news
+	* @param newsId the primary key of the news
 	* @return the news
 	* @throws PortalException if a news with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public com.rknowsys.eapp.hrm.model.News getNews(long id)
+	public com.rknowsys.eapp.hrm.model.News getNews(long newsId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 

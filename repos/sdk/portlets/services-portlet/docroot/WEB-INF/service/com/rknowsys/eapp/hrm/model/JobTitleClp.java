@@ -80,12 +80,10 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("userId", getUserId());
-		attributes.put("employeeId", getEmployeeId());
 		attributes.put("title", getTitle());
 		attributes.put("description", getDescription());
 		attributes.put("notes", getNotes());
 		attributes.put("specification", getSpecification());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -128,12 +126,6 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 			setUserId(userId);
 		}
 
-		Long employeeId = (Long)attributes.get("employeeId");
-
-		if (employeeId != null) {
-			setEmployeeId(employeeId);
-		}
-
 		String title = (String)attributes.get("title");
 
 		if (title != null) {
@@ -156,12 +148,6 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 
 		if (specification != null) {
 			setSpecification(specification);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -314,29 +300,6 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 	}
 
 	@Override
-	public long getEmployeeId() {
-		return _employeeId;
-	}
-
-	@Override
-	public void setEmployeeId(long employeeId) {
-		_employeeId = employeeId;
-
-		if (_jobTitleRemoteModel != null) {
-			try {
-				Class<?> clazz = _jobTitleRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setEmployeeId", long.class);
-
-				method.invoke(_jobTitleRemoteModel, employeeId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
 	public String getTitle() {
 		return _title;
 	}
@@ -428,29 +391,6 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 		}
 	}
 
-	@Override
-	public long getJobId() {
-		return _jobId;
-	}
-
-	@Override
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-
-		if (_jobTitleRemoteModel != null) {
-			try {
-				Class<?> clazz = _jobTitleRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setJobId", long.class);
-
-				method.invoke(_jobTitleRemoteModel, jobId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
 	public BaseModel<?> getJobTitleRemoteModel() {
 		return _jobTitleRemoteModel;
 	}
@@ -526,12 +466,10 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
 		clone.setUserId(getUserId());
-		clone.setEmployeeId(getEmployeeId());
 		clone.setTitle(getTitle());
 		clone.setDescription(getDescription());
 		clone.setNotes(getNotes());
 		clone.setSpecification(getSpecification());
-		clone.setJobId(getJobId());
 
 		return clone;
 	}
@@ -580,7 +518,7 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{jobTitleId=");
 		sb.append(getJobTitleId());
@@ -594,8 +532,6 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 		sb.append(getModifiedDate());
 		sb.append(", userId=");
 		sb.append(getUserId());
-		sb.append(", employeeId=");
-		sb.append(getEmployeeId());
 		sb.append(", title=");
 		sb.append(getTitle());
 		sb.append(", description=");
@@ -604,8 +540,6 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 		sb.append(getNotes());
 		sb.append(", specification=");
 		sb.append(getSpecification());
-		sb.append(", jobId=");
-		sb.append(getJobId());
 		sb.append("}");
 
 		return sb.toString();
@@ -613,7 +547,7 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(40);
+		StringBundler sb = new StringBundler(34);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.JobTitle");
@@ -644,10 +578,6 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 		sb.append(getUserId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>employeeId</column-name><column-value><![CDATA[");
-		sb.append(getEmployeeId());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>title</column-name><column-value><![CDATA[");
 		sb.append(getTitle());
 		sb.append("]]></column-value></column>");
@@ -663,10 +593,6 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 			"<column><column-name>specification</column-name><column-value><![CDATA[");
 		sb.append(getSpecification());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>jobId</column-name><column-value><![CDATA[");
-		sb.append(getJobId());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -680,11 +606,9 @@ public class JobTitleClp extends BaseModelImpl<JobTitle> implements JobTitle {
 	private Date _modifiedDate;
 	private long _userId;
 	private String _userUuid;
-	private long _employeeId;
 	private String _title;
 	private String _description;
 	private String _notes;
 	private String _specification;
-	private long _jobId;
 	private BaseModel<?> _jobTitleRemoteModel;
 }

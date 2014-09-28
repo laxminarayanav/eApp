@@ -37,7 +37,6 @@ public class JobCategorySoap implements Serializable {
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setUserId(model.getUserId());
 		soapModel.setJobcategory(model.getJobcategory());
-		soapModel.setJobId(model.getJobId());
 
 		return soapModel;
 	}
@@ -146,14 +145,6 @@ public class JobCategorySoap implements Serializable {
 		_jobcategory = jobcategory;
 	}
 
-	public long getJobId() {
-		return _jobId;
-	}
-
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-	}
-
 	private long _jobCategoryId;
 	private long _companyId;
 	private long _groupId;
@@ -161,5 +152,4 @@ public class JobCategorySoap implements Serializable {
 	private Date _modifiedDate;
 	private long _userId;
 	private String _jobcategory;
-	private long _jobId;
 }

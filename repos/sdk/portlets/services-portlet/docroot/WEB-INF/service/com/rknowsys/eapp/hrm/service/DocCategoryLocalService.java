@@ -59,20 +59,22 @@ public interface DocCategoryLocalService extends BaseLocalService,
 	/**
 	* Creates a new doc category with the primary key. Does not add the doc category to the database.
 	*
-	* @param id the primary key for the new doc category
+	* @param docCategoryId the primary key for the new doc category
 	* @return the new doc category
 	*/
-	public com.rknowsys.eapp.hrm.model.DocCategory createDocCategory(long id);
+	public com.rknowsys.eapp.hrm.model.DocCategory createDocCategory(
+		long docCategoryId);
 
 	/**
 	* Deletes the doc category with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the doc category
+	* @param docCategoryId the primary key of the doc category
 	* @return the doc category that was removed
 	* @throws PortalException if a doc category with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.rknowsys.eapp.hrm.model.DocCategory deleteDocCategory(long id)
+	public com.rknowsys.eapp.hrm.model.DocCategory deleteDocCategory(
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
@@ -165,19 +167,21 @@ public interface DocCategoryLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public com.rknowsys.eapp.hrm.model.DocCategory fetchDocCategory(long id)
+	public com.rknowsys.eapp.hrm.model.DocCategory fetchDocCategory(
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns the doc category with the primary key.
 	*
-	* @param id the primary key of the doc category
+	* @param docCategoryId the primary key of the doc category
 	* @return the doc category
 	* @throws PortalException if a doc category with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public com.rknowsys.eapp.hrm.model.DocCategory getDocCategory(long id)
+	public com.rknowsys.eapp.hrm.model.DocCategory getDocCategory(
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 

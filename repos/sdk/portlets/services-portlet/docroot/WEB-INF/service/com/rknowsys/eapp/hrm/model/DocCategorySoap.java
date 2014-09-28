@@ -30,7 +30,7 @@ public class DocCategorySoap implements Serializable {
 	public static DocCategorySoap toSoapModel(DocCategory model) {
 		DocCategorySoap soapModel = new DocCategorySoap();
 
-		soapModel.setId(model.getId());
+		soapModel.setDocCategoryId(model.getDocCategoryId());
 		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCreateDate(model.getCreateDate());
@@ -82,19 +82,19 @@ public class DocCategorySoap implements Serializable {
 	}
 
 	public long getPrimaryKey() {
-		return _id;
+		return _docCategoryId;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setId(pk);
+		setDocCategoryId(pk);
 	}
 
-	public long getId() {
-		return _id;
+	public long getDocCategoryId() {
+		return _docCategoryId;
 	}
 
-	public void setId(long id) {
-		_id = id;
+	public void setDocCategoryId(long docCategoryId) {
+		_docCategoryId = docCategoryId;
 	}
 
 	public long getCompanyId() {
@@ -145,7 +145,7 @@ public class DocCategorySoap implements Serializable {
 		_docName = docName;
 	}
 
-	private long _id;
+	private long _docCategoryId;
 	private long _companyId;
 	private long _groupId;
 	private Date _createDate;

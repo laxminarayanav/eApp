@@ -55,25 +55,25 @@ public class NewsLocalServiceUtil {
 	/**
 	* Creates a new news with the primary key. Does not add the news to the database.
 	*
-	* @param id the primary key for the new news
+	* @param newsId the primary key for the new news
 	* @return the new news
 	*/
-	public static com.rknowsys.eapp.hrm.model.News createNews(long id) {
-		return getService().createNews(id);
+	public static com.rknowsys.eapp.hrm.model.News createNews(long newsId) {
+		return getService().createNews(newsId);
 	}
 
 	/**
 	* Deletes the news with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the news
+	* @param newsId the primary key of the news
 	* @return the news that was removed
 	* @throws PortalException if a news with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static com.rknowsys.eapp.hrm.model.News deleteNews(long id)
+	public static com.rknowsys.eapp.hrm.model.News deleteNews(long newsId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().deleteNews(id);
+		return getService().deleteNews(newsId);
 	}
 
 	/**
@@ -179,23 +179,23 @@ public class NewsLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static com.rknowsys.eapp.hrm.model.News fetchNews(long id)
+	public static com.rknowsys.eapp.hrm.model.News fetchNews(long newsId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getService().fetchNews(id);
+		return getService().fetchNews(newsId);
 	}
 
 	/**
 	* Returns the news with the primary key.
 	*
-	* @param id the primary key of the news
+	* @param newsId the primary key of the news
 	* @return the news
 	* @throws PortalException if a news with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static com.rknowsys.eapp.hrm.model.News getNews(long id)
+	public static com.rknowsys.eapp.hrm.model.News getNews(long newsId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().getNews(id);
+		return getService().getNews(newsId);
 	}
 
 	public static com.liferay.portal.model.PersistedModel getPersistedModel(

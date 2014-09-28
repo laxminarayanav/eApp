@@ -52,6 +52,7 @@ import com.rknowsys.eapp.hrm.service.persistence.LocationPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.MembershipPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.NationalityPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.NewsPersistence;
+import com.rknowsys.eapp.hrm.service.persistence.OrganizationPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.PayGradeCurrencyPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.PayGradePersistence;
 import com.rknowsys.eapp.hrm.service.persistence.SalaryComponentPersistence;
@@ -105,26 +106,26 @@ public abstract class NewsLocalServiceBaseImpl extends BaseLocalServiceImpl
 	/**
 	 * Creates a new news with the primary key. Does not add the news to the database.
 	 *
-	 * @param id the primary key for the new news
+	 * @param newsId the primary key for the new news
 	 * @return the new news
 	 */
 	@Override
-	public News createNews(long id) {
-		return newsPersistence.create(id);
+	public News createNews(long newsId) {
+		return newsPersistence.create(newsId);
 	}
 
 	/**
 	 * Deletes the news with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param id the primary key of the news
+	 * @param newsId the primary key of the news
 	 * @return the news that was removed
 	 * @throws PortalException if a news with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public News deleteNews(long id) throws PortalException, SystemException {
-		return newsPersistence.remove(id);
+	public News deleteNews(long newsId) throws PortalException, SystemException {
+		return newsPersistence.remove(newsId);
 	}
 
 	/**
@@ -232,21 +233,21 @@ public abstract class NewsLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	@Override
-	public News fetchNews(long id) throws SystemException {
-		return newsPersistence.fetchByPrimaryKey(id);
+	public News fetchNews(long newsId) throws SystemException {
+		return newsPersistence.fetchByPrimaryKey(newsId);
 	}
 
 	/**
 	 * Returns the news with the primary key.
 	 *
-	 * @param id the primary key of the news
+	 * @param newsId the primary key of the news
 	 * @return the news
 	 * @throws PortalException if a news with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public News getNews(long id) throws PortalException, SystemException {
-		return newsPersistence.findByPrimaryKey(id);
+	public News getNews(long newsId) throws PortalException, SystemException {
+		return newsPersistence.findByPrimaryKey(newsId);
 	}
 
 	@Override
@@ -937,18 +938,18 @@ public abstract class NewsLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	/**
-	 * Returns the nationality local service.
+	 * Returns the Nationality local service.
 	 *
-	 * @return the nationality local service
+	 * @return the Nationality local service
 	 */
 	public com.rknowsys.eapp.hrm.service.NationalityLocalService getNationalityLocalService() {
 		return nationalityLocalService;
 	}
 
 	/**
-	 * Sets the nationality local service.
+	 * Sets the Nationality local service.
 	 *
-	 * @param nationalityLocalService the nationality local service
+	 * @param nationalityLocalService the Nationality local service
 	 */
 	public void setNationalityLocalService(
 		com.rknowsys.eapp.hrm.service.NationalityLocalService nationalityLocalService) {
@@ -956,18 +957,18 @@ public abstract class NewsLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	/**
-	 * Returns the nationality persistence.
+	 * Returns the Nationality persistence.
 	 *
-	 * @return the nationality persistence
+	 * @return the Nationality persistence
 	 */
 	public NationalityPersistence getNationalityPersistence() {
 		return nationalityPersistence;
 	}
 
 	/**
-	 * Sets the nationality persistence.
+	 * Sets the Nationality persistence.
 	 *
-	 * @param nationalityPersistence the nationality persistence
+	 * @param nationalityPersistence the Nationality persistence
 	 */
 	public void setNationalityPersistence(
 		NationalityPersistence nationalityPersistence) {
@@ -1009,6 +1010,44 @@ public abstract class NewsLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 */
 	public void setNewsPersistence(NewsPersistence newsPersistence) {
 		this.newsPersistence = newsPersistence;
+	}
+
+	/**
+	 * Returns the organization local service.
+	 *
+	 * @return the organization local service
+	 */
+	public com.rknowsys.eapp.hrm.service.OrganizationLocalService getOrganizationLocalService() {
+		return organizationLocalService;
+	}
+
+	/**
+	 * Sets the organization local service.
+	 *
+	 * @param organizationLocalService the organization local service
+	 */
+	public void setOrganizationLocalService(
+		com.rknowsys.eapp.hrm.service.OrganizationLocalService organizationLocalService) {
+		this.organizationLocalService = organizationLocalService;
+	}
+
+	/**
+	 * Returns the organization persistence.
+	 *
+	 * @return the organization persistence
+	 */
+	public OrganizationPersistence getOrganizationPersistence() {
+		return organizationPersistence;
+	}
+
+	/**
+	 * Sets the organization persistence.
+	 *
+	 * @param organizationPersistence the organization persistence
+	 */
+	public void setOrganizationPersistence(
+		OrganizationPersistence organizationPersistence) {
+		this.organizationPersistence = organizationPersistence;
 	}
 
 	/**
@@ -1564,6 +1603,10 @@ public abstract class NewsLocalServiceBaseImpl extends BaseLocalServiceImpl
 	protected com.rknowsys.eapp.hrm.service.NewsLocalService newsLocalService;
 	@BeanReference(type = NewsPersistence.class)
 	protected NewsPersistence newsPersistence;
+	@BeanReference(type = com.rknowsys.eapp.hrm.service.OrganizationLocalService.class)
+	protected com.rknowsys.eapp.hrm.service.OrganizationLocalService organizationLocalService;
+	@BeanReference(type = OrganizationPersistence.class)
+	protected OrganizationPersistence organizationPersistence;
 	@BeanReference(type = com.rknowsys.eapp.hrm.service.PayGradeLocalService.class)
 	protected com.rknowsys.eapp.hrm.service.PayGradeLocalService payGradeLocalService;
 	@BeanReference(type = PayGradePersistence.class)

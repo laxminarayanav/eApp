@@ -843,7 +843,6 @@ public class LocationPersistenceImpl extends BasePersistenceImpl<Location>
 		locationImpl.setPhone(location.getPhone());
 		locationImpl.setFax(location.getFax());
 		locationImpl.setNotes(location.getNotes());
-		locationImpl.setJobId(location.getJobId());
 
 		return locationImpl;
 	}

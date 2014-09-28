@@ -160,20 +160,6 @@ public interface JobTitleModel extends BaseModel<JobTitle> {
 	public void setUserUuid(String userUuid);
 
 	/**
-	 * Returns the employee ID of this job title.
-	 *
-	 * @return the employee ID of this job title
-	 */
-	public long getEmployeeId();
-
-	/**
-	 * Sets the employee ID of this job title.
-	 *
-	 * @param employeeId the employee ID of this job title
-	 */
-	public void setEmployeeId(long employeeId);
-
-	/**
 	 * Returns the title of this job title.
 	 *
 	 * @return the title of this job title
@@ -232,20 +218,6 @@ public interface JobTitleModel extends BaseModel<JobTitle> {
 	 * @param specification the specification of this job title
 	 */
 	public void setSpecification(String specification);
-
-	/**
-	 * Returns the job ID of this job title.
-	 *
-	 * @return the job ID of this job title
-	 */
-	public long getJobId();
-
-	/**
-	 * Sets the job ID of this job title.
-	 *
-	 * @param jobId the job ID of this job title
-	 */
-	public void setJobId(long jobId);
 
 	@Override
 	public boolean isNew();

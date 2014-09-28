@@ -110,21 +110,21 @@ public class AttachmentLocalServiceClpInvoker {
 
 		_methodParameterTypes16 = new String[] { "java.io.Serializable" };
 
-		_methodName137 = "getBeanIdentifier";
+		_methodName141 = "getBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] {  };
+		_methodParameterTypes141 = new String[] {  };
 
-		_methodName138 = "setBeanIdentifier";
+		_methodName142 = "setBeanIdentifier";
 
-		_methodParameterTypes138 = new String[] { "java.lang.String" };
+		_methodParameterTypes142 = new String[] { "java.lang.String" };
 
-		_methodName143 = "getEmployeeAttachments";
+		_methodName147 = "getEmployeeAttachments";
 
-		_methodParameterTypes143 = new String[] { "long" };
+		_methodParameterTypes147 = new String[] { "long" };
 
-		_methodName144 = "getEmployeeAttachments";
+		_methodName148 = "getEmployeeAttachments";
 
-		_methodParameterTypes144 = new String[] { "long", "int" };
+		_methodParameterTypes148 = new String[] { "long", "int" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -221,25 +221,25 @@ public class AttachmentLocalServiceClpInvoker {
 			return AttachmentLocalServiceUtil.getFileBlobModel((java.io.Serializable)arguments[0]);
 		}
 
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName141.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes141, parameterTypes)) {
 			return AttachmentLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName138.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes138, parameterTypes)) {
+		if (_methodName142.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes142, parameterTypes)) {
 			AttachmentLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName143.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes143, parameterTypes)) {
+		if (_methodName147.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes147, parameterTypes)) {
 			return AttachmentLocalServiceUtil.getEmployeeAttachments(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName144.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes144, parameterTypes)) {
+		if (_methodName148.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes148, parameterTypes)) {
 			return AttachmentLocalServiceUtil.getEmployeeAttachments(((Long)arguments[0]).longValue(),
 				((Integer)arguments[1]).intValue());
 		}
@@ -281,12 +281,12 @@ public class AttachmentLocalServiceClpInvoker {
 	private String[] _methodParameterTypes15;
 	private String _methodName16;
 	private String[] _methodParameterTypes16;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
-	private String _methodName138;
-	private String[] _methodParameterTypes138;
-	private String _methodName143;
-	private String[] _methodParameterTypes143;
-	private String _methodName144;
-	private String[] _methodParameterTypes144;
+	private String _methodName141;
+	private String[] _methodParameterTypes141;
+	private String _methodName142;
+	private String[] _methodParameterTypes142;
+	private String _methodName147;
+	private String[] _methodParameterTypes147;
+	private String _methodName148;
+	private String[] _methodParameterTypes148;
 }

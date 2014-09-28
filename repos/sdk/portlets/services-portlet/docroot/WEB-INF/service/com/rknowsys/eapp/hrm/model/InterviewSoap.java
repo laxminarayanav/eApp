@@ -30,7 +30,7 @@ public class InterviewSoap implements Serializable {
 	public static InterviewSoap toSoapModel(Interview model) {
 		InterviewSoap soapModel = new InterviewSoap();
 
-		soapModel.setId(model.getId());
+		soapModel.setInterviewId(model.getInterviewId());
 		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCreateDate(model.getCreateDate());
@@ -82,19 +82,19 @@ public class InterviewSoap implements Serializable {
 	}
 
 	public long getPrimaryKey() {
-		return _id;
+		return _interviewId;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setId(pk);
+		setInterviewId(pk);
 	}
 
-	public long getId() {
-		return _id;
+	public long getInterviewId() {
+		return _interviewId;
 	}
 
-	public void setId(long id) {
-		_id = id;
+	public void setInterviewId(long interviewId) {
+		_interviewId = interviewId;
 	}
 
 	public long getCompanyId() {
@@ -145,7 +145,7 @@ public class InterviewSoap implements Serializable {
 		_name = name;
 	}
 
-	private long _id;
+	private long _interviewId;
 	private long _companyId;
 	private long _groupId;
 	private Date _createDate;

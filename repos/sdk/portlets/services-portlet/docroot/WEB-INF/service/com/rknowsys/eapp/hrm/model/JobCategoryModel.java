@@ -174,20 +174,6 @@ public interface JobCategoryModel extends BaseModel<JobCategory> {
 	 */
 	public void setJobcategory(String jobcategory);
 
-	/**
-	 * Returns the job ID of this job category.
-	 *
-	 * @return the job ID of this job category
-	 */
-	public long getJobId();
-
-	/**
-	 * Sets the job ID of this job category.
-	 *
-	 * @param jobId the job ID of this job category
-	 */
-	public void setJobId(long jobId);
-
 	@Override
 	public boolean isNew();
 

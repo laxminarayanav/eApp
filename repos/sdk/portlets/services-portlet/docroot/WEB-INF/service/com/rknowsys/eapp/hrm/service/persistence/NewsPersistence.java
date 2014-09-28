@@ -139,7 +139,7 @@ public interface NewsPersistence extends BasePersistence<News> {
 	/**
 	* Returns the newses before and after the current news in the ordered set where groupId = &#63;.
 	*
-	* @param id the primary key of the current news
+	* @param newsId the primary key of the current news
 	* @param groupId the group ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next news
@@ -147,7 +147,7 @@ public interface NewsPersistence extends BasePersistence<News> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public com.rknowsys.eapp.hrm.model.News[] findByGroupId_PrevAndNext(
-		long id, long groupId,
+		long newsId, long groupId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchNewsException;
@@ -189,20 +189,20 @@ public interface NewsPersistence extends BasePersistence<News> {
 	/**
 	* Creates a new news with the primary key. Does not add the news to the database.
 	*
-	* @param id the primary key for the new news
+	* @param newsId the primary key for the new news
 	* @return the new news
 	*/
-	public com.rknowsys.eapp.hrm.model.News create(long id);
+	public com.rknowsys.eapp.hrm.model.News create(long newsId);
 
 	/**
 	* Removes the news with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the news
+	* @param newsId the primary key of the news
 	* @return the news that was removed
 	* @throws com.rknowsys.eapp.hrm.NoSuchNewsException if a news with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.rknowsys.eapp.hrm.model.News remove(long id)
+	public com.rknowsys.eapp.hrm.model.News remove(long newsId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchNewsException;
 
@@ -213,23 +213,23 @@ public interface NewsPersistence extends BasePersistence<News> {
 	/**
 	* Returns the news with the primary key or throws a {@link com.rknowsys.eapp.hrm.NoSuchNewsException} if it could not be found.
 	*
-	* @param id the primary key of the news
+	* @param newsId the primary key of the news
 	* @return the news
 	* @throws com.rknowsys.eapp.hrm.NoSuchNewsException if a news with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.rknowsys.eapp.hrm.model.News findByPrimaryKey(long id)
+	public com.rknowsys.eapp.hrm.model.News findByPrimaryKey(long newsId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchNewsException;
 
 	/**
 	* Returns the news with the primary key or returns <code>null</code> if it could not be found.
 	*
-	* @param id the primary key of the news
+	* @param newsId the primary key of the news
 	* @return the news, or <code>null</code> if a news with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.rknowsys.eapp.hrm.model.News fetchByPrimaryKey(long id)
+	public com.rknowsys.eapp.hrm.model.News fetchByPrimaryKey(long newsId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**

@@ -38,7 +38,6 @@ public class SubUnitSoap implements Serializable {
 		soapModel.setUserId(model.getUserId());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
-		soapModel.setJobId(model.getJobId());
 
 		return soapModel;
 	}
@@ -155,14 +154,6 @@ public class SubUnitSoap implements Serializable {
 		_modifiedDate = modifiedDate;
 	}
 
-	public long getJobId() {
-		return _jobId;
-	}
-
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-	}
-
 	private long _subUnitId;
 	private String _name;
 	private String _description;
@@ -171,5 +162,4 @@ public class SubUnitSoap implements Serializable {
 	private long _userId;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private long _jobId;
 }

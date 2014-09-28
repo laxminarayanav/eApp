@@ -75,16 +75,15 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 			{ "postalcode", Types.VARCHAR },
 			{ "phone", Types.VARCHAR },
 			{ "fax", Types.VARCHAR },
-			{ "notes", Types.VARCHAR },
-			{ "jobId", Types.BIGINT }
+			{ "notes", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table location (locationId LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,name VARCHAR(75) null,country VARCHAR(75) null,state_ VARCHAR(75) null,city VARCHAR(75) null,address VARCHAR(75) null,postalcode VARCHAR(75) null,phone VARCHAR(75) null,fax VARCHAR(75) null,notes VARCHAR(75) null,jobId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table location (locationId LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,name VARCHAR(75) null,country VARCHAR(75) null,state_ VARCHAR(75) null,city VARCHAR(75) null,address VARCHAR(75) null,postalcode VARCHAR(75) null,phone VARCHAR(75) null,fax VARCHAR(75) null,notes VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table location";
 	public static final String ORDER_BY_JPQL = " ORDER BY location.locationId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY location.locationId ASC";
-	public static final String DATA_SOURCE = "anotherDataSource";
-	public static final String SESSION_FACTORY = "anotherSessionFactory";
-	public static final String TX_MANAGER = "anotherTransactionManager";
+	public static final String DATA_SOURCE = "hrmDataSource";
+	public static final String SESSION_FACTORY = "hrmSessionFactory";
+	public static final String TX_MANAGER = "hrmTransactionManager";
 	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.entity.cache.enabled.com.rknowsys.eapp.hrm.model.Location"),
 			true);
@@ -151,7 +150,6 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 		attributes.put("phone", getPhone());
 		attributes.put("fax", getFax());
 		attributes.put("notes", getNotes());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -246,12 +244,6 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 
 		if (notes != null) {
 			setNotes(notes);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -472,16 +464,6 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 		_notes = notes;
 	}
 
-	@Override
-	public long getJobId() {
-		return _jobId;
-	}
-
-	@Override
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-	}
-
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -528,7 +510,6 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 		locationImpl.setPhone(getPhone());
 		locationImpl.setFax(getFax());
 		locationImpl.setNotes(getNotes());
-		locationImpl.setJobId(getJobId());
 
 		locationImpl.resetOriginalValues();
 
@@ -690,14 +671,12 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 			locationCacheModel.notes = null;
 		}
 
-		locationCacheModel.jobId = getJobId();
-
 		return locationCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(33);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("{locationId=");
 		sb.append(getLocationId());
@@ -729,8 +708,6 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 		sb.append(getFax());
 		sb.append(", notes=");
 		sb.append(getNotes());
-		sb.append(", jobId=");
-		sb.append(getJobId());
 		sb.append("}");
 
 		return sb.toString();
@@ -738,7 +715,7 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(52);
+		StringBundler sb = new StringBundler(49);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.Location");
@@ -804,10 +781,6 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 			"<column><column-name>notes</column-name><column-value><![CDATA[");
 		sb.append(getNotes());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>jobId</column-name><column-value><![CDATA[");
-		sb.append(getJobId());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -836,7 +809,6 @@ public class LocationModelImpl extends BaseModelImpl<Location>
 	private String _phone;
 	private String _fax;
 	private String _notes;
-	private long _jobId;
 	private long _columnBitmask;
 	private Location _escapedModel;
 }

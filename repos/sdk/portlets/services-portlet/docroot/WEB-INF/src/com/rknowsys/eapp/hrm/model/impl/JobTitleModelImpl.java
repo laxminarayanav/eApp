@@ -67,20 +67,18 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "userId", Types.BIGINT },
-			{ "employeeId", Types.BIGINT },
 			{ "title", Types.VARCHAR },
 			{ "description", Types.VARCHAR },
 			{ "notes", Types.VARCHAR },
-			{ "specification", Types.VARCHAR },
-			{ "jobId", Types.BIGINT }
+			{ "specification", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table job_title (jobTitleId LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,employeeId LONG,title VARCHAR(75) null,description VARCHAR(75) null,notes VARCHAR(75) null,specification VARCHAR(75) null,jobId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table job_title (jobTitleId LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,title VARCHAR(75) null,description VARCHAR(75) null,notes VARCHAR(75) null,specification VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table job_title";
 	public static final String ORDER_BY_JPQL = " ORDER BY jobTitle.jobTitleId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY job_title.jobTitleId ASC";
-	public static final String DATA_SOURCE = "anotherDataSource";
-	public static final String SESSION_FACTORY = "anotherSessionFactory";
-	public static final String TX_MANAGER = "anotherTransactionManager";
+	public static final String DATA_SOURCE = "hrmDataSource";
+	public static final String SESSION_FACTORY = "hrmSessionFactory";
+	public static final String TX_MANAGER = "hrmTransactionManager";
 	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.entity.cache.enabled.com.rknowsys.eapp.hrm.model.JobTitle"),
 			true);
@@ -90,9 +88,8 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.column.bitmask.enabled.com.rknowsys.eapp.hrm.model.JobTitle"),
 			true);
-	public static long EMPLOYEEID_COLUMN_BITMASK = 1L;
-	public static long GROUPID_COLUMN_BITMASK = 2L;
-	public static long JOBTITLEID_COLUMN_BITMASK = 4L;
+	public static long GROUPID_COLUMN_BITMASK = 1L;
+	public static long JOBTITLEID_COLUMN_BITMASK = 2L;
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
 				"lock.expiration.time.com.rknowsys.eapp.hrm.model.JobTitle"));
 
@@ -139,12 +136,10 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("userId", getUserId());
-		attributes.put("employeeId", getEmployeeId());
 		attributes.put("title", getTitle());
 		attributes.put("description", getDescription());
 		attributes.put("notes", getNotes());
 		attributes.put("specification", getSpecification());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -187,12 +182,6 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 			setUserId(userId);
 		}
 
-		Long employeeId = (Long)attributes.get("employeeId");
-
-		if (employeeId != null) {
-			setEmployeeId(employeeId);
-		}
-
 		String title = (String)attributes.get("title");
 
 		if (title != null) {
@@ -216,12 +205,6 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 		if (specification != null) {
 			setSpecification(specification);
 		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
-		}
 	}
 
 	@Override
@@ -231,19 +214,7 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 
 	@Override
 	public void setJobTitleId(long jobTitleId) {
-		_columnBitmask |= JOBTITLEID_COLUMN_BITMASK;
-
-		if (!_setOriginalJobTitleId) {
-			_setOriginalJobTitleId = true;
-
-			_originalJobTitleId = _jobTitleId;
-		}
-
 		_jobTitleId = jobTitleId;
-	}
-
-	public long getOriginalJobTitleId() {
-		return _originalJobTitleId;
 	}
 
 	@Override
@@ -319,28 +290,6 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 	}
 
 	@Override
-	public long getEmployeeId() {
-		return _employeeId;
-	}
-
-	@Override
-	public void setEmployeeId(long employeeId) {
-		_columnBitmask |= EMPLOYEEID_COLUMN_BITMASK;
-
-		if (!_setOriginalEmployeeId) {
-			_setOriginalEmployeeId = true;
-
-			_originalEmployeeId = _employeeId;
-		}
-
-		_employeeId = employeeId;
-	}
-
-	public long getOriginalEmployeeId() {
-		return _originalEmployeeId;
-	}
-
-	@Override
 	public String getTitle() {
 		if (_title == null) {
 			return StringPool.BLANK;
@@ -400,16 +349,6 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 		_specification = specification;
 	}
 
-	@Override
-	public long getJobId() {
-		return _jobId;
-	}
-
-	@Override
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-	}
-
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -447,12 +386,10 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 		jobTitleImpl.setCreateDate(getCreateDate());
 		jobTitleImpl.setModifiedDate(getModifiedDate());
 		jobTitleImpl.setUserId(getUserId());
-		jobTitleImpl.setEmployeeId(getEmployeeId());
 		jobTitleImpl.setTitle(getTitle());
 		jobTitleImpl.setDescription(getDescription());
 		jobTitleImpl.setNotes(getNotes());
 		jobTitleImpl.setSpecification(getSpecification());
-		jobTitleImpl.setJobId(getJobId());
 
 		jobTitleImpl.resetOriginalValues();
 
@@ -505,17 +442,9 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 	public void resetOriginalValues() {
 		JobTitleModelImpl jobTitleModelImpl = this;
 
-		jobTitleModelImpl._originalJobTitleId = jobTitleModelImpl._jobTitleId;
-
-		jobTitleModelImpl._setOriginalJobTitleId = false;
-
 		jobTitleModelImpl._originalGroupId = jobTitleModelImpl._groupId;
 
 		jobTitleModelImpl._setOriginalGroupId = false;
-
-		jobTitleModelImpl._originalEmployeeId = jobTitleModelImpl._employeeId;
-
-		jobTitleModelImpl._setOriginalEmployeeId = false;
 
 		jobTitleModelImpl._columnBitmask = 0;
 	}
@@ -550,8 +479,6 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 
 		jobTitleCacheModel.userId = getUserId();
 
-		jobTitleCacheModel.employeeId = getEmployeeId();
-
 		jobTitleCacheModel.title = getTitle();
 
 		String title = jobTitleCacheModel.title;
@@ -584,14 +511,12 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 			jobTitleCacheModel.specification = null;
 		}
 
-		jobTitleCacheModel.jobId = getJobId();
-
 		return jobTitleCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{jobTitleId=");
 		sb.append(getJobTitleId());
@@ -605,8 +530,6 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 		sb.append(getModifiedDate());
 		sb.append(", userId=");
 		sb.append(getUserId());
-		sb.append(", employeeId=");
-		sb.append(getEmployeeId());
 		sb.append(", title=");
 		sb.append(getTitle());
 		sb.append(", description=");
@@ -615,8 +538,6 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 		sb.append(getNotes());
 		sb.append(", specification=");
 		sb.append(getSpecification());
-		sb.append(", jobId=");
-		sb.append(getJobId());
 		sb.append("}");
 
 		return sb.toString();
@@ -624,7 +545,7 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(40);
+		StringBundler sb = new StringBundler(34);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.JobTitle");
@@ -655,10 +576,6 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 		sb.append(getUserId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>employeeId</column-name><column-value><![CDATA[");
-		sb.append(getEmployeeId());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>title</column-name><column-value><![CDATA[");
 		sb.append(getTitle());
 		sb.append("]]></column-value></column>");
@@ -674,10 +591,6 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 			"<column><column-name>specification</column-name><column-value><![CDATA[");
 		sb.append(getSpecification());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>jobId</column-name><column-value><![CDATA[");
-		sb.append(getJobId());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -689,8 +602,6 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 			JobTitle.class
 		};
 	private long _jobTitleId;
-	private long _originalJobTitleId;
-	private boolean _setOriginalJobTitleId;
 	private long _companyId;
 	private long _groupId;
 	private long _originalGroupId;
@@ -699,14 +610,10 @@ public class JobTitleModelImpl extends BaseModelImpl<JobTitle>
 	private Date _modifiedDate;
 	private long _userId;
 	private String _userUuid;
-	private long _employeeId;
-	private long _originalEmployeeId;
-	private boolean _setOriginalEmployeeId;
 	private String _title;
 	private String _description;
 	private String _notes;
 	private String _specification;
-	private long _jobId;
 	private long _columnBitmask;
 	private JobTitle _escapedModel;
 }

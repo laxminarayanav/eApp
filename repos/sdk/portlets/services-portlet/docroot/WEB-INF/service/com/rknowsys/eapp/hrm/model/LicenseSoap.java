@@ -39,6 +39,7 @@ public class LicenseSoap implements Serializable {
 		soapModel.setUserId(model.getUserId());
 		soapModel.setLicenseName(model.getLicenseName());
 		soapModel.setExpiryDate(model.getExpiryDate());
+		soapModel.setLicenseNumber(model.getLicenseNumber());
 
 		return soapModel;
 	}
@@ -163,6 +164,14 @@ public class LicenseSoap implements Serializable {
 		_expiryDate = expiryDate;
 	}
 
+	public String getLicenseNumber() {
+		return _licenseNumber;
+	}
+
+	public void setLicenseNumber(String licenseNumber) {
+		_licenseNumber = licenseNumber;
+	}
+
 	private long _licenseId;
 	private long _employeeId;
 	private long _companyId;
@@ -172,4 +181,5 @@ public class LicenseSoap implements Serializable {
 	private long _userId;
 	private String _licenseName;
 	private Date _expiryDate;
+	private String _licenseNumber;
 }

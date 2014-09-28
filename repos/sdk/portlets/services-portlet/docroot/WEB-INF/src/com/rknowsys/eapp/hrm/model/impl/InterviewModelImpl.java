@@ -61,7 +61,7 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 	 */
 	public static final String TABLE_NAME = "interview";
 	public static final Object[][] TABLE_COLUMNS = {
-			{ "id_", Types.BIGINT },
+			{ "interviewId", Types.BIGINT },
 			{ "companyId", Types.BIGINT },
 			{ "groupId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
@@ -69,13 +69,13 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 			{ "userId", Types.BIGINT },
 			{ "name", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table interview (id_ LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,name VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table interview (interviewId LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,name VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table interview";
-	public static final String ORDER_BY_JPQL = " ORDER BY interview.id ASC";
-	public static final String ORDER_BY_SQL = " ORDER BY interview.id_ ASC";
-	public static final String DATA_SOURCE = "anotherDataSource";
-	public static final String SESSION_FACTORY = "anotherSessionFactory";
-	public static final String TX_MANAGER = "anotherTransactionManager";
+	public static final String ORDER_BY_JPQL = " ORDER BY interview.interviewId ASC";
+	public static final String ORDER_BY_SQL = " ORDER BY interview.interviewId ASC";
+	public static final String DATA_SOURCE = "hrmDataSource";
+	public static final String SESSION_FACTORY = "hrmSessionFactory";
+	public static final String TX_MANAGER = "hrmTransactionManager";
 	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.entity.cache.enabled.com.rknowsys.eapp.hrm.model.Interview"),
 			true);
@@ -86,7 +86,7 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 				"value.object.column.bitmask.enabled.com.rknowsys.eapp.hrm.model.Interview"),
 			true);
 	public static long GROUPID_COLUMN_BITMASK = 1L;
-	public static long ID_COLUMN_BITMASK = 2L;
+	public static long INTERVIEWID_COLUMN_BITMASK = 2L;
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
 				"lock.expiration.time.com.rknowsys.eapp.hrm.model.Interview"));
 
@@ -95,17 +95,17 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 
 	@Override
 	public long getPrimaryKey() {
-		return _id;
+		return _interviewId;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setId(primaryKey);
+		setInterviewId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _id;
+		return _interviewId;
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
+		attributes.put("interviewId", getInterviewId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
@@ -140,10 +140,10 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
+		Long interviewId = (Long)attributes.get("interviewId");
 
-		if (id != null) {
-			setId(id);
+		if (interviewId != null) {
+			setInterviewId(interviewId);
 		}
 
 		Long companyId = (Long)attributes.get("companyId");
@@ -184,13 +184,13 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 	}
 
 	@Override
-	public long getId() {
-		return _id;
+	public long getInterviewId() {
+		return _interviewId;
 	}
 
 	@Override
-	public void setId(long id) {
-		_id = id;
+	public void setInterviewId(long interviewId) {
+		_interviewId = interviewId;
 	}
 
 	@Override
@@ -311,7 +311,7 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 	public Object clone() {
 		InterviewImpl interviewImpl = new InterviewImpl();
 
-		interviewImpl.setId(getId());
+		interviewImpl.setInterviewId(getInterviewId());
 		interviewImpl.setCompanyId(getCompanyId());
 		interviewImpl.setGroupId(getGroupId());
 		interviewImpl.setCreateDate(getCreateDate());
@@ -381,7 +381,7 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 	public CacheModel<Interview> toCacheModel() {
 		InterviewCacheModel interviewCacheModel = new InterviewCacheModel();
 
-		interviewCacheModel.id = getId();
+		interviewCacheModel.interviewId = getInterviewId();
 
 		interviewCacheModel.companyId = getCompanyId();
 
@@ -422,8 +422,8 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 	public String toString() {
 		StringBundler sb = new StringBundler(15);
 
-		sb.append("{id=");
-		sb.append(getId());
+		sb.append("{interviewId=");
+		sb.append(getInterviewId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
 		sb.append(", groupId=");
@@ -450,8 +450,8 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 		sb.append("</model-name>");
 
 		sb.append(
-			"<column><column-name>id</column-name><column-value><![CDATA[");
-		sb.append(getId());
+			"<column><column-name>interviewId</column-name><column-value><![CDATA[");
+		sb.append(getInterviewId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>companyId</column-name><column-value><![CDATA[");
@@ -487,7 +487,7 @@ public class InterviewModelImpl extends BaseModelImpl<Interview>
 	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			Interview.class
 		};
-	private long _id;
+	private long _interviewId;
 	private long _companyId;
 	private long _groupId;
 	private long _originalGroupId;

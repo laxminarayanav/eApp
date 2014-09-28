@@ -21,7 +21,6 @@ import com.liferay.portal.kernel.dao.jdbc.SqlUpdateFactoryUtil;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
 import com.liferay.portal.kernel.dao.orm.Projection;
-import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.search.Indexable;
@@ -33,7 +32,6 @@ import com.liferay.portal.service.PersistedModelLocalServiceRegistryUtil;
 import com.liferay.portal.service.persistence.UserPersistence;
 
 import com.rknowsys.eapp.hrm.model.Employee;
-import com.rknowsys.eapp.hrm.model.EmployeePhotographBlobModel;
 import com.rknowsys.eapp.hrm.service.EmployeeLocalService;
 import com.rknowsys.eapp.hrm.service.persistence.AttachmentPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.ContactDetailsPersistence;
@@ -54,6 +52,7 @@ import com.rknowsys.eapp.hrm.service.persistence.LocationPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.MembershipPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.NationalityPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.NewsPersistence;
+import com.rknowsys.eapp.hrm.service.persistence.OrganizationPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.PayGradeCurrencyPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.PayGradePersistence;
 import com.rknowsys.eapp.hrm.service.persistence.SalaryComponentPersistence;
@@ -300,25 +299,6 @@ public abstract class EmployeeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	@Override
 	public Employee updateEmployee(Employee employee) throws SystemException {
 		return employeePersistence.update(employee);
-	}
-
-	@Override
-	public EmployeePhotographBlobModel getPhotographBlobModel(
-		Serializable primaryKey) throws SystemException {
-		Session session = null;
-
-		try {
-			session = employeePersistence.openSession();
-
-			return (com.rknowsys.eapp.hrm.model.EmployeePhotographBlobModel)session.get(EmployeePhotographBlobModel.class,
-				primaryKey);
-		}
-		catch (Exception e) {
-			throw employeePersistence.processException(e);
-		}
-		finally {
-			employeePersistence.closeSession(session);
-		}
 	}
 
 	/**
@@ -962,18 +942,18 @@ public abstract class EmployeeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	/**
-	 * Returns the nationality local service.
+	 * Returns the Nationality local service.
 	 *
-	 * @return the nationality local service
+	 * @return the Nationality local service
 	 */
 	public com.rknowsys.eapp.hrm.service.NationalityLocalService getNationalityLocalService() {
 		return nationalityLocalService;
 	}
 
 	/**
-	 * Sets the nationality local service.
+	 * Sets the Nationality local service.
 	 *
-	 * @param nationalityLocalService the nationality local service
+	 * @param nationalityLocalService the Nationality local service
 	 */
 	public void setNationalityLocalService(
 		com.rknowsys.eapp.hrm.service.NationalityLocalService nationalityLocalService) {
@@ -981,18 +961,18 @@ public abstract class EmployeeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	/**
-	 * Returns the nationality persistence.
+	 * Returns the Nationality persistence.
 	 *
-	 * @return the nationality persistence
+	 * @return the Nationality persistence
 	 */
 	public NationalityPersistence getNationalityPersistence() {
 		return nationalityPersistence;
 	}
 
 	/**
-	 * Sets the nationality persistence.
+	 * Sets the Nationality persistence.
 	 *
-	 * @param nationalityPersistence the nationality persistence
+	 * @param nationalityPersistence the Nationality persistence
 	 */
 	public void setNationalityPersistence(
 		NationalityPersistence nationalityPersistence) {
@@ -1034,6 +1014,44 @@ public abstract class EmployeeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 */
 	public void setNewsPersistence(NewsPersistence newsPersistence) {
 		this.newsPersistence = newsPersistence;
+	}
+
+	/**
+	 * Returns the organization local service.
+	 *
+	 * @return the organization local service
+	 */
+	public com.rknowsys.eapp.hrm.service.OrganizationLocalService getOrganizationLocalService() {
+		return organizationLocalService;
+	}
+
+	/**
+	 * Sets the organization local service.
+	 *
+	 * @param organizationLocalService the organization local service
+	 */
+	public void setOrganizationLocalService(
+		com.rknowsys.eapp.hrm.service.OrganizationLocalService organizationLocalService) {
+		this.organizationLocalService = organizationLocalService;
+	}
+
+	/**
+	 * Returns the organization persistence.
+	 *
+	 * @return the organization persistence
+	 */
+	public OrganizationPersistence getOrganizationPersistence() {
+		return organizationPersistence;
+	}
+
+	/**
+	 * Sets the organization persistence.
+	 *
+	 * @param organizationPersistence the organization persistence
+	 */
+	public void setOrganizationPersistence(
+		OrganizationPersistence organizationPersistence) {
+		this.organizationPersistence = organizationPersistence;
 	}
 
 	/**
@@ -1589,6 +1607,10 @@ public abstract class EmployeeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	protected com.rknowsys.eapp.hrm.service.NewsLocalService newsLocalService;
 	@BeanReference(type = NewsPersistence.class)
 	protected NewsPersistence newsPersistence;
+	@BeanReference(type = com.rknowsys.eapp.hrm.service.OrganizationLocalService.class)
+	protected com.rknowsys.eapp.hrm.service.OrganizationLocalService organizationLocalService;
+	@BeanReference(type = OrganizationPersistence.class)
+	protected OrganizationPersistence organizationPersistence;
 	@BeanReference(type = com.rknowsys.eapp.hrm.service.PayGradeLocalService.class)
 	protected com.rknowsys.eapp.hrm.service.PayGradeLocalService payGradeLocalService;
 	@BeanReference(type = PayGradePersistence.class)

@@ -69,15 +69,16 @@ public class LicenseModelImpl extends BaseModelImpl<License>
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "userId", Types.BIGINT },
 			{ "licenseName", Types.VARCHAR },
-			{ "expiryDate", Types.TIMESTAMP }
+			{ "expiryDate", Types.TIMESTAMP },
+			{ "licenseNumber", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table license (licenseId LONG not null primary key,employeeId LONG,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,licenseName VARCHAR(75) null,expiryDate DATE null)";
+	public static final String TABLE_SQL_CREATE = "create table license (licenseId LONG not null primary key,employeeId LONG,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,licenseName VARCHAR(75) null,expiryDate DATE null,licenseNumber VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table license";
 	public static final String ORDER_BY_JPQL = " ORDER BY license.licenseId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY license.licenseId ASC";
-	public static final String DATA_SOURCE = "anotherDataSource";
-	public static final String SESSION_FACTORY = "anotherSessionFactory";
-	public static final String TX_MANAGER = "anotherTransactionManager";
+	public static final String DATA_SOURCE = "hrmDataSource";
+	public static final String SESSION_FACTORY = "hrmSessionFactory";
+	public static final String TX_MANAGER = "hrmTransactionManager";
 	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.entity.cache.enabled.com.rknowsys.eapp.hrm.model.License"),
 			true);
@@ -139,6 +140,7 @@ public class LicenseModelImpl extends BaseModelImpl<License>
 		attributes.put("userId", getUserId());
 		attributes.put("licenseName", getLicenseName());
 		attributes.put("expiryDate", getExpiryDate());
+		attributes.put("licenseNumber", getLicenseNumber());
 
 		return attributes;
 	}
@@ -197,6 +199,12 @@ public class LicenseModelImpl extends BaseModelImpl<License>
 
 		if (expiryDate != null) {
 			setExpiryDate(expiryDate);
+		}
+
+		String licenseNumber = (String)attributes.get("licenseNumber");
+
+		if (licenseNumber != null) {
+			setLicenseNumber(licenseNumber);
 		}
 	}
 
@@ -341,6 +349,21 @@ public class LicenseModelImpl extends BaseModelImpl<License>
 		_expiryDate = expiryDate;
 	}
 
+	@Override
+	public String getLicenseNumber() {
+		if (_licenseNumber == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _licenseNumber;
+		}
+	}
+
+	@Override
+	public void setLicenseNumber(String licenseNumber) {
+		_licenseNumber = licenseNumber;
+	}
+
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -381,6 +404,7 @@ public class LicenseModelImpl extends BaseModelImpl<License>
 		licenseImpl.setUserId(getUserId());
 		licenseImpl.setLicenseName(getLicenseName());
 		licenseImpl.setExpiryDate(getExpiryDate());
+		licenseImpl.setLicenseNumber(getLicenseNumber());
 
 		licenseImpl.resetOriginalValues();
 
@@ -497,12 +521,20 @@ public class LicenseModelImpl extends BaseModelImpl<License>
 			licenseCacheModel.expiryDate = Long.MIN_VALUE;
 		}
 
+		licenseCacheModel.licenseNumber = getLicenseNumber();
+
+		String licenseNumber = licenseCacheModel.licenseNumber;
+
+		if ((licenseNumber != null) && (licenseNumber.length() == 0)) {
+			licenseCacheModel.licenseNumber = null;
+		}
+
 		return licenseCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{licenseId=");
 		sb.append(getLicenseId());
@@ -522,6 +554,8 @@ public class LicenseModelImpl extends BaseModelImpl<License>
 		sb.append(getLicenseName());
 		sb.append(", expiryDate=");
 		sb.append(getExpiryDate());
+		sb.append(", licenseNumber=");
+		sb.append(getLicenseNumber());
 		sb.append("}");
 
 		return sb.toString();
@@ -529,7 +563,7 @@ public class LicenseModelImpl extends BaseModelImpl<License>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(34);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.License");
@@ -571,6 +605,10 @@ public class LicenseModelImpl extends BaseModelImpl<License>
 			"<column><column-name>expiryDate</column-name><column-value><![CDATA[");
 		sb.append(getExpiryDate());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>licenseNumber</column-name><column-value><![CDATA[");
+		sb.append(getLicenseNumber());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -597,6 +635,7 @@ public class LicenseModelImpl extends BaseModelImpl<License>
 	private String _userUuid;
 	private String _licenseName;
 	private Date _expiryDate;
+	private String _licenseNumber;
 	private long _columnBitmask;
 	private License _escapedModel;
 }

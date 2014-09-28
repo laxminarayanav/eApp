@@ -29,8 +29,6 @@ import java.io.Serializable;
 
 import java.lang.reflect.Method;
 
-import java.sql.Blob;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -89,10 +87,9 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 		attributes.put("firstName", getFirstName());
 		attributes.put("lastName", getLastName());
 		attributes.put("middleName", getMiddleName());
-		attributes.put("photograph", getPhotograph());
 		attributes.put("gender", getGender());
 		attributes.put("maritalStatus", getMaritalStatus());
-		attributes.put("nationality", getNationality());
+		attributes.put("nationalityId", getNationalityId());
 		attributes.put("dateOfBirth", getDateOfBirth());
 		attributes.put("otherId", getOtherId());
 
@@ -179,12 +176,6 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 			setMiddleName(middleName);
 		}
 
-		Blob photograph = (Blob)attributes.get("photograph");
-
-		if (photograph != null) {
-			setPhotograph(photograph);
-		}
-
 		Integer gender = (Integer)attributes.get("gender");
 
 		if (gender != null) {
@@ -197,10 +188,10 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 			setMaritalStatus(maritalStatus);
 		}
 
-		String nationality = (String)attributes.get("nationality");
+		Long nationalityId = (Long)attributes.get("nationalityId");
 
-		if (nationality != null) {
-			setNationality(nationality);
+		if (nationalityId != null) {
+			setNationalityId(nationalityId);
 		}
 
 		Date dateOfBirth = (Date)attributes.get("dateOfBirth");
@@ -527,29 +518,6 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 	}
 
 	@Override
-	public Blob getPhotograph() {
-		return _photograph;
-	}
-
-	@Override
-	public void setPhotograph(Blob photograph) {
-		_photograph = photograph;
-
-		if (_employeeRemoteModel != null) {
-			try {
-				Class<?> clazz = _employeeRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setPhotograph", Blob.class);
-
-				method.invoke(_employeeRemoteModel, photograph);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
 	public int getGender() {
 		return _gender;
 	}
@@ -596,21 +564,21 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 	}
 
 	@Override
-	public String getNationality() {
-		return _nationality;
+	public long getNationalityId() {
+		return _nationalityId;
 	}
 
 	@Override
-	public void setNationality(String nationality) {
-		_nationality = nationality;
+	public void setNationalityId(long nationalityId) {
+		_nationalityId = nationalityId;
 
 		if (_employeeRemoteModel != null) {
 			try {
 				Class<?> clazz = _employeeRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setNationality", String.class);
+				Method method = clazz.getMethod("setNationalityId", long.class);
 
-				method.invoke(_employeeRemoteModel, nationality);
+				method.invoke(_employeeRemoteModel, nationalityId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -977,10 +945,9 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 		clone.setFirstName(getFirstName());
 		clone.setLastName(getLastName());
 		clone.setMiddleName(getMiddleName());
-		clone.setPhotograph(getPhotograph());
 		clone.setGender(getGender());
 		clone.setMaritalStatus(getMaritalStatus());
-		clone.setNationality(getNationality());
+		clone.setNationalityId(getNationalityId());
 		clone.setDateOfBirth(getDateOfBirth());
 		clone.setOtherId(getOtherId());
 
@@ -1031,7 +998,7 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(39);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{employeeId=");
 		sb.append(getEmployeeId());
@@ -1059,14 +1026,12 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 		sb.append(getLastName());
 		sb.append(", middleName=");
 		sb.append(getMiddleName());
-		sb.append(", photograph=");
-		sb.append(getPhotograph());
 		sb.append(", gender=");
 		sb.append(getGender());
 		sb.append(", maritalStatus=");
 		sb.append(getMaritalStatus());
-		sb.append(", nationality=");
-		sb.append(getNationality());
+		sb.append(", nationalityId=");
+		sb.append(getNationalityId());
 		sb.append(", dateOfBirth=");
 		sb.append(getDateOfBirth());
 		sb.append(", otherId=");
@@ -1078,7 +1043,7 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(61);
+		StringBundler sb = new StringBundler(58);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.Employee");
@@ -1137,10 +1102,6 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 		sb.append(getMiddleName());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>photograph</column-name><column-value><![CDATA[");
-		sb.append(getPhotograph());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>gender</column-name><column-value><![CDATA[");
 		sb.append(getGender());
 		sb.append("]]></column-value></column>");
@@ -1149,8 +1110,8 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 		sb.append(getMaritalStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>nationality</column-name><column-value><![CDATA[");
-		sb.append(getNationality());
+			"<column><column-name>nationalityId</column-name><column-value><![CDATA[");
+		sb.append(getNationalityId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>dateOfBirth</column-name><column-value><![CDATA[");
@@ -1180,10 +1141,9 @@ public class EmployeeClp extends BaseModelImpl<Employee> implements Employee {
 	private String _firstName;
 	private String _lastName;
 	private String _middleName;
-	private Blob _photograph;
 	private int _gender;
 	private int _maritalStatus;
-	private String _nationality;
+	private long _nationalityId;
 	private Date _dateOfBirth;
 	private String _otherId;
 	private BaseModel<?> _employeeRemoteModel;

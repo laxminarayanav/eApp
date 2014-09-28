@@ -83,6 +83,7 @@ public class LicenseClp extends BaseModelImpl<License> implements License {
 		attributes.put("userId", getUserId());
 		attributes.put("licenseName", getLicenseName());
 		attributes.put("expiryDate", getExpiryDate());
+		attributes.put("licenseNumber", getLicenseNumber());
 
 		return attributes;
 	}
@@ -141,6 +142,12 @@ public class LicenseClp extends BaseModelImpl<License> implements License {
 
 		if (expiryDate != null) {
 			setExpiryDate(expiryDate);
+		}
+
+		String licenseNumber = (String)attributes.get("licenseNumber");
+
+		if (licenseNumber != null) {
+			setLicenseNumber(licenseNumber);
 		}
 	}
 
@@ -361,6 +368,29 @@ public class LicenseClp extends BaseModelImpl<License> implements License {
 		}
 	}
 
+	@Override
+	public String getLicenseNumber() {
+		return _licenseNumber;
+	}
+
+	@Override
+	public void setLicenseNumber(String licenseNumber) {
+		_licenseNumber = licenseNumber;
+
+		if (_licenseRemoteModel != null) {
+			try {
+				Class<?> clazz = _licenseRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setLicenseNumber", String.class);
+
+				method.invoke(_licenseRemoteModel, licenseNumber);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
 	public BaseModel<?> getLicenseRemoteModel() {
 		return _licenseRemoteModel;
 	}
@@ -439,6 +469,7 @@ public class LicenseClp extends BaseModelImpl<License> implements License {
 		clone.setUserId(getUserId());
 		clone.setLicenseName(getLicenseName());
 		clone.setExpiryDate(getExpiryDate());
+		clone.setLicenseNumber(getLicenseNumber());
 
 		return clone;
 	}
@@ -487,7 +518,7 @@ public class LicenseClp extends BaseModelImpl<License> implements License {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{licenseId=");
 		sb.append(getLicenseId());
@@ -507,6 +538,8 @@ public class LicenseClp extends BaseModelImpl<License> implements License {
 		sb.append(getLicenseName());
 		sb.append(", expiryDate=");
 		sb.append(getExpiryDate());
+		sb.append(", licenseNumber=");
+		sb.append(getLicenseNumber());
 		sb.append("}");
 
 		return sb.toString();
@@ -514,7 +547,7 @@ public class LicenseClp extends BaseModelImpl<License> implements License {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(34);
 
 		sb.append("<model><model-name>");
 		sb.append("com.rknowsys.eapp.hrm.model.License");
@@ -556,6 +589,10 @@ public class LicenseClp extends BaseModelImpl<License> implements License {
 			"<column><column-name>expiryDate</column-name><column-value><![CDATA[");
 		sb.append(getExpiryDate());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>licenseNumber</column-name><column-value><![CDATA[");
+		sb.append(getLicenseNumber());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -572,5 +609,6 @@ public class LicenseClp extends BaseModelImpl<License> implements License {
 	private String _userUuid;
 	private String _licenseName;
 	private Date _expiryDate;
+	private String _licenseNumber;
 	private BaseModel<?> _licenseRemoteModel;
 }

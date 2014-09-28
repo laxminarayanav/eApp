@@ -52,6 +52,7 @@ import com.rknowsys.eapp.hrm.service.persistence.LocationPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.MembershipPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.NationalityPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.NewsPersistence;
+import com.rknowsys.eapp.hrm.service.persistence.OrganizationPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.PayGradeCurrencyPersistence;
 import com.rknowsys.eapp.hrm.service.persistence.PayGradePersistence;
 import com.rknowsys.eapp.hrm.service.persistence.SalaryComponentPersistence;
@@ -107,27 +108,27 @@ public abstract class DocCategoryLocalServiceBaseImpl
 	/**
 	 * Creates a new doc category with the primary key. Does not add the doc category to the database.
 	 *
-	 * @param id the primary key for the new doc category
+	 * @param docCategoryId the primary key for the new doc category
 	 * @return the new doc category
 	 */
 	@Override
-	public DocCategory createDocCategory(long id) {
-		return docCategoryPersistence.create(id);
+	public DocCategory createDocCategory(long docCategoryId) {
+		return docCategoryPersistence.create(docCategoryId);
 	}
 
 	/**
 	 * Deletes the doc category with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param id the primary key of the doc category
+	 * @param docCategoryId the primary key of the doc category
 	 * @return the doc category that was removed
 	 * @throws PortalException if a doc category with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public DocCategory deleteDocCategory(long id)
+	public DocCategory deleteDocCategory(long docCategoryId)
 		throws PortalException, SystemException {
-		return docCategoryPersistence.remove(id);
+		return docCategoryPersistence.remove(docCategoryId);
 	}
 
 	/**
@@ -238,22 +239,23 @@ public abstract class DocCategoryLocalServiceBaseImpl
 	}
 
 	@Override
-	public DocCategory fetchDocCategory(long id) throws SystemException {
-		return docCategoryPersistence.fetchByPrimaryKey(id);
+	public DocCategory fetchDocCategory(long docCategoryId)
+		throws SystemException {
+		return docCategoryPersistence.fetchByPrimaryKey(docCategoryId);
 	}
 
 	/**
 	 * Returns the doc category with the primary key.
 	 *
-	 * @param id the primary key of the doc category
+	 * @param docCategoryId the primary key of the doc category
 	 * @return the doc category
 	 * @throws PortalException if a doc category with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DocCategory getDocCategory(long id)
+	public DocCategory getDocCategory(long docCategoryId)
 		throws PortalException, SystemException {
-		return docCategoryPersistence.findByPrimaryKey(id);
+		return docCategoryPersistence.findByPrimaryKey(docCategoryId);
 	}
 
 	@Override
@@ -946,18 +948,18 @@ public abstract class DocCategoryLocalServiceBaseImpl
 	}
 
 	/**
-	 * Returns the nationality local service.
+	 * Returns the Nationality local service.
 	 *
-	 * @return the nationality local service
+	 * @return the Nationality local service
 	 */
 	public com.rknowsys.eapp.hrm.service.NationalityLocalService getNationalityLocalService() {
 		return nationalityLocalService;
 	}
 
 	/**
-	 * Sets the nationality local service.
+	 * Sets the Nationality local service.
 	 *
-	 * @param nationalityLocalService the nationality local service
+	 * @param nationalityLocalService the Nationality local service
 	 */
 	public void setNationalityLocalService(
 		com.rknowsys.eapp.hrm.service.NationalityLocalService nationalityLocalService) {
@@ -965,18 +967,18 @@ public abstract class DocCategoryLocalServiceBaseImpl
 	}
 
 	/**
-	 * Returns the nationality persistence.
+	 * Returns the Nationality persistence.
 	 *
-	 * @return the nationality persistence
+	 * @return the Nationality persistence
 	 */
 	public NationalityPersistence getNationalityPersistence() {
 		return nationalityPersistence;
 	}
 
 	/**
-	 * Sets the nationality persistence.
+	 * Sets the Nationality persistence.
 	 *
-	 * @param nationalityPersistence the nationality persistence
+	 * @param nationalityPersistence the Nationality persistence
 	 */
 	public void setNationalityPersistence(
 		NationalityPersistence nationalityPersistence) {
@@ -1018,6 +1020,44 @@ public abstract class DocCategoryLocalServiceBaseImpl
 	 */
 	public void setNewsPersistence(NewsPersistence newsPersistence) {
 		this.newsPersistence = newsPersistence;
+	}
+
+	/**
+	 * Returns the organization local service.
+	 *
+	 * @return the organization local service
+	 */
+	public com.rknowsys.eapp.hrm.service.OrganizationLocalService getOrganizationLocalService() {
+		return organizationLocalService;
+	}
+
+	/**
+	 * Sets the organization local service.
+	 *
+	 * @param organizationLocalService the organization local service
+	 */
+	public void setOrganizationLocalService(
+		com.rknowsys.eapp.hrm.service.OrganizationLocalService organizationLocalService) {
+		this.organizationLocalService = organizationLocalService;
+	}
+
+	/**
+	 * Returns the organization persistence.
+	 *
+	 * @return the organization persistence
+	 */
+	public OrganizationPersistence getOrganizationPersistence() {
+		return organizationPersistence;
+	}
+
+	/**
+	 * Sets the organization persistence.
+	 *
+	 * @param organizationPersistence the organization persistence
+	 */
+	public void setOrganizationPersistence(
+		OrganizationPersistence organizationPersistence) {
+		this.organizationPersistence = organizationPersistence;
 	}
 
 	/**
@@ -1573,6 +1613,10 @@ public abstract class DocCategoryLocalServiceBaseImpl
 	protected com.rknowsys.eapp.hrm.service.NewsLocalService newsLocalService;
 	@BeanReference(type = NewsPersistence.class)
 	protected NewsPersistence newsPersistence;
+	@BeanReference(type = com.rknowsys.eapp.hrm.service.OrganizationLocalService.class)
+	protected com.rknowsys.eapp.hrm.service.OrganizationLocalService organizationLocalService;
+	@BeanReference(type = OrganizationPersistence.class)
+	protected OrganizationPersistence organizationPersistence;
 	@BeanReference(type = com.rknowsys.eapp.hrm.service.PayGradeLocalService.class)
 	protected com.rknowsys.eapp.hrm.service.PayGradeLocalService payGradeLocalService;
 	@BeanReference(type = PayGradePersistence.class)

@@ -146,12 +146,13 @@ public class InterviewLocalServiceClp implements InterviewLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.Interview createInterview(long id) {
+	public com.rknowsys.eapp.hrm.model.Interview createInterview(
+		long interviewId) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName1,
-					_methodParameterTypes1, new Object[] { id });
+					_methodParameterTypes1, new Object[] { interviewId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -169,14 +170,15 @@ public class InterviewLocalServiceClp implements InterviewLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.Interview deleteInterview(long id)
+	public com.rknowsys.eapp.hrm.model.Interview deleteInterview(
+		long interviewId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName2,
-					_methodParameterTypes2, new Object[] { id });
+					_methodParameterTypes2, new Object[] { interviewId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -429,13 +431,14 @@ public class InterviewLocalServiceClp implements InterviewLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.Interview fetchInterview(long id)
+	public com.rknowsys.eapp.hrm.model.Interview fetchInterview(
+		long interviewId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName10,
-					_methodParameterTypes10, new Object[] { id });
+					_methodParameterTypes10, new Object[] { interviewId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -457,14 +460,14 @@ public class InterviewLocalServiceClp implements InterviewLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.Interview getInterview(long id)
+	public com.rknowsys.eapp.hrm.model.Interview getInterview(long interviewId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName11,
-					_methodParameterTypes11, new Object[] { id });
+					_methodParameterTypes11, new Object[] { interviewId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);

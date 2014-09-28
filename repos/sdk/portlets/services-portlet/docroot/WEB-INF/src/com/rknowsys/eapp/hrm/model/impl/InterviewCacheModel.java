@@ -40,8 +40,8 @@ public class InterviewCacheModel implements CacheModel<Interview>,
 	public String toString() {
 		StringBundler sb = new StringBundler(15);
 
-		sb.append("{id=");
-		sb.append(id);
+		sb.append("{interviewId=");
+		sb.append(interviewId);
 		sb.append(", companyId=");
 		sb.append(companyId);
 		sb.append(", groupId=");
@@ -63,7 +63,7 @@ public class InterviewCacheModel implements CacheModel<Interview>,
 	public Interview toEntityModel() {
 		InterviewImpl interviewImpl = new InterviewImpl();
 
-		interviewImpl.setId(id);
+		interviewImpl.setInterviewId(interviewId);
 		interviewImpl.setCompanyId(companyId);
 		interviewImpl.setGroupId(groupId);
 
@@ -97,7 +97,7 @@ public class InterviewCacheModel implements CacheModel<Interview>,
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readLong();
+		interviewId = objectInput.readLong();
 		companyId = objectInput.readLong();
 		groupId = objectInput.readLong();
 		createDate = objectInput.readLong();
@@ -109,7 +109,7 @@ public class InterviewCacheModel implements CacheModel<Interview>,
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(id);
+		objectOutput.writeLong(interviewId);
 		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(createDate);
@@ -124,7 +124,7 @@ public class InterviewCacheModel implements CacheModel<Interview>,
 		}
 	}
 
-	public long id;
+	public long interviewId;
 	public long companyId;
 	public long groupId;
 	public long createDate;

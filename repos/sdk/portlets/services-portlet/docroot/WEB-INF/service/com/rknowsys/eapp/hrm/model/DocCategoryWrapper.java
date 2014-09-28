@@ -50,7 +50,7 @@ public class DocCategoryWrapper implements DocCategory,
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
+		attributes.put("docCategoryId", getDocCategoryId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
@@ -63,10 +63,10 @@ public class DocCategoryWrapper implements DocCategory,
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
+		Long docCategoryId = (Long)attributes.get("docCategoryId");
 
-		if (id != null) {
-			setId(id);
+		if (docCategoryId != null) {
+			setDocCategoryId(docCategoryId);
 		}
 
 		Long companyId = (Long)attributes.get("companyId");
@@ -127,23 +127,23 @@ public class DocCategoryWrapper implements DocCategory,
 	}
 
 	/**
-	* Returns the ID of this doc category.
+	* Returns the doc category ID of this doc category.
 	*
-	* @return the ID of this doc category
+	* @return the doc category ID of this doc category
 	*/
 	@Override
-	public long getId() {
-		return _docCategory.getId();
+	public long getDocCategoryId() {
+		return _docCategory.getDocCategoryId();
 	}
 
 	/**
-	* Sets the ID of this doc category.
+	* Sets the doc category ID of this doc category.
 	*
-	* @param id the ID of this doc category
+	* @param docCategoryId the doc category ID of this doc category
 	*/
 	@Override
-	public void setId(long id) {
-		_docCategory.setId(id);
+	public void setDocCategoryId(long docCategoryId) {
+		_docCategory.setDocCategoryId(docCategoryId);
 	}
 
 	/**

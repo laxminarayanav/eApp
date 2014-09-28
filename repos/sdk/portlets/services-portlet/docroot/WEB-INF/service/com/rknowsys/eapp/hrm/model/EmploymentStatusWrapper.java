@@ -57,7 +57,6 @@ public class EmploymentStatusWrapper implements EmploymentStatus,
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("employmentstatus", getEmploymentstatus());
-		attributes.put("jobId", getJobId());
 
 		return attributes;
 	}
@@ -104,12 +103,6 @@ public class EmploymentStatusWrapper implements EmploymentStatus,
 
 		if (employmentstatus != null) {
 			setEmploymentstatus(employmentstatus);
-		}
-
-		Long jobId = (Long)attributes.get("jobId");
-
-		if (jobId != null) {
-			setJobId(jobId);
 		}
 	}
 
@@ -293,26 +286,6 @@ public class EmploymentStatusWrapper implements EmploymentStatus,
 	@Override
 	public void setEmploymentstatus(java.lang.String employmentstatus) {
 		_employmentStatus.setEmploymentstatus(employmentstatus);
-	}
-
-	/**
-	* Returns the job ID of this employment status.
-	*
-	* @return the job ID of this employment status
-	*/
-	@Override
-	public long getJobId() {
-		return _employmentStatus.getJobId();
-	}
-
-	/**
-	* Sets the job ID of this employment status.
-	*
-	* @param jobId the job ID of this employment status
-	*/
-	@Override
-	public void setJobId(long jobId) {
-		_employmentStatus.setJobId(jobId);
 	}
 
 	@Override

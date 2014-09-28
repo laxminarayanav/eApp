@@ -37,7 +37,6 @@ public class EmploymentStatusSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setEmploymentstatus(model.getEmploymentstatus());
-		soapModel.setJobId(model.getJobId());
 
 		return soapModel;
 	}
@@ -148,14 +147,6 @@ public class EmploymentStatusSoap implements Serializable {
 		_employmentstatus = employmentstatus;
 	}
 
-	public long getJobId() {
-		return _jobId;
-	}
-
-	public void setJobId(long jobId) {
-		_jobId = jobId;
-	}
-
 	private long _employmentStatusId;
 	private long _groupId;
 	private long _companyId;
@@ -163,5 +154,4 @@ public class EmploymentStatusSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private String _employmentstatus;
-	private long _jobId;
 }

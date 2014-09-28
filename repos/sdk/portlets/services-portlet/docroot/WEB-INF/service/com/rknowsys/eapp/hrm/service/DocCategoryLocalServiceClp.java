@@ -147,12 +147,13 @@ public class DocCategoryLocalServiceClp implements DocCategoryLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.DocCategory createDocCategory(long id) {
+	public com.rknowsys.eapp.hrm.model.DocCategory createDocCategory(
+		long docCategoryId) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName1,
-					_methodParameterTypes1, new Object[] { id });
+					_methodParameterTypes1, new Object[] { docCategoryId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -170,14 +171,15 @@ public class DocCategoryLocalServiceClp implements DocCategoryLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.DocCategory deleteDocCategory(long id)
+	public com.rknowsys.eapp.hrm.model.DocCategory deleteDocCategory(
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName2,
-					_methodParameterTypes2, new Object[] { id });
+					_methodParameterTypes2, new Object[] { docCategoryId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -430,13 +432,14 @@ public class DocCategoryLocalServiceClp implements DocCategoryLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.DocCategory fetchDocCategory(long id)
+	public com.rknowsys.eapp.hrm.model.DocCategory fetchDocCategory(
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName10,
-					_methodParameterTypes10, new Object[] { id });
+					_methodParameterTypes10, new Object[] { docCategoryId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -458,14 +461,15 @@ public class DocCategoryLocalServiceClp implements DocCategoryLocalService {
 	}
 
 	@Override
-	public com.rknowsys.eapp.hrm.model.DocCategory getDocCategory(long id)
+	public com.rknowsys.eapp.hrm.model.DocCategory getDocCategory(
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName11,
-					_methodParameterTypes11, new Object[] { id });
+					_methodParameterTypes11, new Object[] { docCategoryId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);

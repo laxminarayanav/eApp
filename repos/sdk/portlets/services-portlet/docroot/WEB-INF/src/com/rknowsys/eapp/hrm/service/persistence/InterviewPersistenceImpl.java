@@ -30,7 +30,6 @@ import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
-import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
@@ -49,7 +48,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The persistence implementation for the interview service.
@@ -360,7 +358,7 @@ public class InterviewPersistenceImpl extends BasePersistenceImpl<Interview>
 	/**
 	 * Returns the interviews before and after the current interview in the ordered set where groupId = &#63;.
 	 *
-	 * @param id the primary key of the current interview
+	 * @param interviewId the primary key of the current interview
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next interview
@@ -368,10 +366,10 @@ public class InterviewPersistenceImpl extends BasePersistenceImpl<Interview>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Interview[] findByGroupId_PrevAndNext(long id, long groupId,
-		OrderByComparator orderByComparator)
+	public Interview[] findByGroupId_PrevAndNext(long interviewId,
+		long groupId, OrderByComparator orderByComparator)
 		throws NoSuchInterviewException, SystemException {
-		Interview interview = findByPrimaryKey(id);
+		Interview interview = findByPrimaryKey(interviewId);
 
 		Session session = null;
 
@@ -658,15 +656,15 @@ public class InterviewPersistenceImpl extends BasePersistenceImpl<Interview>
 	/**
 	 * Creates a new interview with the primary key. Does not add the interview to the database.
 	 *
-	 * @param id the primary key for the new interview
+	 * @param interviewId the primary key for the new interview
 	 * @return the new interview
 	 */
 	@Override
-	public Interview create(long id) {
+	public Interview create(long interviewId) {
 		Interview interview = new InterviewImpl();
 
 		interview.setNew(true);
-		interview.setPrimaryKey(id);
+		interview.setPrimaryKey(interviewId);
 
 		return interview;
 	}
@@ -674,15 +672,15 @@ public class InterviewPersistenceImpl extends BasePersistenceImpl<Interview>
 	/**
 	 * Removes the interview with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param id the primary key of the interview
+	 * @param interviewId the primary key of the interview
 	 * @return the interview that was removed
 	 * @throws com.rknowsys.eapp.hrm.NoSuchInterviewException if a interview with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Interview remove(long id)
+	public Interview remove(long interviewId)
 		throws NoSuchInterviewException, SystemException {
-		return remove((Serializable)id);
+		return remove((Serializable)interviewId);
 	}
 
 	/**
@@ -830,7 +828,7 @@ public class InterviewPersistenceImpl extends BasePersistenceImpl<Interview>
 		interviewImpl.setNew(interview.isNew());
 		interviewImpl.setPrimaryKey(interview.getPrimaryKey());
 
-		interviewImpl.setId(interview.getId());
+		interviewImpl.setInterviewId(interview.getInterviewId());
 		interviewImpl.setCompanyId(interview.getCompanyId());
 		interviewImpl.setGroupId(interview.getGroupId());
 		interviewImpl.setCreateDate(interview.getCreateDate());
@@ -869,15 +867,15 @@ public class InterviewPersistenceImpl extends BasePersistenceImpl<Interview>
 	/**
 	 * Returns the interview with the primary key or throws a {@link com.rknowsys.eapp.hrm.NoSuchInterviewException} if it could not be found.
 	 *
-	 * @param id the primary key of the interview
+	 * @param interviewId the primary key of the interview
 	 * @return the interview
 	 * @throws com.rknowsys.eapp.hrm.NoSuchInterviewException if a interview with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Interview findByPrimaryKey(long id)
+	public Interview findByPrimaryKey(long interviewId)
 		throws NoSuchInterviewException, SystemException {
-		return findByPrimaryKey((Serializable)id);
+		return findByPrimaryKey((Serializable)interviewId);
 	}
 
 	/**
@@ -931,13 +929,14 @@ public class InterviewPersistenceImpl extends BasePersistenceImpl<Interview>
 	/**
 	 * Returns the interview with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param id the primary key of the interview
+	 * @param interviewId the primary key of the interview
 	 * @return the interview, or <code>null</code> if a interview with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Interview fetchByPrimaryKey(long id) throws SystemException {
-		return fetchByPrimaryKey((Serializable)id);
+	public Interview fetchByPrimaryKey(long interviewId)
+		throws SystemException {
+		return fetchByPrimaryKey((Serializable)interviewId);
 	}
 
 	/**
@@ -1113,11 +1112,6 @@ public class InterviewPersistenceImpl extends BasePersistenceImpl<Interview>
 		return count.intValue();
 	}
 
-	@Override
-	protected Set<String> getBadColumnNames() {
-		return _badColumnNames;
-	}
-
 	/**
 	 * Initializes the interview persistence.
 	 */
@@ -1160,9 +1154,6 @@ public class InterviewPersistenceImpl extends BasePersistenceImpl<Interview>
 	private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
 				PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
 	private static Log _log = LogFactoryUtil.getLog(InterviewPersistenceImpl.class);
-	private static Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"id"
-			});
 	private static Interview _nullInterview = new InterviewImpl() {
 			@Override
 			public Object clone() {

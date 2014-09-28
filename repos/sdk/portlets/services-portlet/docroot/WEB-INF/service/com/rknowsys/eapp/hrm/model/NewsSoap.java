@@ -30,7 +30,7 @@ public class NewsSoap implements Serializable {
 	public static NewsSoap toSoapModel(News model) {
 		NewsSoap soapModel = new NewsSoap();
 
-		soapModel.setId(model.getId());
+		soapModel.setNewsId(model.getNewsId());
 		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCreateDate(model.getCreateDate());
@@ -85,19 +85,19 @@ public class NewsSoap implements Serializable {
 	}
 
 	public long getPrimaryKey() {
-		return _id;
+		return _newsId;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setId(pk);
+		setNewsId(pk);
 	}
 
-	public long getId() {
-		return _id;
+	public long getNewsId() {
+		return _newsId;
 	}
 
-	public void setId(long id) {
-		_id = id;
+	public void setNewsId(long newsId) {
+		_newsId = newsId;
 	}
 
 	public long getCompanyId() {
@@ -172,7 +172,7 @@ public class NewsSoap implements Serializable {
 		_publishDate = publishDate;
 	}
 
-	private long _id;
+	private long _newsId;
 	private long _companyId;
 	private long _groupId;
 	private Date _createDate;

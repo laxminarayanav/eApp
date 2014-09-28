@@ -143,7 +143,7 @@ public interface InterviewPersistence extends BasePersistence<Interview> {
 	/**
 	* Returns the interviews before and after the current interview in the ordered set where groupId = &#63;.
 	*
-	* @param id the primary key of the current interview
+	* @param interviewId the primary key of the current interview
 	* @param groupId the group ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next interview
@@ -151,7 +151,7 @@ public interface InterviewPersistence extends BasePersistence<Interview> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public com.rknowsys.eapp.hrm.model.Interview[] findByGroupId_PrevAndNext(
-		long id, long groupId,
+		long interviewId, long groupId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchInterviewException;
@@ -193,20 +193,20 @@ public interface InterviewPersistence extends BasePersistence<Interview> {
 	/**
 	* Creates a new interview with the primary key. Does not add the interview to the database.
 	*
-	* @param id the primary key for the new interview
+	* @param interviewId the primary key for the new interview
 	* @return the new interview
 	*/
-	public com.rknowsys.eapp.hrm.model.Interview create(long id);
+	public com.rknowsys.eapp.hrm.model.Interview create(long interviewId);
 
 	/**
 	* Removes the interview with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the interview
+	* @param interviewId the primary key of the interview
 	* @return the interview that was removed
 	* @throws com.rknowsys.eapp.hrm.NoSuchInterviewException if a interview with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.rknowsys.eapp.hrm.model.Interview remove(long id)
+	public com.rknowsys.eapp.hrm.model.Interview remove(long interviewId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchInterviewException;
 
@@ -217,23 +217,25 @@ public interface InterviewPersistence extends BasePersistence<Interview> {
 	/**
 	* Returns the interview with the primary key or throws a {@link com.rknowsys.eapp.hrm.NoSuchInterviewException} if it could not be found.
 	*
-	* @param id the primary key of the interview
+	* @param interviewId the primary key of the interview
 	* @return the interview
 	* @throws com.rknowsys.eapp.hrm.NoSuchInterviewException if a interview with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.rknowsys.eapp.hrm.model.Interview findByPrimaryKey(long id)
+	public com.rknowsys.eapp.hrm.model.Interview findByPrimaryKey(
+		long interviewId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			com.rknowsys.eapp.hrm.NoSuchInterviewException;
 
 	/**
 	* Returns the interview with the primary key or returns <code>null</code> if it could not be found.
 	*
-	* @param id the primary key of the interview
+	* @param interviewId the primary key of the interview
 	* @return the interview, or <code>null</code> if a interview with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.rknowsys.eapp.hrm.model.Interview fetchByPrimaryKey(long id)
+	public com.rknowsys.eapp.hrm.model.Interview fetchByPrimaryKey(
+		long interviewId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**

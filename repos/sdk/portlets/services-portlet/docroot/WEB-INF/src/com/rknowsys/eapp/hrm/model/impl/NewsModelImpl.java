@@ -60,7 +60,7 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 	 */
 	public static final String TABLE_NAME = "news";
 	public static final Object[][] TABLE_COLUMNS = {
-			{ "id_", Types.BIGINT },
+			{ "newsId", Types.BIGINT },
 			{ "companyId", Types.BIGINT },
 			{ "groupId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
@@ -71,13 +71,13 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 			{ "publishTo", Types.VARCHAR },
 			{ "publishDate", Types.TIMESTAMP }
 		};
-	public static final String TABLE_SQL_CREATE = "create table news (id_ LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,topic VARCHAR(75) null,description VARCHAR(75) null,publishTo VARCHAR(75) null,publishDate DATE null)";
+	public static final String TABLE_SQL_CREATE = "create table news (newsId LONG not null primary key,companyId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,userId LONG,topic VARCHAR(75) null,description VARCHAR(75) null,publishTo VARCHAR(75) null,publishDate DATE null)";
 	public static final String TABLE_SQL_DROP = "drop table news";
-	public static final String ORDER_BY_JPQL = " ORDER BY news.id ASC";
-	public static final String ORDER_BY_SQL = " ORDER BY news.id_ ASC";
-	public static final String DATA_SOURCE = "anotherDataSource";
-	public static final String SESSION_FACTORY = "anotherSessionFactory";
-	public static final String TX_MANAGER = "anotherTransactionManager";
+	public static final String ORDER_BY_JPQL = " ORDER BY news.newsId ASC";
+	public static final String ORDER_BY_SQL = " ORDER BY news.newsId ASC";
+	public static final String DATA_SOURCE = "hrmDataSource";
+	public static final String SESSION_FACTORY = "hrmSessionFactory";
+	public static final String TX_MANAGER = "hrmTransactionManager";
 	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.entity.cache.enabled.com.rknowsys.eapp.hrm.model.News"),
 			true);
@@ -88,7 +88,7 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 				"value.object.column.bitmask.enabled.com.rknowsys.eapp.hrm.model.News"),
 			true);
 	public static long GROUPID_COLUMN_BITMASK = 1L;
-	public static long ID_COLUMN_BITMASK = 2L;
+	public static long NEWSID_COLUMN_BITMASK = 2L;
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
 				"lock.expiration.time.com.rknowsys.eapp.hrm.model.News"));
 
@@ -97,17 +97,17 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 
 	@Override
 	public long getPrimaryKey() {
-		return _id;
+		return _newsId;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setId(primaryKey);
+		setNewsId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _id;
+		return _newsId;
 	}
 
 	@Override
@@ -129,7 +129,7 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
+		attributes.put("newsId", getNewsId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
@@ -145,10 +145,10 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
+		Long newsId = (Long)attributes.get("newsId");
 
-		if (id != null) {
-			setId(id);
+		if (newsId != null) {
+			setNewsId(newsId);
 		}
 
 		Long companyId = (Long)attributes.get("companyId");
@@ -207,13 +207,13 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 	}
 
 	@Override
-	public long getId() {
-		return _id;
+	public long getNewsId() {
+		return _newsId;
 	}
 
 	@Override
-	public void setId(long id) {
-		_id = id;
+	public void setNewsId(long newsId) {
+		_newsId = newsId;
 	}
 
 	@Override
@@ -374,7 +374,7 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 	public Object clone() {
 		NewsImpl newsImpl = new NewsImpl();
 
-		newsImpl.setId(getId());
+		newsImpl.setNewsId(getNewsId());
 		newsImpl.setCompanyId(getCompanyId());
 		newsImpl.setGroupId(getGroupId());
 		newsImpl.setCreateDate(getCreateDate());
@@ -447,7 +447,7 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 	public CacheModel<News> toCacheModel() {
 		NewsCacheModel newsCacheModel = new NewsCacheModel();
 
-		newsCacheModel.id = getId();
+		newsCacheModel.newsId = getNewsId();
 
 		newsCacheModel.companyId = getCompanyId();
 
@@ -513,8 +513,8 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 	public String toString() {
 		StringBundler sb = new StringBundler(21);
 
-		sb.append("{id=");
-		sb.append(getId());
+		sb.append("{newsId=");
+		sb.append(getNewsId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
 		sb.append(", groupId=");
@@ -547,8 +547,8 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 		sb.append("</model-name>");
 
 		sb.append(
-			"<column><column-name>id</column-name><column-value><![CDATA[");
-		sb.append(getId());
+			"<column><column-name>newsId</column-name><column-value><![CDATA[");
+		sb.append(getNewsId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>companyId</column-name><column-value><![CDATA[");
@@ -594,7 +594,7 @@ public class NewsModelImpl extends BaseModelImpl<News> implements NewsModel {
 
 	private static ClassLoader _classLoader = News.class.getClassLoader();
 	private static Class<?>[] _escapedModelInterfaces = new Class[] { News.class };
-	private long _id;
+	private long _newsId;
 	private long _companyId;
 	private long _groupId;
 	private long _originalGroupId;

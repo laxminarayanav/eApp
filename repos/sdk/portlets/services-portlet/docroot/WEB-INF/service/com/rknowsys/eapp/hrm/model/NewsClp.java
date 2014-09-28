@@ -52,17 +52,17 @@ public class NewsClp extends BaseModelImpl<News> implements News {
 
 	@Override
 	public long getPrimaryKey() {
-		return _id;
+		return _newsId;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setId(primaryKey);
+		setNewsId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _id;
+		return _newsId;
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class NewsClp extends BaseModelImpl<News> implements News {
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
+		attributes.put("newsId", getNewsId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
@@ -90,10 +90,10 @@ public class NewsClp extends BaseModelImpl<News> implements News {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
+		Long newsId = (Long)attributes.get("newsId");
 
-		if (id != null) {
-			setId(id);
+		if (newsId != null) {
+			setNewsId(newsId);
 		}
 
 		Long companyId = (Long)attributes.get("companyId");
@@ -152,21 +152,21 @@ public class NewsClp extends BaseModelImpl<News> implements News {
 	}
 
 	@Override
-	public long getId() {
-		return _id;
+	public long getNewsId() {
+		return _newsId;
 	}
 
 	@Override
-	public void setId(long id) {
-		_id = id;
+	public void setNewsId(long newsId) {
+		_newsId = newsId;
 
 		if (_newsRemoteModel != null) {
 			try {
 				Class<?> clazz = _newsRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setId", long.class);
+				Method method = clazz.getMethod("setNewsId", long.class);
 
-				method.invoke(_newsRemoteModel, id);
+				method.invoke(_newsRemoteModel, newsId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -460,7 +460,7 @@ public class NewsClp extends BaseModelImpl<News> implements News {
 	public Object clone() {
 		NewsClp clone = new NewsClp();
 
-		clone.setId(getId());
+		clone.setNewsId(getNewsId());
 		clone.setCompanyId(getCompanyId());
 		clone.setGroupId(getGroupId());
 		clone.setCreateDate(getCreateDate());
@@ -520,8 +520,8 @@ public class NewsClp extends BaseModelImpl<News> implements News {
 	public String toString() {
 		StringBundler sb = new StringBundler(21);
 
-		sb.append("{id=");
-		sb.append(getId());
+		sb.append("{newsId=");
+		sb.append(getNewsId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
 		sb.append(", groupId=");
@@ -554,8 +554,8 @@ public class NewsClp extends BaseModelImpl<News> implements News {
 		sb.append("</model-name>");
 
 		sb.append(
-			"<column><column-name>id</column-name><column-value><![CDATA[");
-		sb.append(getId());
+			"<column><column-name>newsId</column-name><column-value><![CDATA[");
+		sb.append(getNewsId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>companyId</column-name><column-value><![CDATA[");
@@ -599,7 +599,7 @@ public class NewsClp extends BaseModelImpl<News> implements News {
 		return sb.toString();
 	}
 
-	private long _id;
+	private long _newsId;
 	private long _companyId;
 	private long _groupId;
 	private Date _createDate;

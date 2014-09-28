@@ -61,18 +61,18 @@ public interface NewsModel extends BaseModel<News> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the ID of this news.
+	 * Returns the news ID of this news.
 	 *
-	 * @return the ID of this news
+	 * @return the news ID of this news
 	 */
-	public long getId();
+	public long getNewsId();
 
 	/**
-	 * Sets the ID of this news.
+	 * Sets the news ID of this news.
 	 *
-	 * @param id the ID of this news
+	 * @param newsId the news ID of this news
 	 */
-	public void setId(long id);
+	public void setNewsId(long newsId);
 
 	/**
 	 * Returns the company ID of this news.

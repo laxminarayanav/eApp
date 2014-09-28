@@ -837,7 +837,6 @@ public class JobCategoryPersistenceImpl extends BasePersistenceImpl<JobCategory>
 		jobCategoryImpl.setModifiedDate(jobCategory.getModifiedDate());
 		jobCategoryImpl.setUserId(jobCategory.getUserId());
 		jobCategoryImpl.setJobcategory(jobCategory.getJobcategory());
-		jobCategoryImpl.setJobId(jobCategory.getJobId());
 
 		return jobCategoryImpl;
 	}

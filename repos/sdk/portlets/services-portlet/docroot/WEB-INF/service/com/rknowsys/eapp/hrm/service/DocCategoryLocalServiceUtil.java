@@ -55,27 +55,27 @@ public class DocCategoryLocalServiceUtil {
 	/**
 	* Creates a new doc category with the primary key. Does not add the doc category to the database.
 	*
-	* @param id the primary key for the new doc category
+	* @param docCategoryId the primary key for the new doc category
 	* @return the new doc category
 	*/
 	public static com.rknowsys.eapp.hrm.model.DocCategory createDocCategory(
-		long id) {
-		return getService().createDocCategory(id);
+		long docCategoryId) {
+		return getService().createDocCategory(docCategoryId);
 	}
 
 	/**
 	* Deletes the doc category with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the doc category
+	* @param docCategoryId the primary key of the doc category
 	* @return the doc category that was removed
 	* @throws PortalException if a doc category with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static com.rknowsys.eapp.hrm.model.DocCategory deleteDocCategory(
-		long id)
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().deleteDocCategory(id);
+		return getService().deleteDocCategory(docCategoryId);
 	}
 
 	/**
@@ -182,23 +182,24 @@ public class DocCategoryLocalServiceUtil {
 	}
 
 	public static com.rknowsys.eapp.hrm.model.DocCategory fetchDocCategory(
-		long id) throws com.liferay.portal.kernel.exception.SystemException {
-		return getService().fetchDocCategory(id);
+		long docCategoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().fetchDocCategory(docCategoryId);
 	}
 
 	/**
 	* Returns the doc category with the primary key.
 	*
-	* @param id the primary key of the doc category
+	* @param docCategoryId the primary key of the doc category
 	* @return the doc category
 	* @throws PortalException if a doc category with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static com.rknowsys.eapp.hrm.model.DocCategory getDocCategory(
-		long id)
+		long docCategoryId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().getDocCategory(id);
+		return getService().getDocCategory(docCategoryId);
 	}
 
 	public static com.liferay.portal.model.PersistedModel getPersistedModel(

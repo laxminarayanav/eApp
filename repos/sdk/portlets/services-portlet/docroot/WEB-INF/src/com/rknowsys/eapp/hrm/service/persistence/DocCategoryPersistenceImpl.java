@@ -30,7 +30,6 @@ import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
-import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
@@ -49,7 +48,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The persistence implementation for the doc category service.
@@ -361,7 +359,7 @@ public class DocCategoryPersistenceImpl extends BasePersistenceImpl<DocCategory>
 	/**
 	 * Returns the doc categories before and after the current doc category in the ordered set where groupId = &#63;.
 	 *
-	 * @param id the primary key of the current doc category
+	 * @param docCategoryId the primary key of the current doc category
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next doc category
@@ -369,10 +367,10 @@ public class DocCategoryPersistenceImpl extends BasePersistenceImpl<DocCategory>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DocCategory[] findByGroupId_PrevAndNext(long id, long groupId,
-		OrderByComparator orderByComparator)
+	public DocCategory[] findByGroupId_PrevAndNext(long docCategoryId,
+		long groupId, OrderByComparator orderByComparator)
 		throws NoSuchDocCategoryException, SystemException {
-		DocCategory docCategory = findByPrimaryKey(id);
+		DocCategory docCategory = findByPrimaryKey(docCategoryId);
 
 		Session session = null;
 
@@ -659,15 +657,15 @@ public class DocCategoryPersistenceImpl extends BasePersistenceImpl<DocCategory>
 	/**
 	 * Creates a new doc category with the primary key. Does not add the doc category to the database.
 	 *
-	 * @param id the primary key for the new doc category
+	 * @param docCategoryId the primary key for the new doc category
 	 * @return the new doc category
 	 */
 	@Override
-	public DocCategory create(long id) {
+	public DocCategory create(long docCategoryId) {
 		DocCategory docCategory = new DocCategoryImpl();
 
 		docCategory.setNew(true);
-		docCategory.setPrimaryKey(id);
+		docCategory.setPrimaryKey(docCategoryId);
 
 		return docCategory;
 	}
@@ -675,15 +673,15 @@ public class DocCategoryPersistenceImpl extends BasePersistenceImpl<DocCategory>
 	/**
 	 * Removes the doc category with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param id the primary key of the doc category
+	 * @param docCategoryId the primary key of the doc category
 	 * @return the doc category that was removed
 	 * @throws com.rknowsys.eapp.hrm.NoSuchDocCategoryException if a doc category with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DocCategory remove(long id)
+	public DocCategory remove(long docCategoryId)
 		throws NoSuchDocCategoryException, SystemException {
-		return remove((Serializable)id);
+		return remove((Serializable)docCategoryId);
 	}
 
 	/**
@@ -832,7 +830,7 @@ public class DocCategoryPersistenceImpl extends BasePersistenceImpl<DocCategory>
 		docCategoryImpl.setNew(docCategory.isNew());
 		docCategoryImpl.setPrimaryKey(docCategory.getPrimaryKey());
 
-		docCategoryImpl.setId(docCategory.getId());
+		docCategoryImpl.setDocCategoryId(docCategory.getDocCategoryId());
 		docCategoryImpl.setCompanyId(docCategory.getCompanyId());
 		docCategoryImpl.setGroupId(docCategory.getGroupId());
 		docCategoryImpl.setCreateDate(docCategory.getCreateDate());
@@ -871,15 +869,15 @@ public class DocCategoryPersistenceImpl extends BasePersistenceImpl<DocCategory>
 	/**
 	 * Returns the doc category with the primary key or throws a {@link com.rknowsys.eapp.hrm.NoSuchDocCategoryException} if it could not be found.
 	 *
-	 * @param id the primary key of the doc category
+	 * @param docCategoryId the primary key of the doc category
 	 * @return the doc category
 	 * @throws com.rknowsys.eapp.hrm.NoSuchDocCategoryException if a doc category with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DocCategory findByPrimaryKey(long id)
+	public DocCategory findByPrimaryKey(long docCategoryId)
 		throws NoSuchDocCategoryException, SystemException {
-		return findByPrimaryKey((Serializable)id);
+		return findByPrimaryKey((Serializable)docCategoryId);
 	}
 
 	/**
@@ -933,13 +931,14 @@ public class DocCategoryPersistenceImpl extends BasePersistenceImpl<DocCategory>
 	/**
 	 * Returns the doc category with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param id the primary key of the doc category
+	 * @param docCategoryId the primary key of the doc category
 	 * @return the doc category, or <code>null</code> if a doc category with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DocCategory fetchByPrimaryKey(long id) throws SystemException {
-		return fetchByPrimaryKey((Serializable)id);
+	public DocCategory fetchByPrimaryKey(long docCategoryId)
+		throws SystemException {
+		return fetchByPrimaryKey((Serializable)docCategoryId);
 	}
 
 	/**
@@ -1115,11 +1114,6 @@ public class DocCategoryPersistenceImpl extends BasePersistenceImpl<DocCategory>
 		return count.intValue();
 	}
 
-	@Override
-	protected Set<String> getBadColumnNames() {
-		return _badColumnNames;
-	}
-
 	/**
 	 * Initializes the doc category persistence.
 	 */
@@ -1162,9 +1156,6 @@ public class DocCategoryPersistenceImpl extends BasePersistenceImpl<DocCategory>
 	private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
 				PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
 	private static Log _log = LogFactoryUtil.getLog(DocCategoryPersistenceImpl.class);
-	private static Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"id"
-			});
 	private static DocCategory _nullDocCategory = new DocCategoryImpl() {
 			@Override
 			public Object clone() {

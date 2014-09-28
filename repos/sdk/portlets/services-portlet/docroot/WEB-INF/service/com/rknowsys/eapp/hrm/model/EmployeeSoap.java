@@ -16,8 +16,6 @@ package com.rknowsys.eapp.hrm.model;
 
 import java.io.Serializable;
 
-import java.sql.Blob;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,10 +43,9 @@ public class EmployeeSoap implements Serializable {
 		soapModel.setFirstName(model.getFirstName());
 		soapModel.setLastName(model.getLastName());
 		soapModel.setMiddleName(model.getMiddleName());
-		soapModel.setPhotograph(model.getPhotograph());
 		soapModel.setGender(model.getGender());
 		soapModel.setMaritalStatus(model.getMaritalStatus());
-		soapModel.setNationality(model.getNationality());
+		soapModel.setNationalityId(model.getNationalityId());
 		soapModel.setDateOfBirth(model.getDateOfBirth());
 		soapModel.setOtherId(model.getOtherId());
 
@@ -207,14 +204,6 @@ public class EmployeeSoap implements Serializable {
 		_middleName = middleName;
 	}
 
-	public Blob getPhotograph() {
-		return _photograph;
-	}
-
-	public void setPhotograph(Blob photograph) {
-		_photograph = photograph;
-	}
-
 	public int getGender() {
 		return _gender;
 	}
@@ -231,12 +220,12 @@ public class EmployeeSoap implements Serializable {
 		_maritalStatus = maritalStatus;
 	}
 
-	public String getNationality() {
-		return _nationality;
+	public long getNationalityId() {
+		return _nationalityId;
 	}
 
-	public void setNationality(String nationality) {
-		_nationality = nationality;
+	public void setNationalityId(long nationalityId) {
+		_nationalityId = nationalityId;
 	}
 
 	public Date getDateOfBirth() {
@@ -268,10 +257,9 @@ public class EmployeeSoap implements Serializable {
 	private String _firstName;
 	private String _lastName;
 	private String _middleName;
-	private Blob _photograph;
 	private int _gender;
 	private int _maritalStatus;
-	private String _nationality;
+	private long _nationalityId;
 	private Date _dateOfBirth;
 	private String _otherId;
 }

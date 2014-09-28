@@ -37,7 +37,7 @@ import java.util.Date;
 public class JobTitleCacheModel implements CacheModel<JobTitle>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{jobTitleId=");
 		sb.append(jobTitleId);
@@ -51,8 +51,6 @@ public class JobTitleCacheModel implements CacheModel<JobTitle>, Externalizable 
 		sb.append(modifiedDate);
 		sb.append(", userId=");
 		sb.append(userId);
-		sb.append(", employeeId=");
-		sb.append(employeeId);
 		sb.append(", title=");
 		sb.append(title);
 		sb.append(", description=");
@@ -61,8 +59,6 @@ public class JobTitleCacheModel implements CacheModel<JobTitle>, Externalizable 
 		sb.append(notes);
 		sb.append(", specification=");
 		sb.append(specification);
-		sb.append(", jobId=");
-		sb.append(jobId);
 		sb.append("}");
 
 		return sb.toString();
@@ -91,7 +87,6 @@ public class JobTitleCacheModel implements CacheModel<JobTitle>, Externalizable 
 		}
 
 		jobTitleImpl.setUserId(userId);
-		jobTitleImpl.setEmployeeId(employeeId);
 
 		if (title == null) {
 			jobTitleImpl.setTitle(StringPool.BLANK);
@@ -121,8 +116,6 @@ public class JobTitleCacheModel implements CacheModel<JobTitle>, Externalizable 
 			jobTitleImpl.setSpecification(specification);
 		}
 
-		jobTitleImpl.setJobId(jobId);
-
 		jobTitleImpl.resetOriginalValues();
 
 		return jobTitleImpl;
@@ -136,12 +129,10 @@ public class JobTitleCacheModel implements CacheModel<JobTitle>, Externalizable 
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		userId = objectInput.readLong();
-		employeeId = objectInput.readLong();
 		title = objectInput.readUTF();
 		description = objectInput.readUTF();
 		notes = objectInput.readUTF();
 		specification = objectInput.readUTF();
-		jobId = objectInput.readLong();
 	}
 
 	@Override
@@ -153,7 +144,6 @@ public class JobTitleCacheModel implements CacheModel<JobTitle>, Externalizable 
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 		objectOutput.writeLong(userId);
-		objectOutput.writeLong(employeeId);
 
 		if (title == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -182,8 +172,6 @@ public class JobTitleCacheModel implements CacheModel<JobTitle>, Externalizable 
 		else {
 			objectOutput.writeUTF(specification);
 		}
-
-		objectOutput.writeLong(jobId);
 	}
 
 	public long jobTitleId;
@@ -192,10 +180,8 @@ public class JobTitleCacheModel implements CacheModel<JobTitle>, Externalizable 
 	public long createDate;
 	public long modifiedDate;
 	public long userId;
-	public long employeeId;
 	public String title;
 	public String description;
 	public String notes;
 	public String specification;
-	public long jobId;
 }

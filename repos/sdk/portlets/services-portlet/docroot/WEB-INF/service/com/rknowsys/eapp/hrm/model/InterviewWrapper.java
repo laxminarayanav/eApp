@@ -49,7 +49,7 @@ public class InterviewWrapper implements Interview, ModelWrapper<Interview> {
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
+		attributes.put("interviewId", getInterviewId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
@@ -62,10 +62,10 @@ public class InterviewWrapper implements Interview, ModelWrapper<Interview> {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
+		Long interviewId = (Long)attributes.get("interviewId");
 
-		if (id != null) {
-			setId(id);
+		if (interviewId != null) {
+			setInterviewId(interviewId);
 		}
 
 		Long companyId = (Long)attributes.get("companyId");
@@ -126,23 +126,23 @@ public class InterviewWrapper implements Interview, ModelWrapper<Interview> {
 	}
 
 	/**
-	* Returns the ID of this interview.
+	* Returns the interview ID of this interview.
 	*
-	* @return the ID of this interview
+	* @return the interview ID of this interview
 	*/
 	@Override
-	public long getId() {
-		return _interview.getId();
+	public long getInterviewId() {
+		return _interview.getInterviewId();
 	}
 
 	/**
-	* Sets the ID of this interview.
+	* Sets the interview ID of this interview.
 	*
-	* @param id the ID of this interview
+	* @param interviewId the interview ID of this interview
 	*/
 	@Override
-	public void setId(long id) {
-		_interview.setId(id);
+	public void setInterviewId(long interviewId) {
+		_interview.setInterviewId(interviewId);
 	}
 
 	/**
