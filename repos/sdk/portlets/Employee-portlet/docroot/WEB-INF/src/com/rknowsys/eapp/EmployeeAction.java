@@ -1083,6 +1083,9 @@ public class EmployeeAction extends MVCPortlet {
 		actionResponse.setRenderParameter("jspPage","/html/employee/edit_employee.jsp");
 		log.info("End of updateEmpJobHistory method");
 	}
+	/* (non-Javadoc)
+	 * @see com.liferay.util.bridges.mvc.MVCPortlet#serveResource(javax.portlet.ResourceRequest, javax.portlet.ResourceResponse)
+	 */
 	public void serveResource(ResourceRequest resourceRequest,
 			ResourceResponse resourceResponse) throws IOException,
 			PortletException {
@@ -1384,7 +1387,37 @@ public class EmployeeAction extends MVCPortlet {
 			PrintWriter out = resourceResponse.getWriter();
 			System.out.println(currencyJsonArray.toString());
 			out.write(currencyJsonArray.toString());
-		} else {
+		}
+		
+		/*Delete code for Docs tab written by sreedhar*/
+		
+			else if(resourceRequest.getResourceID().equals("deleteDocs")){
+				log.info("Deleting document records");
+				String[] idsArray = ParamUtil.getParameterValues(resourceRequest,"documentIds");
+				for (int i = 0; i <= idsArray.length - 1; i++) {
+					try {
+						log.info("idArray values "+idsArray[i]);
+							try {
+								log.info("before servicebuilder method");
+								EmpAttachmentLocalServiceUtil.deleteEmpAttachment((Long.parseLong(idsArray[i])));
+								log.info("deleted");
+							} catch (PortalException e) {
+								log.error("Error in deleting dependent details of employee",e);
+							}
+							
+							catch(SystemException e){
+								log.error("Error in deleting dependent details of employee",e);
+							
+							}
+						}
+					catch(NumberFormatException e){
+						log.error("selected all records are deleted");
+
+					}
+				}
+			}
+			
+		else {
 			log.error("in serveResource method:Resource is not matched");
 		}
 	}

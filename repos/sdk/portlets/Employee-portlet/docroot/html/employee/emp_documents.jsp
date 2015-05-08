@@ -6,6 +6,12 @@
 <%@page import="com.liferay.portal.kernel.repository.model.FileEntry"%>
 <%@ include file="/html/employee/init.jsp"%>
 <portlet:actionURL var="updateEmpDocuments" name="updateEmpDocuments"></portlet:actionURL>
+<portlet:resourceURL var="deleteDocs" id="deleteDocs"></portlet:resourceURL>
+
+<portlet:renderURL var="listdocs">
+	<portlet:param name="mvcPath" value="/html/employee/edit_employee.jsp"/>
+</portlet:renderURL>
+
 <%
 	Map empId = (Map) request.getSession(false).getAttribute("empId");
 	long employeeId = (Long) empId.get("empId");
@@ -71,6 +77,54 @@ A.ready(function()
        A.one('#<portlet:namespace />deleteDocument').show();
    });
   });
+<!-- Delete code for Docs tab written by sreedhar-->  
+ AUI().use(
+  'aui-node',
+  function(A) {
+    var node = A.one('#<portlet:namespace/>deleteDocument');
+    node.on(
+      'click',
+      function() {
+     var idArray = [];
+      A.all('input[name=<portlet:namespace/>rowIds]:checked').each(function(object) {
+      idArray.push(object.get("value"));
+    
+        });
+       if(idArray==""){
+			  alert("Please select document!");
+		  }else{
+			  var d = confirm("Are you sure you want to delete the selected Document?");
+		  if(d){
+		   var url = '<%=deleteDocs%>';
+          A.io.request(url,
+         {
+          data: {  
+                <portlet:namespace />documentIds: idArray,  
+                 },
+          on: {
+               success: function() { 
+                   alert('deleted successfully');
+                   window.location='<%=listdocs%>';
+              },
+               failure: function() {
+                  
+                 }
+                }
+                 }
+                );
+		  																		
+		  console.log(idArray);
+	  
+      return true;
+  }
+  else
+    return false;
+}             
+      }
+    );
+  }
+);
+  
 </aui:script>
 <liferay-portlet:renderURL  varImpl="documentsURL">
 		<portlet:param name="jsp" value="jsp12"/>
@@ -131,7 +185,7 @@ A.ready(function()
 	<%!com.liferay.portal.kernel.dao.search.SearchContainer<DLFileEntry> searchContainer;%>
 	<liferay-ui:search-container delta="5"
 		emptyResultsMessage="no-records-available-for-employee"
-		deltaConfigurable="true" iteratorURL="<%=documentsURL %>">
+		deltaConfigurable="true" rowChecker="<%= new RowChecker(renderResponse) %>" iteratorURL="<%=documentsURL %>">
 		<liferay-ui:search-container-results>
 			<%
 			/* 	long classNameId = ClassNameLocalServiceUtil
@@ -178,7 +232,7 @@ A.ready(function()
 						pageContext.setAttribute("total", total); 
 			%>
 		</liferay-ui:search-container-results>
-		<liferay-ui:search-container-row  className="EmpAttachment" modelVar="empDocument"  rowVar="curRow" 
+		<liferay-ui:search-container-row  className="EmpAttachment" modelVar="empDocument"  rowVar="curRow" keyProperty="empAttachmentId"
 	escapedModel="<%=true %>">
 			<liferay-ui:search-container-column-text orderable="true" name="Name"
 				property="fileName" href='<%=themeDisplay.getPortalURL()+"/c/document_library/get_file?uuid="+empDocument.getUuid()+"&groupId="+themeDisplay.getScopeGroupId() %>' />
